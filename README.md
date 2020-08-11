@@ -17,7 +17,7 @@
 
 - has_one  :card
 - has_one  :address
-- has_one  :basket, dependent: :destory
+- has_one  :basket, dependent: :destroy
 - has_one :order_record, dependent: :destroy
 - has_many :order_record_products, through: :order_record
 - has_many :comments
@@ -33,7 +33,7 @@
 | user            | references | null: false, foreign_key: true |
 
 ### Association
-  
+
 - belongs_to  :user
 
 
