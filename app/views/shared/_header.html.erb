@@ -1,0 +1,20 @@
+<!-- .gnav -->
+<nav class="gnav" class="fixed">
+  <ul class="gnav-list">
+    <li class="gnav-item"><%= link_to "商品一覧", "#works-section", class: "gnav-link" %></li>
+    <li class="gnav-item"><%= link_to "今月のおすすめ", "#feature-section", class: "gnav-link" %></li>
+    <li class="gnav-item"><%= link_to "コンセプト", "#about-section", class: "gnav-link" %></li>
+    <li class="gnav-item"><%= link_to "店舗一覧", "#skill-section", class: "gnav-link" %></li>
+    <li class="gnav-item"><%= link_to "お問い合わせ", "#contact-section", class: "gnav-link" %></li>
+
+    <% if user_signed_in? %>
+      <li class="gnav-item"><%= link_to "買い物カゴ", "#", class: "gnav-link" %></li>
+      <li class="gnav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "gnav-link" %></li>
+    <% else %>
+      <li class="gnav-item"><%= link_to "新規登録", new_user_registration_path, class: "gnav-link" %></li>
+      <li class="gnav-item"><%= link_to "ログイン", new_user_session_path, class: "gnav-link" %></li>
+    <% end %>
+    <li class="gnav-item"><%= link_to "商品登録", "#", class: "gnav-link" %></li>
+  </ul>
+</nav>
+<!-- /.gnav -->
