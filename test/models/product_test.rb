@@ -9,7 +9,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  admin_id    :bigint           not null
-#  cotegory_id :integer          not null
+#  category_id :integer          not null
 #
 # Indexes
 #

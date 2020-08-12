@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_042231) do
     t.string "name", null: false
     t.text "text", null: false
     t.integer "price", null: false
-    t.integer "cotegory_id", null: false
+    t.integer "category_id", null: false
     t.bigint "admin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
