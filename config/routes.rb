@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins
   devise_for :users
-  root 'home#index'
+  root 'products#index'
   resources :products, only: [:index]
 end
