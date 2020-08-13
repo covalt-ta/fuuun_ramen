@@ -26,16 +26,16 @@
             
             <% @products.each do |product| %>
             <figure class="works-item">
-              <a href="img/works/company.jpg" data-size="960x720" class="works-image-wrapper works-link hover-action">
-                <img class="works-image lazyload fadein" src="img/placeholder4x3.png" data-src="img/works/company.jpg"
-                  alt="" />
-              </a>
+              <%= link_to "#" do %> 
+                <div data-size="960x720" class="works-image-wrapper works-link hover-action">
+                  <%= image_tag product.image.variant(resize:'960x720'), class: "works-image" if product.image.attached? %>
+                </div>
+              <% end %>
               <figcaption class="works-body">
                 <div class="works-title"><%= product.name %></div>
                 <div class="works-text"><%= product.text %></div>
                 <div class="works-text"><%= product.display_price %></div>
-                <div class="works-url"><a class="works-url-link" href="https://yahoo.co.jp" target="_blank">Link</a>
-                </div>
+                <%= link_to "買い物カゴに追加", "#", class: "works-url-link btn btn-outline-dark" %>
               </figcaption>
             </figure>
             <% end %>
