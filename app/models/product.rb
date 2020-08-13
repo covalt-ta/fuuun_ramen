@@ -23,6 +23,7 @@ class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to :admin
+  has_one_attached :image
 
   with_options presence: true do
     validates :name, length: { maximum: 40 }
