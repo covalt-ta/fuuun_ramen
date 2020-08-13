@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  get 'users/show'
   get 'cards/new'
   devise_for :admins
   devise_for :users
   root 'products#index'
   resources :products, only: %i(show)
-  
-  resources :cards, only: [:new, :create]
+  resources :users, only: %i(show update)
+  resources :cards, only: %i(new create)
 
   namespace :admins do
     root to: "dashboard#index"

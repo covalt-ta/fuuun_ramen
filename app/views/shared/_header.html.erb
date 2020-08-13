@@ -1,13 +1,14 @@
 <!-- .gnav -->
 <nav class="gnav" class="fixed">
   <ul class="gnav-list">
-    <li class="gnav-item"><%= link_to "商品一覧", "#works-section", class: "gnav-link" %></li>
-    <li class="gnav-item"><%= link_to "今月のおすすめ", "#feature-section", class: "gnav-link" %></li>
-    <li class="gnav-item"><%= link_to "コンセプト", "#about-section", class: "gnav-link" %></li>
-    <li class="gnav-item"><%= link_to "店舗一覧", "#skill-section", class: "gnav-link" %></li>
-    <li class="gnav-item"><%= link_to "お問い合わせ", "#contact-section", class: "gnav-link" %></li>
+    <li class="gnav-item"><%= link_to "商品一覧", "/#works-section", class: "gnav-link" %></li>
+    <li class="gnav-item"><%= link_to "今月のおすすめ", "/#feature-section", class: "gnav-link" %></li>
+    <li class="gnav-item"><%= link_to "コンセプト", "/#about-section", class: "gnav-link" %></li>
+    <li class="gnav-item"><%= link_to "店舗一覧", "/#skill-section", class: "gnav-link" %></li>
+    <li class="gnav-item"><%= link_to "お問い合わせ", "/#contact-section", class: "gnav-link" %></li>
 
     <% if user_signed_in? %>
+      <li class="gnav-item"><%= link_to "マイページ", user_path(current_user), class: "gnav-link" %></li>
       <li class="gnav-item"><%= link_to "買い物カゴ", "#", class: "gnav-link" %></li>
       <li class="gnav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "gnav-link" %></li>
     <% else %>
