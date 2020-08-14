@@ -24,7 +24,7 @@
             
             <% @products.each do |product| %>
             <figure class="works-item">
-              <%= link_to "#" do %> 
+              <%= link_to product_path(product) do %> 
                 <div data-size="960x720" class="works-image-wrapper works-link hover-action">
                   <%= image_tag product.image.variant(resize:'960x720'), class: "works-image" if product.image.attached? %>
                 </div>

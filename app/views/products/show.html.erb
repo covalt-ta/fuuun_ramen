@@ -1,0 +1,64 @@
+<div class="item-show wrapper inner">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @product.name %>
+    </h2>
+    <div class='item-img-content'>
+      <%= image_tag @product.image ,class:"item-box-img" %>
+    </div>
+    <div class="item-price-box">
+      <span class="item-price">
+        <%= @product.display_price %>
+      </span>
+    </div>
+
+    <%#= form_with model: @product do |f| %>
+      <%#= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <%# <div class="form-check"> %>
+          <%#= tag.label class: 'form-check-label' do %>
+            <%#= tag.check_box class: 'form-check-input' %>
+            <%#= tag.text %>
+          <%# end %>
+        <%# </div> %>
+      <%# end %>
+    <%#= f.submit '保存', class: 'btn btn-primary' %>
+
+    <% if user_signed_in? && current_user.id == @product.admin_id %>
+      <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
+      <p class='or-text'>or</p>
+      <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
+    <% else %>
+      <%= link_to '買い物かごに入れる', "#" ,class:"btn btn-outline-dark"%>
+    <% end %>
+
+    <div class="item-explain-box">
+      <span><%= @product.text %></span>
+    </div>
+
+    <div class="option">
+      <div class="favorite-btn">
+        <%#= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <span>お気に入り 0</span>
+      </div>
+    </div>
+  </div>
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        商品の感想をお寄せください！
+        <br>
+        コメント投稿ごとにユーザーポイントが貯まります！
+      </p>
+      <button type="submit" class="comment-btn">
+        <%#= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+  <div class="links">
+    <%= link_to "＜ 前の商品", "#", class: "change-item-btn" %>
+    <%= link_to "後ろの商品 ＞", "#", class: "change-item-btn" %>
+  </div>
+  <%= link_to "#{@product.category.name}をもっと見る", "#", class: 'another-item' %>
+</div>
