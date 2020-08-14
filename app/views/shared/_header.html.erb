@@ -9,7 +9,7 @@
 
     <% if user_signed_in? %>
       <li class="gnav-item"><%= link_to "マイページ", user_path(current_user), class: "gnav-link" %></li>
-      <li class="gnav-item"><%= link_to "買い物カゴ", "#", class: "gnav-link" %></li>
+      <li class="gnav-item"><%= link_to "買い物カゴ", basket_path(current_user), class: "gnav-link" %></li>
       <li class="gnav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "gnav-link" %></li>
     <% else %>
       <li class="gnav-item"><%= link_to "新規登録", new_user_registration_path, class: "gnav-link" %></li>

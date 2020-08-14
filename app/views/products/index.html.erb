@@ -33,7 +33,7 @@
                 <div class="works-title"><%= product.name %></div>
                 <div class="works-text"><%= product.text %></div>
                 <div class="works-text"><%= product.display_price %></div>
-                <%= link_to "買い物カゴに追加", "#", class: "works-url-link btn btn-outline-dark" %>
+                <%= link_to "買い物カゴに追加", product_path(product), class: "works-url-link btn btn-outline-dark" %>
               </figcaption>
             </figure>
             <% end %>
@@ -112,11 +112,11 @@
     <section class="skill-section section" id="skill-section">
       <div class="inner">
         <div class="section-heading">
-          <h2 class="heading-primary">SKILL</h2>
+          <h2 class="heading-primary">店舗一覧</h2>
         </div>
         <div class="section-lead">
           <p>
-            未経験ですが頑張ります！
+            魂込めて営業中！
           </p>
         </div>
         <div class="section-body skill">

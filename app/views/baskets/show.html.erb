@@ -1,0 +1,125 @@
+<div class="wrapper">
+  <div class="inner">
+    <h1>お買い物カゴ</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">商品名</th>
+          <th scope="col">トッピング</th>
+          <th scope="col">価格</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr class="product">
+            <td><%= product.name %></td>
+            <td>トッピング機能準備中</td>
+            <td><%= product.display_price %></td>
+            <td>
+              <%= link_to product_delete_in_baskets_path(product), method: :post, data: {confirm: '削除してもいいですか？'} do %>
+                  <span class="btn btn-outline-secondary">買い物カゴから削除する</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if @products.empty? %>
+      <div class="text-center lead">お買い物カゴに商品はありません</div>
+    <% else %>
+      <div class="float-right badge badge-secondary ">
+        <span class="lead"><%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%></span>
+      </div>
+    <% end %>
+  </div>
+<div>
+<br>
+
+
+<div class="container mb-5">
+  <h1 class="h3 mb-4">オススメ商品</h1>
+  <div id="carousel-card" class="carousel slide" data-interval="5000">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-card" data-slide-to="0" class="active">
+        <img src="https://placehold.it/100x50" alt="img">
+      </li>
+      <li data-target="#carousel-card" data-slide-to="1">
+        <img src="https://placehold.it/100x50" alt="img">
+      </li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item px-5 active">
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item px-5">
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carousel-card" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-card" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <style>
+  #carousel-card .carousel-control-next,
+  #carousel-card .carousel-control-prev {
+    width: 5%;
+    background-color: #333;
+  }
+  </style>
+</div>

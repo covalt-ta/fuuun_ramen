@@ -55,4 +55,7 @@ class User < ApplicationRecord
     validates :first_name_kana
   end
 
+  def prepare_basket
+    basket || create_basket
+  end
 end

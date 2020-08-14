@@ -11,6 +11,9 @@
   justify-content: center;
   height: 86vh;
   background-image: image-url('header_image.jpg');
+  background-position-y: 60%;
+  background-size: cover;
+  
   color: white;
 }
 
@@ -106,6 +109,10 @@
 /*--------------------------------
  About
 ---------------------------------*/
+#about-section {
+  background-image: url("sample_image1.png");
+  background-size: contain;
+}
 .about-section .inner {
   max-width: 1000px;
 }
