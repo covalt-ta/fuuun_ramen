@@ -29,6 +29,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one :card, dependent: :destroy
+  has_one :basket, dependent: :destroy
   
   with_options presence: true do
     validates :nickname

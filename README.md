@@ -57,9 +57,9 @@
 
 ## baskets テーブル
 
-| Column        | Type       | Options                       |
-| ------------- | ---------- | ----------------------------- |
-| user          | references | null: false foreign_key: true |
+| Column | Type       | Options                                                |
+| ------ | ---------- | ------------------------------------------------------ |
+| user   | references | null: false unique: true index: true foreign_key: true |
 
 ### Association
 
@@ -70,10 +70,10 @@
 
 ## basket_products テーブル
 
-| Column  | Type       | Options                       |
-| ------- | ---------- | ----------------------------- |
-| basket  | references | null: false foreign_key: true |
-| product | references | null: false foreign_key: true |
+| Column  | Type       | Options                                   |
+| ------- | ---------- | ----------------------------------------- |
+| basket  | references | null: false index: true foreign_key: true |
+| product | references | null: false index: true foreign_key: true |
 
 ### Association
 
