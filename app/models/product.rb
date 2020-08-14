@@ -25,6 +25,8 @@ class Product < ApplicationRecord
   belongs_to :admin
   has_one_attached :image
 
+  include Hashid::Rails
+
   with_options presence: true do
     validates :name, length: { maximum: 40 }
     validates :text, length: { maximum: 1000 }
