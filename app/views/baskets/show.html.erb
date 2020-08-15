@@ -18,7 +18,7 @@
             <td><%= product.display_price %></td>
             <td>
               <%= link_to product_delete_in_baskets_path(product), method: :post, data: {confirm: '削除してもいいですか？'} do %>
-                  <span class="btn btn-outline-secondary">買い物カゴから削除する</span>
+                  <span class="btn btn-outline-secondary">削除する</span>
               <% end %>
             </td>
           </tr>
@@ -29,9 +29,19 @@
       <div class="text-center lead">お買い物カゴに商品はありません</div>
     <% else %>
       <div class="float-right badge badge-secondary ">
-        <span class="lead"><%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%></span>
+        <span><%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%></span>
       </div>
-    <% end %>
+      <br>
+      <div class="float-right">
+        <%= form_with url: charge_path, local: true do |f| %>
+          <% @products.each do |product| %>
+            <%= f.hidden_field "product_ids[]", value: product.id %>
+          <% end %>
+          <%= f.submit "購入する" ,class: "btn btn-lg btn-outline-secondary"%>
+        <% end %>
+      </div>
+    <% end %> 
+
   </div>
 <div>
 <br>

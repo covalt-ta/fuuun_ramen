@@ -58,4 +58,13 @@ class User < ApplicationRecord
   def prepare_basket
     basket || create_basket
   end
+
+  def checkout!(product_ids:)
+    customer_token = card.customer_token
+    total_price = basket.total_price(product_ids: product_ids)
+    Charge.create!(total_price, customer_token)
+    basket_products = basket.basket_products.where(product_id: product_ids)
+    basket_products.each(&:destroy!)
+  end
+
 end
