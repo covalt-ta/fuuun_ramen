@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_050134) do
+ActiveRecord::Schema.define(version: 2020_08_15_020345) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,22 @@ ActiveRecord::Schema.define(version: 2020_08_14_050134) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "order_record_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "order_record_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_record_id"], name: "index_order_record_products_on_order_record_id"
+    t.index ["product_id"], name: "index_order_record_products_on_product_id"
+  end
+
+  create_table "order_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_order_records_on_user_id"
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "text", null: false
@@ -105,5 +121,8 @@ ActiveRecord::Schema.define(version: 2020_08_14_050134) do
   add_foreign_key "basket_products", "products"
   add_foreign_key "baskets", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "order_record_products", "order_records"
+  add_foreign_key "order_record_products", "products"
+  add_foreign_key "order_records", "users"
   add_foreign_key "products", "admins"
 end

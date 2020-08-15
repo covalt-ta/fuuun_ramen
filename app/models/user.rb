@@ -30,6 +30,7 @@ class User < ApplicationRecord
   
   has_one :card, dependent: :destroy
   has_one :basket, dependent: :destroy
+  has_one :order_record, dependent: :destroy
   
   with_options presence: true do
     validates :nickname
@@ -59,12 +60,23 @@ class User < ApplicationRecord
     basket || create_basket
   end
 
+  def prepare_order_record
+    order_record || create_order_record
+  end
+
   def checkout!(product_ids:)
     customer_token = card.customer_token
     total_price = basket.total_price(product_ids: product_ids)
-    Charge.create!(total_price, customer_token)
-    basket_products = basket.basket_products.where(product_id: product_ids)
-    basket_products.each(&:destroy!)
-  end
+    
+    transaction do
+      Charge.create!(total_price, customer_token)
 
+      order_record = prepare_order_record
+      ids = product_ids.map { |id| { product_id: id}}
+      order_record.order_record_products.create!(ids)
+
+      basket_products = basket.basket_products.where(product_id: product_ids)
+      basket_products.each(&:destroy!)
+    end
+  end
 end

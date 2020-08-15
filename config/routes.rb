@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resource :charge, only: :create
 
   namespace :admins do
-    root to: "dashboard#index"
+    root to: "dashboards#index"
     resources :products, only: %i(new create)
   end
 end

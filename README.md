@@ -114,13 +114,15 @@
 
 - belongs_to :admin
 - belongs_to :order_record_product
+- 設計 再検討
+
 
 
 ## order_records テーブル
 
-| Column        | Type       | Options                       |
-| ------------- | ---------- | ----------------------------- |
-| user          | references | null: false foreign_key: true |
+| Column | Type       | Options                                                |
+| ------ | ---------- | ------------------------------------------------------ |
+| user   | references | null: false unique: true index: true foreign_key: true |
 
 ### Association
 
@@ -132,17 +134,15 @@
 
 ## order_record_products テーブル
 
-| Column        | Type       | Options                       |
-| ------------- | ---------- | ----------------------------- |
-| order_record  | references | null: false foreign_key: true |
-| product       | references | null: false foreign_key: true |
-| topping       | references |             foreign_key: true |
+| Column       | Type       | Options                                   |
+| ------------ | ---------- | ----------------------------------------- |
+| order_record | references | null: false index: true foreign_key: true |
+| product      | references | null: false index: true foreign_key: true |
 
 ### Association
 
 - belongs_to :product
 - belongs_to :order_record
-- has_many   :toppings
 
 
 ## reservations テーブル
