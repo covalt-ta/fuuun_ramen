@@ -8,6 +8,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 WORKDIR /myapp
 ADD Gemfile ./Gemfile
 ADD Gemfile.lock ./Gemfile.lock
+RUN gem install bundler
 RUN bundle install
 ADD . /myapp
 
