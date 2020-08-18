@@ -1,0 +1,21 @@
+<div class='form-header'>
+  <h1 class='form-header-text'>
+    クレジットカード情報
+  </h1>
+</div>
+
+<% if card %>
+  <div class="form-group">
+    <div class="Card_info">
+      【カード番号】
+      <br>
+      <%= "**** **** **** " + card[:last4] %>
+      <br>
+      【有効期限】
+      <br>
+      <%= card[:exp_month] %>/<%= card[:exp_year] %>
+    </div>
+  </div>
+<% else %>
+  <p>クレジットカードの登録はありません</p>
+<% end %>
