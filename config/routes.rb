@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: %i(show update)
-  resources :cards, only: %i(new create)
+  resources :users, only: %i(show)
+  resources :cards, only: %i(new create destroy)
   resource :basket, only: :show
   resource :charge, only: :create
 
