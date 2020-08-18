@@ -15,7 +15,9 @@
       <br>
       <%= card[:exp_month] %>/<%= card[:exp_year] %>
     </div>
+    <%= link_to "登録削除", card_path(current_user), method: :delete, class: 'btn btn-outline-secondary '%>
   </div>
 <% else %>
   <p>クレジットカードの登録はありません</p>
+  <%= link_to "カードを登録する", new_card_path, class: 'btn btn-outline-secondary '%>
 <% end %>
