@@ -31,6 +31,7 @@ class User < ApplicationRecord
   has_one :card, dependent: :destroy
   has_one :basket, dependent: :destroy
   has_one :order_record, dependent: :destroy
+  has_one :address, dependent: :destroy
   
   with_options presence: true do
     validates :nickname
