@@ -3,15 +3,15 @@
     <div>
 
       <div class="tab-wrap">
-        <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">お客様情報</label>
+        <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">アカウント</label>
         <div class="tab-content">
           <div class="panel"><%= render 'account' %></div>
         </div>
-        <input id="tab02" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab02">クレジットカード</label>
+        <input id="tab02" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab02">ご住所</label>
         <div class="tab-content">
           <div class="panel"><%= render 'cards/card', card: @card %></div>
         </div>
-        <input id="tab03" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab03">お客様ご住所</label>
+        <input id="tab03" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab03">クレジットカード</label>
         <div class="tab-content">
           <div id="address-data" class="panel"><%= render 'cards/card', card: @card %></div>
         </div>  

@@ -1,64 +1,52 @@
-<div class="item-show wrapper inner">
-  <div class="item-box">
-    <h2 class="name">
-      <%= @product.name %>
-    </h2>
-    <div class='item-img-content'>
-      <%= image_tag @product.image, class:"item-box-img" %>
-    </div>
-    <div class="item-price-box">
-      <span class="item-price">
-        <%= @product.display_price %>
-      </span>
-    </div>
+<div class="wrapper">
+  <div class="inner">
+    <div class="card mx-auto" style="width: 50rem;">
+      <div class="card-header d-flex justify-content-around">
+        <p><%= @product.name %></p>
+        <p><%= @product.display_price %></p>
+      </div>
+      <div class='card-img-top'>
+        <%= image_tag @product.image, class:"item-box-img" %>
+      </div>
+      <div class="card-body">
+        <p class="card-text"><%= @product.text %></p>
+      </div>
 
-    <%#= form_with model: @product do |f| %>
-      <%#= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-        <%# <div class="form-check"> %>
-          <%#= tag.label class: 'form-check-label' do %>
-            <%#= tag.check_box class: 'form-check-input' %>
-            <%#= tag.text %>
-          <%# end %>
-        <%# </div> %>
-      <%# end %>
-    <%#= f.submit '保存', class: 'btn btn-primary' %>
+      <%#= form_with model: @product do |f| %>
+        <%#= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+          <%# <div class="form-check"> %>
+            <%#= tag.label class: 'form-check-label' do %>
+              <%#= tag.check_box class: 'form-check-input' %>
+              <%#= tag.text %>
+            <%# end %>
+          <%# </div> %>
+        <%# end %>
+      <%#= f.submit '保存', class: 'btn btn-primary' %>
+      <div class="mx-auto">
+        <% if admin_signed_in? %>
+          <%= link_to '商品の編集', edit_admins_product_path(@product), method: :get, class: "btn btn-outline-secondary", style: "width: 20rem;" %>
+          <%= link_to '削除', admins_product_path(@product), method: :delete, class:'btn btn-outline-secondary', style: "width: 20rem;" %>
+        <% else %>
+          <%= link_to '買い物かごに入れる', product_add_to_baskets_path(@product), method: :post, class:"btn btn-outline-dark"%>
+        <% end %>
+      
 
-    <% if admin_signed_in? %>
-      <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
-      <p class='or-text'>or</p>
-      <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
-    <% else %>
-      <%= link_to '買い物かごに入れる', product_add_to_baskets_path(@product), method: :post, class:"btn btn-outline-dark"%>
-    <% end %>
+        <div class="option">
+          <div class="favorite-btn">
+            <%#= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+            <span>お気に入り 0</span>
+          </div>
+        </div>
+      
+        <div class="comment-box">
+          <p>商品に対するコメント一覧</p>
+        </div>
 
-    <div class="item-explain-box">
-      <span><%= @product.text %></span>
-    </div>
-
-    <div class="option">
-      <div class="favorite-btn">
-        <%#= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
+        <div class="links">
+          <%= link_to "＜ 前の商品", "#", class: "change-item-btn" %>
+          <%= link_to "後ろの商品 ＞", "#", class: "change-item-btn" %>
+        </div>
       </div>
     </div>
   </div>
-  <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        商品の感想をお寄せください！
-        <br>
-        コメント投稿ごとにユーザーポイントが貯まります！
-      </p>
-      <button type="submit" class="comment-btn">
-        <%#= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
-  </div>
-  <div class="links">
-    <%= link_to "＜ 前の商品", "#", class: "change-item-btn" %>
-    <%= link_to "後ろの商品 ＞", "#", class: "change-item-btn" %>
-  </div>
-  <%= link_to "#{@product.category.name}をもっと見る", "#", class: 'another-item' %>
 </div>
