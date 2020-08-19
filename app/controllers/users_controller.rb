@@ -7,7 +7,4 @@ class UsersController < ApplicationController
       @card = customar.cards.first
     end
   end
-
-  def update
-  end
 end
