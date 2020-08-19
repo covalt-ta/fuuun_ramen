@@ -6,5 +6,6 @@ class UsersController < ApplicationController
       customar = Payjp::Customer.retrieve(card.customer_token)
       @card = customar.cards.first
     end
+    @address = current_user.address
   end
 end

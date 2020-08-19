@@ -1,7 +1,10 @@
 <div class="wrapper">
   <div class='form-wrap inner'>
     <div>
-
+      <ul>
+        <li class="notice"><%= notice %></li>
+        <li class="alert"><%= alert %></li>
+      </ul>
       <div class="tab-wrap">
         <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">アカウント</label>
         <div class="tab-content">
@@ -9,7 +12,7 @@
         </div>
         <input id="tab02" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab02">ご住所</label>
         <div class="tab-content">
-          <div class="panel"><%= render 'cards/card', card: @card %></div>
+          <div class="panel"><%= render 'addresses/form', address: @address %></div>
         </div>
         <input id="tab03" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab03">クレジットカード</label>
         <div class="tab-content">
