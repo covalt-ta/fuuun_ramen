@@ -22,6 +22,7 @@
           <%# </div> %>
         <%# end %>
       <%#= f.submit '保存', class: 'btn btn-primary' %>
+      
       <div class="mx-auto">
         <% if admin_signed_in? %>
           <%= link_to '商品の編集', edit_admins_product_path(@product), method: :get, class: "btn btn-outline-secondary", style: "width: 20rem;" %>

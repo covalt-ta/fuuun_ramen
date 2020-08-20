@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_032944) do
+ActiveRecord::Schema.define(version: 2020_08_20_031501) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -109,6 +109,19 @@ ActiveRecord::Schema.define(version: 2020_08_19_032944) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["admin_id"], name: "index_products_on_admin_id"
+  end
+
+  create_table "reservations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "day"
+    t.integer "time_zone_id"
+    t.integer "count_person_id"
+    t.bigint "order_record_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["count_person_id"], name: "index_reservations_on_count_person_id"
+    t.index ["day"], name: "index_reservations_on_day"
+    t.index ["order_record_id"], name: "index_reservations_on_order_record_id"
+    t.index ["time_zone_id"], name: "index_reservations_on_time_zone_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

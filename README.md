@@ -152,12 +152,12 @@
 
 ## reservations テーブル
 
-| Column        | Type       | Options                       |
-| ------------- | ---------- | ----------------------------- |
-| day           | date       | index: true                   |
-| time_zone     | string     | index: ture                   |
-| count_person  | string     | index: true                   |
-| order_record  | references | index: true foreign_key: true |
+| Column          | Type       | Options                       |
+| --------------- | ---------- | ----------------------------- |
+| day             | date       | index: true                   |
+| time_zone_id    | integer    | index: ture                   |
+| count_person_id | integer    | index: true                   |
+| order_record    | references | index: true                   |
 
 ### Association
 
