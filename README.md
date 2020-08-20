@@ -156,7 +156,7 @@
 | ------------- | ---------- | ----------------------------- |
 | day           | date       | index: true                   |
 | time_zone     | string     | index: ture                   |
-| count_people  | string     | index: true                   |
+| count_person  | string     | index: true                   |
 | order_record  | references | index: true foreign_key: true |
 
 ### Association
@@ -165,7 +165,7 @@
 
 ### ActiveHash
 - TimeZone
-- Count_People
+- Count_Person
 
 ## comments テーブル
 
