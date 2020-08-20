@@ -54,6 +54,9 @@
 - belongs_to :user
 - belongs_to_active_hash :prefecture
 
+### ActiveHash
+- Prefecture
+
 
 ## baskets テーブル
 
@@ -101,6 +104,8 @@
 - has_many               :comments
 - has_many               :likes
 
+### ActiveHash
+- Category
 
 ## toppings テーブル
 
@@ -129,7 +134,7 @@
 - belongs_to :user
 - has_many   :order_record_products, dependent: :destroy
 - has_many   :products, through: :order_record_products
-- has_many   :reservations
+- has_one    :reservation
 
 
 ## order_record_products テーブル
@@ -149,14 +154,18 @@
 
 | Column        | Type       | Options                       |
 | ------------- | ---------- | ----------------------------- |
-| order_date    | date       | null: false                   |
-| order_time_id | integer    | null: false                   |
-| order_record  | references | null: false foreign_key: true |
+| day           | date       | index: true                   |
+| time_zone     | string     | index: ture                   |
+| count_people  | string     | index: true                   |
+| order_record  | references | index: true foreign_key: true |
 
 ### Association
 
-- belongs_to :order_record
+- belongs_to :order_record, optional: true
 
+### ActiveHash
+- TimeZone
+- Count_People
 
 ## comments テーブル
 
@@ -184,13 +193,6 @@
 - belongs_to :product
 - belongs_to :user
 
-
-## ActiveHash 
-
-| model              |
-| ------------------ |
-| Category           |
-| Prefecture         |
 
 ## Active Storage 
 画像用テーブルはActive Storageを使用
