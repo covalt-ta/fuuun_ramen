@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <div class="inner">
+    <h1>購入確認</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">商品名</th>
+          <th scope="col">トッピング</th>
+          <th scope="col">価格</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr class="product">
+            <td><%= product.name %></td>
+            <td>トッピング機能準備中</td>
+            <td><%= product.display_price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ご予約日</th>
+          <th scope="col">ご来店時刻</th>
+          <th scope="col">ご利用人数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="product">
+          <td><%= @day %></td>
+          <td><%= @time_zone %></td>
+          <td><%= @count_person %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="float-right">
+      <%= form_with url: charges_path, local: true do |f| %>
+        <% @products.each do |product| %>
+          <%= f.hidden_field "product_ids[]", value: product.id %>
+        <% end %>
+        <div>
+          <%= f.submit '購入する', class: "btn btn-lg btn-outline-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -65,17 +65,25 @@ class User < ApplicationRecord
     order_record || create_order_record
   end
 
-  def checkout!(product_ids:)
+  def checkout!(product_ids:,day:, time_zone_id:,count_person_id:) #order_record_id以外のreservationの情報を引数に渡す
     customer_token = card.customer_token
     total_price = basket.total_price(product_ids: product_ids)
     
     transaction do
+      # クレジットカード決済
       Charge.create!(total_price, customer_token)
 
+      # order_record_productレコードの作成
       order_record = prepare_order_record
       ids = product_ids.map { |id| { product_id: id}}
       order_record.order_record_products.create!(ids)
 
+      # reservationレコードの作成
+      reservation = Reservation.new(day: day, time_zone_id: time_zone_id, count_person_id: count_person_id)
+      reservation.order_record_id = order_record.id
+      reservation.save!
+
+      # basketレコードの削除
       basket_products = basket.basket_products.where(product_id: product_ids)
       basket_products.each(&:destroy!)
     end

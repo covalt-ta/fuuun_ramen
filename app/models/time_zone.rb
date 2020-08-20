@@ -1,4 +1,4 @@
-class TimeZone <  ActiveHash::Base
+class TimeZone < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' },
     { id: 2, name: '10:00' }, { id: 3, name: '10:30' }, { id: 4, name: '11:00' },

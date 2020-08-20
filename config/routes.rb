@@ -14,7 +14,12 @@ Rails.application.routes.draw do
   resources :cards, only: %i(new create destroy)
   resources :addresses, only: %i(new create update destroy)
   resource :basket, only: :show
-  resource :charge, only: :create
+  resources :charges, only: %i(new create) do
+    collection do
+      get 'new_reservation'
+      post 'create_reservation'
+    end
+  end
 
   namespace :admins do
     root to: "dashboards#index"

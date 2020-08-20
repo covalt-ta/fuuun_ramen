@@ -33,15 +33,9 @@
       </div>
       <br>
       <div class="float-right">
-        <%= form_with url: charge_path, local: true do |f| %>
-          <% @products.each do |product| %>
-            <%= f.hidden_field "product_ids[]", value: product.id %>
-          <% end %>
-          <%= f.submit "購入する" ,class: "btn btn-lg btn-outline-secondary"%>
-        <% end %>
+        <%= link_to "購入画面に進む", new_reservation_charges_path, class: "btn btn-lg btn-outline-secondary"%>
       </div>
     <% end %> 
-
   </div>
 <div>
 <br>

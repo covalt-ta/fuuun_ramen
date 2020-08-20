@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="inner">
+    <h1>ご来店日時の選択</h1>
+    <%= form_with model: @reservation, url: create_reservation_charges_path, local: true, class: 'form' do |f| %>
+      <div>
+        <%= f.label :ご来店の日付を選択, class: 'lavel' %>
+        <%= f.date_field :day, class: 'date-select' %>
+      </div>
+      <div>
+        <%= f.label :ご来店のお時間を選択, class: 'lavel' %>
+        <%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class: "select-box"}) %>
+      </div>
+      <div>
+        <%= f.label :お持ち帰りorご来店人数を選択, class: 'lavel' %>
+        <%= f.collection_select(:count_person_id, CountPerson.all, :id, :name, {}, {class: "select-box"})%>
+      </div>
+
+      <div>
+        <%= f.submit '購入確認へ進む', class: "btn btn-lg btn-outline-secondary" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
