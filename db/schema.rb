@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 2020_08_20_031501) do
 
   create_table "basket_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "basket_id", null: false
-    t.bigint "product_topping_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["basket_id"], name: "index_basket_products_on_basket_id"
-    t.index ["product_topping_id"], name: "index_basket_products_on_product_topping_id"
+    t.index ["product_id"], name: "index_basket_products_on_product_id"
   end
 
   create_table "baskets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,11 +86,11 @@ ActiveRecord::Schema.define(version: 2020_08_20_031501) do
 
   create_table "order_record_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "order_record_id", null: false
-    t.bigint "product_topping_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_record_id"], name: "index_order_record_products_on_order_record_id"
-    t.index ["product_topping_id"], name: "index_order_record_products_on_product_topping_id"
+    t.index ["product_id"], name: "index_order_record_products_on_product_id"
   end
 
   create_table "order_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -163,11 +163,11 @@ ActiveRecord::Schema.define(version: 2020_08_20_031501) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
   add_foreign_key "basket_products", "baskets"
-  add_foreign_key "basket_products", "product_toppings"
+  add_foreign_key "basket_products", "products"
   add_foreign_key "baskets", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "order_record_products", "order_records"
-  add_foreign_key "order_record_products", "product_toppings"
+  add_foreign_key "order_record_products", "products"
   add_foreign_key "order_records", "users"
   add_foreign_key "product_toppings", "products"
   add_foreign_key "product_toppings", "toppings"

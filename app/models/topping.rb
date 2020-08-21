@@ -20,6 +20,7 @@
 class Topping < ApplicationRecord
   belongs_to :admin
   has_many :product_toppings, dependent: :destroy
+  has_many :products, through: :product_toppings
 
   with_options presence: true do
     validates :name, length: { maximum: 20 }

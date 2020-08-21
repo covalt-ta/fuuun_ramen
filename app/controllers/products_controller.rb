@@ -5,5 +5,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @toppings = Topping.all
+    @product_topping = ProductTopping.new
   end
 end

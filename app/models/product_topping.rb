@@ -19,6 +19,6 @@
 #  fk_rails_...  (topping_id => toppings.id)
 #
 class ProductTopping < ApplicationRecord
-  has_many :basket_products, dependent: :destroy
-  has_many :order_record_products, dependent: :destroy
+  belongs_to :puroduct
+  belongs_to :topping
 end

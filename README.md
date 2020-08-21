@@ -99,12 +99,16 @@
 - belongs_to_active_hash :category
 - belongs_to             :admin
 - has_one_attached       :image
+- has_many               :basket_products, dependent: :destroy
+- has_many               :order_record_products, dependent: :destroy
+- has_many               :product_toppings, dependent: :destroy
+- has_many               :toppings, through: :product_topping
 - has_many               :comments
 - has_many               :likes
-- has_many               :product_toppings, dependent: :destroy
 
 ### ActiveHash
 - Category
+
 
 ## toppings テーブル
 
@@ -118,6 +122,7 @@
 
 - belongs_to :admin
 - has_many :product_toppings
+- ham_many :products, through: :product_topping
 
 
 ## product_toppings テーブル
@@ -131,8 +136,6 @@
 
 - belongs_to :product
 - belongs_to :topping
-- has_many :basket_products, dependent: :destroy
-- has_many :order_record_products, dependent: :destroy
 
 
 ## order_records テーブル
@@ -151,25 +154,25 @@
 
 ## order_record_products テーブル
 
-| Column          | Type       | Options                                   |
-| --------------- | ---------- | ----------------------------------------- |
-| order_record    | references | null: false index: true foreign_key: true |
-| product_topping | references | null: false index: true foreign_key: true |
+| Column       | Type       | Options                                   |
+| ------------ | ---------- | ----------------------------------------- |
+| order_record | references | null: false index: true foreign_key: true |
+| product      | references | null: false index: true foreign_key: true |
 
 ### Association
 
-- belongs_to :product_topping
+- belongs_to :product
 - belongs_to :order_record
 
 
 ## reservations テーブル
 
-| Column          | Type       | Options                       |
-| --------------- | ---------- | ----------------------------- |
-| day             | date       | index: true                   |
-| time_zone_id    | integer    | index: ture                   |
-| count_person_id | integer    | index: true                   |
-| order_record    | references | index: true                   |
+| Column          | Type       | Options     |
+| --------------- | ---------- | ----------- |
+| day             | date       | index: true |
+| time_zone_id    | integer    | index: ture |
+| count_person_id | integer    | index: true |
+| order_record    | references | index: true |
 
 ### Association
 
