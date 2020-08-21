@@ -19,5 +19,10 @@
 #
 class Reservation < ApplicationRecord
   belongs_to :order_record, optional: true
-  validates :day, :time_zone_id, :count_person_id, presence: true
+
+  with_options presence: true do
+    validates :day
+    validates :time_zone_id
+    validates :count_person_id, presence: true
+  end
 end

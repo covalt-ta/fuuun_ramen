@@ -151,14 +151,14 @@
 
 ## order_record_products テーブル
 
-| Column       | Type       | Options                                   |
-| ------------ | ---------- | ----------------------------------------- |
-| order_record | references | null: false index: true foreign_key: true |
-| product      | references | null: false index: true foreign_key: true |
+| Column          | Type       | Options                                   |
+| --------------- | ---------- | ----------------------------------------- |
+| order_record    | references | null: false index: true foreign_key: true |
+| product_topping | references | null: false index: true foreign_key: true |
 
 ### Association
 
-- belongs_to :product
+- belongs_to :product_topping
 - belongs_to :order_record
 
 
