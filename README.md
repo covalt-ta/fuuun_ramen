@@ -99,10 +99,9 @@
 - belongs_to_active_hash :category
 - belongs_to             :admin
 - has_one_attached       :image
-- has_many               :basket_products, dependent: :destroy
-- has_many               :order_record_products, dependent: destroy
 - has_many               :comments
 - has_many               :likes
+- has_many               :product_toppings, dependent: :destroy
 
 ### ActiveHash
 - Category
@@ -118,9 +117,22 @@
 ### Association
 
 - belongs_to :admin
-- belongs_to :order_record_product
-- 設計 再検討
+- has_many :product_toppings
 
+
+## product_toppings テーブル
+
+| Column  | Type       | Options                                   |
+| ------- | ---------- | ----------------------------------------- |
+| product | references | null: false index: true foreign_key: true |
+| topping | references | null: false index: true foreign_key: true |
+
+### Association
+
+- belongs_to :product
+- belongs_to :topping
+- has_many :basket_products, dependent: :destroy
+- has_many :order_record_products, dependent: :destroy
 
 
 ## order_records テーブル
