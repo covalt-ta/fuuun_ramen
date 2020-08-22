@@ -19,8 +19,8 @@
 #
 class Topping < ApplicationRecord
   belongs_to :admin
-  has_many :product_toppings, dependent: :destroy
-  has_many :products, through: :product_toppings
+  has_many :product_topping_relations, dependent: :destroy
+  has_many :product_toppings, through: :product_topping_relations
 
   with_options presence: true do
     validates :name, length: { maximum: 20 }

@@ -20,16 +20,16 @@
           <%= link_to '商品の編集', edit_admins_product_path(@product), method: :get, class: "btn btn-outline-secondary", style: "width: 20rem;" %>
           <%= link_to '削除', admins_product_path(@product), method: :delete, class:'btn btn-outline-secondary', style: "width: 20rem;" %>
         <% else %>
-          <%= form_with model: @topping, url: product_add_to_baskets_path(@product), local: true do |f| %>
+          <%= form_with model: @product_topping, url: product_add_to_baskets_path(@product), product_id: @product.id, local: true do |f| %>
             <div class="w-75 mx-auto">
-              <%= f.collection_check_boxes(:topping_ids, Topping.all, :id, :name) do |topping|%>
-              <div class="m-1 mr-3 d-inline-flex">
-                <%= topping.label class: '' do %>
-                  <%= topping.check_box class: 'form-check-input' %>
-                  <%= topping.object.name %>
-                  <%= "#{topping.object.price}円" %>
-                <% end %>
-              </div>
+              <%= f.collection_check_boxes(:topping_ids, Topping.all, :id, :name, include_hidden: false) do |b|%>
+                <div class="m-1 mr-3 d-inline-flex">
+                  <%= b.label do %>
+                    <%= b.check_box %>
+                    <%= b.object.name %>
+                    <%= "#{b.object.price}円" %>
+                  <% end %>
+                </div>
               <% end %>
             </div>
             <%= f.submit '買い物かごに入れる', class: 'btn btn-primary' %>

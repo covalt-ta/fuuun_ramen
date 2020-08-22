@@ -6,19 +6,19 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  product_id :bigint           not null
-#  topping_id :bigint           not null
 #
 # Indexes
 #
 #  index_product_toppings_on_product_id  (product_id)
-#  index_product_toppings_on_topping_id  (topping_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (product_id => products.id)
-#  fk_rails_...  (topping_id => toppings.id)
 #
 class ProductTopping < ApplicationRecord
-  belongs_to :puroduct
-  belongs_to :topping
+  belongs_to :product
+  has_many :basket_products, dependent: :destroy
+  has_many :order_record_products, dependent: :destroy
+  has_many :product_topping_relations, dependent: :destroy
+  has_many :toppings, through: :product_topping_relations
 end
