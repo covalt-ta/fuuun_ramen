@@ -5,8 +5,8 @@
 #  id                 :bigint           not null, primary key
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  product_topping_id :bigint           not null
-#  topping_id         :bigint           not null
+#  product_topping_id :bigint
+#  topping_id         :bigint
 #
 # Indexes
 #

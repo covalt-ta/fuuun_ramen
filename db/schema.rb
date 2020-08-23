@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(version: 2020_08_20_031501) do
   end
 
   create_table "product_topping_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "product_topping_id", null: false
-    t.bigint "topping_id", null: false
+    t.bigint "product_topping_id"
+    t.bigint "topping_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_topping_id"], name: "index_product_topping_relations_on_product_topping_id"

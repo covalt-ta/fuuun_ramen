@@ -21,4 +21,18 @@ class ProductTopping < ApplicationRecord
   has_many :order_record_products, dependent: :destroy
   has_many :product_topping_relations, dependent: :destroy
   has_many :toppings, through: :product_topping_relations
+
+  def product
+    Product.find(product_id)
+  end
+  
+  def topping_names
+    names = toppings.map(&:name)
+  end
+
+  def product_topping_price
+    product_price = product.price
+    toppings_price = toppings.sum(:price)
+    product_price + toppings_price
+  end
 end

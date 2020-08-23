@@ -11,13 +11,13 @@
         </tr>
       </thead>
       <tbody>
-        <% @products.each do |product| %>
+        <% @product_toppings.each do |product_topping| %>
           <tr class="product">
-            <td><%= product.name %></td>
-            <td>トッピング機能準備中</td>
-            <td><%= product.display_price %></td>
+            <td><%= product_topping.product.name %></td>
+            <td><%= product_topping.topping_names %></td>
+            <td><%= "#{product_topping.product_topping_price.to_s(:delimited)}円" %></td>
             <td>
-              <%= link_to product_delete_in_baskets_path(product), method: :post, data: {confirm: '削除してもいいですか？'} do %>
+              <%= link_to product_topping_delete_in_baskets_path(product_topping), method: :post, data: {confirm: '削除してもいいですか？'} do %>
                   <span class="btn btn-outline-secondary">削除する</span>
               <% end %>
             </td>
@@ -25,11 +25,11 @@
         <% end %>
       </tbody>
     </table>
-    <% if @products.empty? %>
+    <% if @product_toppings.empty? %>
       <div class="text-center lead">お買い物カゴに商品はありません</div>
     <% else %>
       <div class="float-right badge badge-secondary ">
-        <span><%#= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%></span>
+        <span><%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%></span>
       </div>
       <br>
       <div class="float-right">
