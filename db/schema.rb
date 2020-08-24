@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_031501) do
+ActiveRecord::Schema.define(version: 2020_08_19_032944) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -87,10 +87,12 @@ ActiveRecord::Schema.define(version: 2020_08_20_031501) do
   create_table "order_record_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "order_record_id", null: false
     t.bigint "product_topping_id", null: false
+    t.bigint "reservation_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_record_id"], name: "index_order_record_products_on_order_record_id"
     t.index ["product_topping_id"], name: "index_order_record_products_on_product_topping_id"
+    t.index ["reservation_id"], name: "index_order_record_products_on_reservation_id"
   end
 
   create_table "order_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -131,12 +133,10 @@ ActiveRecord::Schema.define(version: 2020_08_20_031501) do
     t.date "day"
     t.integer "time_zone_id"
     t.integer "count_person_id"
-    t.bigint "order_record_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["count_person_id"], name: "index_reservations_on_count_person_id"
     t.index ["day"], name: "index_reservations_on_day"
-    t.index ["order_record_id"], name: "index_reservations_on_order_record_id"
     t.index ["time_zone_id"], name: "index_reservations_on_time_zone_id"
   end
 
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_031501) do
   add_foreign_key "cards", "users"
   add_foreign_key "order_record_products", "order_records"
   add_foreign_key "order_record_products", "product_toppings"
+  add_foreign_key "order_record_products", "reservations"
   add_foreign_key "order_records", "users"
   add_foreign_key "product_topping_relations", "product_toppings"
   add_foreign_key "product_topping_relations", "toppings"

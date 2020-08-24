@@ -73,17 +73,17 @@ class User < ApplicationRecord
       # クレジットカード決済
       Charge.create!(total_price, customer_token)
 
-      # order_record_productレコードの作成
-      order_record = prepare_order_record
-      ids = product_topping_ids.map { |id| { product_topping_id: id}}
-
-      # 元の記述 ids = product_ids.map { |id| { product_id: id}}
-      order_record.order_record_products.create!(ids)
-
       # reservationレコードの作成
-      reservation = Reservation.new(day: day, time_zone_id: time_zone_id, count_person_id: count_person_id)
-      reservation.order_record_id = order_record.id
-      reservation.save!
+      reservation = Reservation.create!(day: day, time_zone_id: time_zone_id, count_person_id: count_person_id)
+
+      # order_recordレコードの作成・取得
+      order_record = prepare_order_record
+
+      # order_record_productレコードの複数作成
+      product_topping_ids.map { |id| order_record.order_record_products.create!(
+        product_topping_id: id,
+        reservation_id: reservation.id
+      )}
 
       # basketレコードの削除
       basket_products = basket.basket_products.where(product_topping_id: product_topping_ids)
