@@ -68,20 +68,20 @@
 
 - belongs_to :user
 - has_many   :basket_products, dependent: :destroy
-- has_many   :products,        through: :basket_products
+- has_many   :product_toppings, through: :basket_products
 
 
 ## basket_products テーブル
 
-| Column  | Type       | Options                                   |
-| ------- | ---------- | ----------------------------------------- |
-| basket  | references | null: false index: true foreign_key: true |
-| product | references | null: false index: true foreign_key: true |
+| Column          | Type       | Options                                   |
+| --------------- | ---------- | ----------------------------------------- |
+| basket          | references | null: false index: true foreign_key: true |
+| product_topping | references | null: false index: true foreign_key: true |
 
 ### Association
 
 - belongs_to :basket
-- belongs_to :product
+- belongs_to :product_topping
 
 
 ## products テーブル
@@ -99,10 +99,7 @@
 - belongs_to_active_hash :category
 - belongs_to             :admin
 - has_one_attached       :image
-- has_many               :basket_products, dependent: :destroy
-- has_many               :order_record_products, dependent: :destroy
-- has_many               :product_toppings, dependent: :destroy
-- has_many               :toppings, through: :product_topping
+- has_many               :produts
 - has_many               :comments
 - has_many               :likes
 
@@ -121,8 +118,8 @@
 ### Association
 
 - belongs_to :admin
-- has_many :product_toppings
-- ham_many :products, through: :product_topping
+- has_many :product_topping_relations, dependent: :destroy
+- ham_many :product_toppings, through: :product_topping_relations
 
 
 ## product_toppings テーブル
@@ -130,11 +127,24 @@
 | Column  | Type       | Options                                   |
 | ------- | ---------- | ----------------------------------------- |
 | product | references | null: false index: true foreign_key: true |
-| topping | references | null: false index: true foreign_key: true |
 
 ### Association
-
 - belongs_to :product
+- has_many   :basket_products, dependent: :destroy
+- has_many   :order_record_products, dependent: :destroy
+- has_many   :product_topping_relations, dependent: :destroy
+- has_many   :toppings, through: :product_topping_relations
+
+
+## product_topping_relations テーブル
+
+| Column          | Type       | Options                       |
+| --------------- | ---------- | ----------------------------- |
+| product_topping | references | index: true foreign_key: true |
+| topping         | references | index: true foreign_key: true |
+
+### Association
+- belongs_to :product_topping
 - belongs_to :topping
 
 
@@ -147,21 +157,21 @@
 ### Association
 
 - belongs_to :user
-- has_many   :order_record_products, dependent: :destroy
-- has_many   :products, through: :order_record_products
 - has_one    :reservation
+- has_many   :order_record_products, dependent: :destroy
+- has_many   :product_toppings, through: :order_record_products
 
 
 ## order_record_products テーブル
 
-| Column       | Type       | Options                                   |
-| ------------ | ---------- | ----------------------------------------- |
-| order_record | references | null: false index: true foreign_key: true |
-| product      | references | null: false index: true foreign_key: true |
+| Column          | Type       | Options                                   |
+| --------------- | ---------- | ----------------------------------------- |
+| product_topping | references | null: false index: true foreign_key: true |
+| order_record    | references | null: false index: true foreign_key: true |
 
 ### Association
 
-- belongs_to :product
+- belongs_to :product_topping
 - belongs_to :order_record
 
 
