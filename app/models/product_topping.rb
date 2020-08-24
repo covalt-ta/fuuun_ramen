@@ -30,6 +30,10 @@ class ProductTopping < ApplicationRecord
     names = toppings.map(&:name)
   end
 
+  def get_topping_ids
+    toppings.map(&:id)
+  end
+
   def product_topping_price
     product_price = product.price
     toppings_price = toppings.sum(:price)

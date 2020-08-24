@@ -20,7 +20,14 @@ class Basket < ApplicationRecord
   has_many :basket_products, dependent: :destroy
   has_many :product_toppings, through: :basket_products
   
-  def total_price
+  def total_price(product_topping_ids: nil)
+    # product_toppingsを引数で渡すから取得している状態で呼び出す
+    if product_topping_ids 
+      product_toppings = self.product_toppings.where(id: product_topping_ids)
+    else
+      product_toppings = self.product_toppings
+    end
+
     # productの金額
     product_ids = product_toppings.pluck(:product_id)
     basket_products = product_ids.map { |id| Product.find(id)}

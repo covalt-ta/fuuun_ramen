@@ -17,16 +17,17 @@ class ChargesController < ApplicationController
   def new
     session_reservation
     basket = current_user.prepare_basket
-    @products = basket.products
+    @product_toppings = basket.product_toppings
     @total_price = basket.total_price
   end
 
   def create
-    product_ids = params[:product_ids].map(&:to_i)
+    # 商品の購入金額の計算
+    product_topping_ids = params[:product_topping_ids].map(&:to_i)
     reservation = Reservation.new(session["reservation"]) 
 
     current_user.checkout!(
-      product_ids: product_ids,
+      product_topping_ids: product_topping_ids,
       day: reservation.day,
       time_zone_id: reservation.time_zone_id,
       count_person_id: reservation.count_person_id

@@ -10,11 +10,11 @@
         </tr>
       </thead>
       <tbody>
-        <% @products.each do |product| %>
+        <% @product_toppings.each do |product_topping| %>
           <tr class="product">
-            <td><%= product.name %></td>
-            <td>トッピング機能準備中</td>
-            <td><%= product.display_price %></td>
+            <td><%= product_topping.product.name %></td>
+            <td><%= product_topping.topping_names %></td>
+            <td><%= "#{product_topping.product_topping_price.to_s(:delimited)}円" %></td>
           </tr>
         <% end %>
       </tbody>
@@ -38,9 +38,13 @@
     </table>
     <div class="float-right">
       <%= form_with url: charges_path, local: true do |f| %>
-        <% @products.each do |product| %>
-          <%= f.hidden_field "product_ids[]", value: product.id %>
+        <% @product_toppings.each do |product_topping| %>
+          <%= f.hidden_field "product_topping_ids[]", value: product_topping.id %>
         <% end %>
+        <div class="float-right badge badge-secondary ">
+          <%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%>
+        </div>
+        <br>
         <div>
           <%= f.submit '購入する', class: "btn btn-lg btn-outline-secondary" %>
         </div>
