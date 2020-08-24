@@ -10,8 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
 
  /*--------------------------------
@@ -133,12 +133,11 @@
    word-break: break-all;
    color: #333;
  }
- 
- a {
-   text-decoration: none;
-   color: #1ca9e3;
- }
- 
+
+a {
+  text-decoration: none;
+}
+
  img {
    max-width: 100%;
    height: auto;
@@ -180,7 +179,7 @@
  レイアウト
 ---------------------------------*/
 .wrapper {
-  padding-top: 100px;
+  padding-top: 60px;
 }
 
 .section {
@@ -228,6 +227,8 @@
 ---------------------------------*/
 
 .gnav {
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
@@ -243,11 +244,30 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  height: 60px;
+  margin:0;
+  padding:0 15px;
+  font-size:100%;
+  vertical-align: baseline;
+  background:transparent;
+}
+
+.gnav-logo {
+  transition: .3s;
+  color: #333;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.gnav-logo:hover {
+  text-decoration: none;
+
 }
 
 .gnav-item {
   font-family: "Open sans", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   padding: 0 10px;
   letter-spacing: .05em;
 }
@@ -255,7 +275,7 @@
 .gnav-link {
   position: relative;
   display: inline-block;
-  padding: 20px 0;
+  padding: 5px 0;
   -webkit-transition: .3s;
   transition: .3s;
   color: #333;
@@ -263,6 +283,7 @@
 
 .gnav-link:hover {
   opacity: 1;
+  text-decoration: none;
 }
 
 .gnav-link:after {

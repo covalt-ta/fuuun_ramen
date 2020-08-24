@@ -1,26 +1,32 @@
-<!-- .gnav -->
 <nav class="gnav" class="fixed">
-  <ul class="gnav-list">
-    <li class="gnav-item"><%= link_to "商品一覧", "/#works-section", class: "gnav-link" %></li>
-    <li class="gnav-item"><%= link_to "今月のおすすめ", "/#feature-section", class: "gnav-link" %></li>
-    <li class="gnav-item"><%= link_to "コンセプト", "/#about-section", class: "gnav-link" %></li>
-    <li class="gnav-item"><%= link_to "店舗一覧", "/#skill-section", class: "gnav-link" %></li>
-    <li class="gnav-item"><%= link_to "お問い合わせ", "/#contact-section", class: "gnav-link" %></li>
-
-    <% if user_signed_in? %>
-      <li class="gnav-item"><%= link_to "マイページ", user_path(current_user), class: "gnav-link" %></li>
-      <li class="gnav-item"><%= link_to "買い物カゴ", basket_path(current_user), class: "gnav-link" %></li>
-      <li class="gnav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "gnav-link" %></li>
-    <% else %>
-      <li class="gnav-item"><%= link_to "新規登録", new_user_registration_path, class: "gnav-link" %></li>
-      <li class="gnav-item"><%= link_to "ログイン", new_user_session_path, class: "gnav-link" %></li>
-    <% end %>
-    <% if admin_signed_in? %>
-      <li class="gnav-item"><%= link_to "商品登録", new_admins_product_path, class: "gnav-link" %></li>
-      <li class="gnav-item"><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "gnav-link" %></li>    
-    <% else %>
-      <li class="gnav-item"><%= link_to "管理者ログイン", new_admin_session_path, class: "gnav-link" %></li>
-    <% end %>
-  </ul>
+  <div class="gnav-left">
+    <ul class="gnav-list">
+      <%= link_to "/" , class: "text-center gnav-logo" do%>
+        <%= image_tag 'sample-logo.png', size: '35x35', alt: "fuuun_ramenのロゴ"%>
+        <div class="gnav-logo">Fuuun Ramen</div>
+      <% end %>
+      <li class="gnav-item"><%= link_to "メニュー", "/#works-section", class: "gnav-link" %></li>
+      <li class="gnav-item"><%= link_to "コンセプト", "/#about-section", class: "gnav-link" %></li>
+      <li class="gnav-item"><%= link_to "ニュース", "/#skill-section", class: "gnav-link" %></li>
+      <li class="gnav-item"><%= link_to "コンタクト", "/#contact-section", class: "gnav-link" %></li>
+    </ul>
+  </div>
+  <div class="gnav-right">
+    <ul class="gnav-list">
+      <% if user_signed_in? %>
+        <li class="gnav-item"><%= link_to "マイページ", user_path(current_user), class: "gnav-link" %></li>
+        <li class="gnav-item"><%= link_to "買い物カゴ", basket_path(current_user), class: "gnav-link" %></li>
+        <li class="gnav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "gnav-link" %></li>
+      <% else %>
+        <li class="gnav-item"><%= link_to "新規登録", new_user_registration_path, class: "gnav-link" %></li>
+        <li class="gnav-item"><%= link_to "ログイン", new_user_session_path, class: "gnav-link" %></li>
+      <% end %>
+      <% if admin_signed_in? %>
+        <li class="gnav-item"><%= link_to "商品登録", new_admins_product_path, class: "gnav-link" %></li>
+        <li class="gnav-item"><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "gnav-link" %></li>    
+      <% else %>
+        <li class="gnav-item"><%= link_to "管理者ログイン", new_admin_session_path, class: "gnav-link" %></li>
+      <% end %>
+    </ul>
+  </div>
 </nav>
-<!-- /.gnav -->
