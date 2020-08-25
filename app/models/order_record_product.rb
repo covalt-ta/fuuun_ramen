@@ -25,4 +25,14 @@ class OrderRecordProduct < ApplicationRecord
   belongs_to :product_topping
   belongs_to :order_record
   belongs_to :reservation
+
+  def product(product_topping_id)
+    product_topping = ProductTopping.find(product_topping_id)
+    product_toping.product
+  end
+
+  def toppings(product_topping_id)
+    product_topping = ProductTopping.find(product_topping_id)
+    product_topping.toppings
+  end
 end

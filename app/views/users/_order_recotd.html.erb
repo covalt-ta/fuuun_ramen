@@ -1,0 +1,29 @@
+<% unless @order_records %>
+  <p>ご購入情報は現在ありません</p>
+  <%= link_to "商品を見る", root_path, class: 'btn btn-outline-secondary '%>
+<% else %>
+  <h1>ご購入情報</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">購入日</th>
+        <th scope="col">来店日時</th>
+        <th scope="col">来店人数</th>
+        <th scope="col">商品名</th>
+        <th scope="col">合計価格</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr class="product">
+          <td><%= reservation.created_at %></td>
+          <td><%= "#{reservation.day}/#{reservation.time_zone_id}"%></td>
+          <td><%= "#{reservation.count_person}名" %></td>
+          <td>商品名</td>
+          <td><%= reservation.total_price%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table> 
+<% end%>

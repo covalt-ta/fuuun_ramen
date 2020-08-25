@@ -133,11 +133,13 @@ ActiveRecord::Schema.define(version: 2020_08_19_032944) do
     t.date "day"
     t.integer "time_zone_id"
     t.integer "count_person_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["count_person_id"], name: "index_reservations_on_count_person_id"
     t.index ["day"], name: "index_reservations_on_day"
     t.index ["time_zone_id"], name: "index_reservations_on_time_zone_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "toppings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

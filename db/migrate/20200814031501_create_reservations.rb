@@ -4,6 +4,7 @@ class CreateReservations < ActiveRecord::Migration[6.0]
       t.date :day, index: true
       t.integer :time_zone_id, index: true
       t.integer :count_person_id, index: true
+      t.references :user, index: true
       t.timestamps
     end
   end

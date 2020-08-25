@@ -7,5 +7,8 @@ class UsersController < ApplicationController
       @card = customar.cards.first
     end
     @address = current_user.address
+    @order_records = current_user.order_record.order_record_products
+    @reservations =  current_user.reservations.order(created_at: :DESC)
+
   end
 end
