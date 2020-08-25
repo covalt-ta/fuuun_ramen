@@ -28,6 +28,13 @@ class Reservation < ApplicationRecord
     validates :count_person_id, presence: true
   end
 
+  def get_time_zone
+    TimeZone.find(time_zone_id).name
+  end
+  def get_count_person
+    CountPerson.find(count_person_id).name
+  end
+
   def total_price(product_topping_ids: nil)
     # product_toppingsを引数で渡すから取得している状態で呼び出す
     if product_topping_ids 

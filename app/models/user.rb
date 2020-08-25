@@ -75,7 +75,7 @@ class User < ApplicationRecord
       Charge.create!(total_price, customer_token)
 
       # reservationレコードの作成
-      reservation = Reservation.create!(day: day, time_zone_id: time_zone_id, count_person_id: count_person_id)
+      reservation = reservations.create!(day: day, time_zone_id: time_zone_id, count_person_id: count_person_id)
 
       # order_recordレコードの作成・取得
       order_record = prepare_order_record

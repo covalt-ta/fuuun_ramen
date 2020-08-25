@@ -1,4 +1,4 @@
-<% unless @order_records %>
+<% if @reservations.empty? %>
   <p>ご購入情報は現在ありません</p>
   <%= link_to "商品を見る", root_path, class: 'btn btn-outline-secondary '%>
 <% else %>
@@ -18,10 +18,10 @@
       <% @reservations.each do |reservation| %>
         <tr class="product">
           <td><%= reservation.created_at %></td>
-          <td><%= "#{reservation.day}/#{reservation.time_zone_id}"%></td>
-          <td><%= "#{reservation.count_person}名" %></td>
+          <td><%= "#{reservation.day} / #{reservation.get_time_zone}"%></td>
+          <td><%= reservation.get_count_person %></td>
           <td>商品名</td>
-          <td><%= reservation.total_price%></td>
+          <td><%= "#{reservation.total_price.to_s(:delimited)}円" %></td>
         </tr>
       <% end %>
     </tbody>

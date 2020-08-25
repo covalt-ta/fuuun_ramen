@@ -6,9 +6,9 @@ class UsersController < ApplicationController
       customar = Payjp::Customer.retrieve(card.customer_token)
       @card = customar.cards.first
     end
-    @address = current_user.address
-    @order_records = current_user.order_record.order_record_products
-    @reservations =  current_user.reservations.order(created_at: :DESC)
 
+    @address = current_user.address
+    @reservations =  current_user.reservations.order(created_at: :DESC)
+    
   end
 end
