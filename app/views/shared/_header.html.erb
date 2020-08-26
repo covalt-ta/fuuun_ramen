@@ -5,10 +5,9 @@
         <%= image_tag 'sample-logo.png', size: '35x35', alt: "fuuun_ramenのロゴ"%>
         <div class="gnav-logo">Fuuun Ramen</div>
       <% end %>
-      <li class="gnav-item"><%= link_to "メニュー", "/#works-section", class: "gnav-link" %></li>
-      <li class="gnav-item"><%= link_to "コンセプト", "/#about-section", class: "gnav-link" %></li>
-      <li class="gnav-item"><%= link_to "ニュース", "/#skill-section", class: "gnav-link" %></li>
-      <li class="gnav-item"><%= link_to "コンタクト", "/#contact-section", class: "gnav-link" %></li>
+      <li class="gnav-item"><%= link_to "注文する", products_path, class: "gnav-link" %></li>
+      <li class="gnav-item"><%= link_to "最新情報", "/#skill-section", class: "gnav-link" %></li>
+      <li class="gnav-item"><%= link_to "お問い合わせ", "/#contact-section", class: "gnav-link" %></li>
     </ul>
   </div>
   <div class="gnav-right">

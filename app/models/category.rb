@@ -6,6 +6,6 @@ class Category < ActiveHash::Base
     { id: 4, name: 'サイドメニュー'},
     { id: 5, name: 'ドリンク'},
     { id: 6, name: 'スイーツ'},
-    { id: 7, name: 'アイテム'}
+    { id: 7, name: 'お取り寄せ品'}
   ]
 end

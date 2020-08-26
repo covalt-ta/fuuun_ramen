@@ -10,6 +10,7 @@ require("channels")
 require("jquery")
 require("../card")
 require("../tabs")
+require("../products")
 
 import 'bootstrap'
 import '../src/application.scss'
