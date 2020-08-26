@@ -23,4 +23,6 @@ class Admin < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
   has_many :products, dependent: :destroy
+  has_many :toppings, dependent: :destroy
+  has_many :informations, dependent: :destroy  
 end
