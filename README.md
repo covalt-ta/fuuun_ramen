@@ -19,9 +19,23 @@
 - has_one  :address, dependent: :destroy 
 - has_one  :basket, dependent: :destroy
 - has_one :order_record, dependent: :destroy
-- has_many :order_record_products, through: :order_record
+- has_many :order_record_products, through: :reservations
 - has_many :comments
 - has_many :likes
+
+## admins テーブル
+
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| name     | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
+
+### Association
+
+- has_many :products
+- has_many :toppings
+- has_many :informations
 
 
 # cardsテーブル
@@ -168,12 +182,13 @@
 | --------------- | ---------- | ----------------------------------------- |
 | product_topping | references | null: false index: true foreign_key: true |
 | order_record    | references | null: false index: true foreign_key: true |
+| reservation     | references | null: false index: true foreign_key: true |
 
 ### Association
 
 - belongs_to :product_topping
 - belongs_to :order_record
-
+- belongs_to :reservation
 
 ## reservations テーブル
 
@@ -182,11 +197,30 @@
 | day             | date       | index: true |
 | time_zone_id    | integer    | index: ture |
 | count_person_id | integer    | index: true |
-| order_record    | references | index: true |
+| user            | references | index: true |
 
 ### Association
 
-- belongs_to :order_record, optional: true
+- belongs_to :user
+- has_many :order_record_products, optional: true
+- has_many :product_toppings, through: :order_record_products
+
+### ActiveHash
+- TimeZone
+- Count_Person
+
+## informations テーブル
+
+| Column | Type       | Options                       |
+| ------ | ---------- | ----------------------------- |
+| title  | string     | null: false                   |
+| text   | text       | null: false                   |
+| admin  | references | null: false foreign_key: true |
+
+### Association
+
+- belongs_to :admin
+- has_one_attached :image
 
 ### ActiveHash
 - TimeZone
