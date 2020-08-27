@@ -1,0 +1,23 @@
+<div class="product-list">
+  <% products.each do |product| %>
+    <div class="card border-0 product-card" style="width: 18rem;">    
+      <%= link_to product_path(product), class: "card-link" do %> 
+        <div data-size="300x300" class="card-img-top">
+          <%= image_tag product.image.variant(resize:'300x300'), class: "works-link hover-action h-25" if product.image.attached? %>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <h5 class="card-title"><%= product.name %></h5>
+            <p><%= product.display_price %></p>
+          </div>
+          <div class="grad-wrap">
+            <div class="grad-item card-text"><%= product.text %></div>
+          </div>
+        </div>
+      <% end %>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= link_to "トッピングを選ばないで買い物かごに入れる", product_add_to_baskets_path(product) , method: :post, class: "btn btn-outline-dark btn-block" %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>
