@@ -1,96 +1,10 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.menu-tab {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  background-color: #fff !important;
-  margin: 0 !important;
-  padding-top: 20px; 
-}
-.menu__category {
-  flex: 1;
-}
-.category__link {
-  position: relative;
-  display: block;
-  text-decoration: none;
-  color: #444;
-  cursor: pointer;
-}
-.category__link:before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 50%;
-  width: 0;
-  height: 2px;
-  background-color: #444;
-  transition: all 0.4s ease-out;
-}
-.category__link:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background-color: #444;
-  transition: all 0.4s ease-out;
-}
-.category__link.on:before {
-  width: 50%;
-}
-.category__link.on:after {
-  width: 50%;
-}
-
 /*--------------------------------
- category-body
+index.html grad
 ---------------------------------*/
-.category-body {
-  position: relative;
-}
-.category-body__item {
-  position: absolute;
-  width: 100%;
-  margin: 30px 15px;
-  text-align: center;
-  opacity: 0;
-  transition: all 0.6s ease-out;
-}
-
-.card-link {
-  text-decoration: none;
-  color: #333;
-}
-.category-body__item.on {
-  opacity: 1;
-}
-
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-/*--------------------------------
- grad
----------------------------------*/
-.grad-btn {
-  /*.grad-btnのCSSは表示/非表示の動作には関係ないので、ご自由にどうぞ。*/
-}
-.grad-btn::before {
-  content: "続きを読む"
-}
 .grad-item {
   position: relative;
   overflow: hidden;
-  height: 80px; /*隠した状態の高さ*/
+  height: 100px; /*隠した状態の高さ*/
 }
 .grad-item::before {
   display: block;
@@ -99,35 +13,167 @@
   left: 0;
   width: 100%;
   height: 60px; /*グラデーションで隠す高さ*/
-  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.9) 50%, #fff 100%);
-  background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.9) 50%, #fff 100%);
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.7) 50%, #fff 100%);
+  background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.7) 50%, #fff 100%);
   content: "";
 }
 
 
 /*--------------------------------
- タブの中身
+index.html タブの中身
 ---------------------------------*/
-
-product-list {
+.product-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   width: 100%;
-  justify-content: flex-start;
+}
+
+.product-list::after {
+  display: block;
+  content: "";
+  width:300px;
+}
+
+.card-img-top {
+  width: 300px;
+  height: 200px;
+}
+
+.card-link {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  text-decoration: none;
+  color: #333;
 }
 
 .product-card {
   padding: 10px 10px;
+  margin-bottom: 5px;
 }
 .card-title {
   font-size: 14px;
 }
-
-
 .card-text{
   font-size: 12px;
 }
-
 .card-btn {
   font-size: 12px;
+}
+
+
+/*--------------------------------
+show.html タブの中身
+---------------------------------*/
+.product-show-wrapper {
+  margin: 40px auto;
+  width: 100%;
+  min-height: 530px;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.product-name {
+  padding-top: 30px;
+  padding-left: 30px;
+}
+.product-body {
+  display: flex;
+}
+
+.product-info-block {
+  margin-bottom: 5px;
+  padding: 10px;
+  min-height: 180px;
+}
+
+.product-img-wrapper {
+  flex: 1;
+  width: 500px;
+  height: 400px;
+  padding: 0 20px;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-info {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.headline {
+  border-bottom: solid 1px gray;
+  margin-bottom: 5px;
+}
+
+.topping-check {
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+
+.topping {
+  margin: 5px;
+}
+
+.price {
+  text-align: right;
+  font-size: 20px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.product-submit {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+
+.products-back-btn {
+  margin-right: 30px;
+  text-decoration: none;
+  color: gray;
+}
+
+.products-back-btn {
+  display: block;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.like-block {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.like-btn {
+  background-color: lightblue;
+  border-radius: 2rem;
+  padding: 5px;
+  font-size: 6px;
+  opacity: 0.7;
+  margin-right: 3px;
+}
+
+.like-count {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+/*--------------------------------
+show.html コメント欄
+---------------------------------*/
+.comment-box {
+  padding-top: 30px;
+  padding-left: 30px;
 }

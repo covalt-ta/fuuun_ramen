@@ -6,7 +6,7 @@
         <div class="gnav-logo">Fuuun Ramen</div>
       <% end %>
       <li class="gnav-item"><%= link_to "注文する", products_path, class: "gnav-link" %></li>
-      <li class="gnav-item"><%= link_to "最新情報", "/#skill-section", class: "gnav-link" %></li>
+      <li class="gnav-item"><%= link_to "最新情報", "/#information-section", class: "gnav-link" %></li>
       <li class="gnav-item"><%= link_to "お問い合わせ", "/#contact-section", class: "gnav-link" %></li>
     </ul>
   </div>
@@ -17,7 +17,7 @@
         <li class="gnav-item"><%= link_to "トピックス一覧", admins_informations_path, class: "gnav-link" %></li>
         <li class="gnav-item"><%= link_to "トピックス登録", new_admins_information_path, class: "gnav-link" %></li>
         <li class="gnav-item"><%= link_to "商品登録", new_admins_product_path, class: "gnav-link" %></li>
-        <li class="gnav-item"><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "gnav-link" %></li>    
+        <li class="gnav-item"><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "gnav-link" %></li>
       <% elsif user_signed_in? %>
         <li class="gnav-item"><%= link_to "マイページ", user_path(current_user), class: "gnav-link" %></li>
         <li class="gnav-item"><%= link_to "買い物カゴ", basket_path(current_user), class: "gnav-link" %></li>

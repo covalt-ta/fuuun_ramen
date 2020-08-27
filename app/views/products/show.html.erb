@@ -1,59 +1,68 @@
 <div class="wrapper">
   <div class="inner">
 
-    <div class="card mx-auto" style="width: 50rem;">
-      <div class="card-header d-flex justify-content-around">
+    <div class="product-show-wrapper">
+      <div class="product-name">
         <p><%= @product.name %></p>
-        <p><%= @product.display_price %></p>
       </div>
 
-      <div class='card-img-top'>
-        <%= image_tag @product.image, class:"item-box-img" %>
-      </div>
+      <div class="product-body">
+        <div class='product-img-wrapper'>
+          <%= image_tag @product.image, class:"product-img" %>
+          <div class="like-block">
+            <span class="like-btn">イイね！</span>
+            <span class="like-count">11</span>
+          </div>
+        </div>
 
-      <div class="card-body">
-        <p class="card-text"><%= @product.text %></p>
-      </div>
-
-      <div class="mx-auto">
-        <% if admin_signed_in? %>
-          <%= link_to '商品の編集', edit_admins_product_path(@product), method: :get, class: "btn btn-outline-secondary", style: "width: 20rem;" %>
-          <%= link_to '削除', admins_product_path(@product), method: :delete, class:'btn btn-outline-secondary', style: "width: 20rem;" %>
-        <% else %>
-          <%= form_with model: @product_topping, url: product_add_to_baskets_path(@product), product_id: @product.id, local: true do |f| %>
-            <div class="w-75 mx-auto">
-              <%= f.collection_check_boxes(:topping_ids, Topping.all, :id, :name, include_hidden: false) do |b|%>
-                <div class="m-1 mr-3 d-inline-flex">
-                  <%= b.label do %>
-                    <%= b.check_box %>
-                    <%= b.object.name %>
-                    <%= "#{b.object.price}円" %>
+        <div class="product-info">
+          <div class="product-info-block">
+            <div class="headline">
+              商品情報
+            </div>
+            <p class="card-text"><%= @product.text %></p>
+          </div>
+          <% if admin_signed_in? %>
+            <div class="product-info-block">
+              <%= link_to '商品の編集', edit_admins_product_path(@product), method: :get, class: "btn btn-outline-secondary", style: "width: 20rem;" %>
+              <%= link_to '削除', admins_product_path(@product), method: :delete, class:'btn btn-outline-secondary', style: "width: 20rem;" %>
+            </div>
+          <% else %>
+            <div class="product-info-block">
+              <div class="headline">
+                トッピングをお選びください
+              </div>
+              <%= form_with model: @product_topping, url: product_add_to_baskets_path(@product), product_id: @product.id, local: true do |f| %>
+                <div class="topping-check">
+                  <%= f.collection_check_boxes(:topping_ids, Topping.all, :id, :name, include_hidden: false) do |b|%>
+                    <div class="topping">
+                      <%= b.label do %>
+                        <%= b.check_box %>
+                        <%= b.object.name %>
+                        <%= "#{b.object.price}円" %>
+                      <% end %>
+                    </div>
                   <% end %>
+                </div>
+                <div class="headline">
+                  商品価格
+                </div>
+                <p class="price"><%= @product.display_price %></p>
+                <div class="product-submit">
+                  <%= link_to "商品一覧に戻る", products_path, class: "products-back-btn"%>
+                  <%= f.submit '買い物かごに入れる', class: 'btn btn-outline-success' %>
                 </div>
               <% end %>
             </div>
-            <%= f.submit '買い物かごに入れる', class: 'btn btn-primary' %>
           <% end %>
-        <% end %>
-
-        <div class="option">
-          <div class="favorite-btn">
-            <%#= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-            <span>お気に入り 0</span>
-          </div>
         </div>
-      
-        <div class="comment-box">
-          <p>商品に対するコメント一覧</p>
-        </div>
-
-        <div class="links">
-          <%= link_to "＜ 前の商品", "#", class: "change-item-btn" %>
-          <%= link_to "後ろの商品 ＞", "#", class: "change-item-btn" %>
-        </div>
-
       </div>
     </div>
 
+    <div class="product-show-wrapper">
+      <div class="comment-box">
+        <p>商品に対するコメント一覧</p>
+      </div>
+    </div>
   </div>
 </div>

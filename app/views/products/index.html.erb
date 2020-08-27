@@ -1,24 +1,22 @@
 <div class="wrapper">
-  <div class='form-wrap inner'>
-    <div>
+  <div class='inner'>
       <div class="tab-wrap">
         <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">ラーメン・丼</label>
         <div class="tab-content">
-          <div class="panel"><%= render 'ramen_rice', ramen_rices: @ramen_rices %></div>
+          <div class="panel"><%= render 'category', resources: @ramen_rices %></div>
         </div>
         <input id="tab02" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab02">サイドニュー・その他</label>
         <div class="tab-content">
-          <div class="panel"><%= render 'other', others: @others %></div>
+          <div class="panel"><%= render 'category', resources: @others %></div>
         </div>
         <input id="tab03" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab03">お取り寄せ</label>
         <div class="tab-content">
-          <div class="panel"><%= render 'order', orders: @orders %></div>
-        </div> 
+          <div class="panel"><%= render 'category', resources: @orders %></div>
+        </div>
         <input id="tab04" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab04">全て</label>
         <div class="tab-content">
-          <div class="panel"><%= render 'product', products: @products %></div>
+          <div class="panel"><%= render 'category', resources: @products %></div>
         </div>
       </div>
-    </div>
   </div>
 </div>

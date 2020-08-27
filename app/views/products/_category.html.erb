@@ -1,0 +1,23 @@
+<div class="product-list">
+  <% resources.each do |resource| %>
+    <div class="card border-0 product-card" style="width: 18rem;">
+      <%= link_to product_path(resource), class: "card-link" do %>
+        <div class="card-img-top">
+          <%= image_tag resource.image, class: "card-link hover-action" if resource.image.attached? %>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <h5 class="card-title"><%= resource.name %></h5>
+            <p><%= resource.display_price %></p>
+          </div>
+          <div class="grad-wrap">
+            <div class="grad-item card-text"><%= resource.text %></div>
+          </div>
+        </div>
+      <% end %>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= link_to "トッピングを選ばないで買い物かごに入れる", product_add_to_baskets_path(resource) , method: :post, class: "btn btn-outline-dark btn-block" %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>
