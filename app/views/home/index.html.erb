@@ -97,86 +97,23 @@
             魂込めて営業中！
           </p>
         </div>
+
         <div class="section-body skill">
           <div class="skill-list">
-            <div class="skill-item">
-              <div class="skill-image-wrapper">
-                <img class="skill-image" src="img/skill/icon_skill.png" alt="">
-              </div>
-              <div class="skill-body">
-                <h3 class="skill-title">HTML5/CSS3</h3>
-                <div class="skill-rating rating">
-                  <div class="rate rate4"></div>
+
+            <% @informations.each do |information| %>
+              <div class="skill-item">
+                <div data-size="960x720" class="works-image-wrapper works-link hover-action">
+                  <%= image_tag information.image.variant(resize:'960x720'), class: "works-image" if information.image.attached? %>
                 </div>
-                <p>
-                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-image-wrapper">
-                <img class="skill-image" src="img/skill/icon_skill.png" alt="">
-              </div>
-              <div class="skill-body">
-                <h3 class="skill-title">JavaScript</h3>
-                <div class="skill-rating rating">
-                  <div class="rate rate3"></div>
+                <div class="skill-body">
+                    <h3 class="skill-title"><%= information.title%></h3>
+                    <%= information.updated_at%>
+                    <p><%= information.text %></p>
                 </div>
-                <p>
-                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
               </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-image-wrapper">
-                <img class="skill-image" src="img/skill/icon_skill.png" alt="">
-              </div>
-              <div class="skill-body">
-                <h3 class="skill-title">WordPress</h3>
-                <div class="skill-rating rating">
-                  <div class="rate rate4"></div>
-                </div>
-                <p>
-                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-image-wrapper">
-                <img class="skill-image" src="img/skill/icon_skill.png" alt="">
-              </div>
-              <div class="skill-body">
-                <h3 class="skill-title">Photoshop</h3>
-                <div class="skill-rating rating">
-                  <div class="rate rate4"></div>
-                </div>
-                <p>
-                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-image-wrapper">
-                <img class="skill-image" src="img/skill/icon_skill.png" alt="">
-              </div>
-              <div class="skill-body">
-                <h3 class="skill-title">Illustrator</h3>
-                <div class="skill-rating rating">
-                  <div class="rate rate3"></div>
-                </div>
-                <p>
-                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-image-wrapper">
-                <img class="skill-image" src="img/skill/icon_skill.png" alt="">
-              </div>
-              <div class="skill-body">
-                <h3 class="skill-title">XD</h3>
-                <div class="skill-rating rating">
-                  <div class="rate rate3"></div>
-                </div>
-                <p>
-                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-              </div>
-            </div>
+            <% end %>
+
           </div>
         </div>
       </div>

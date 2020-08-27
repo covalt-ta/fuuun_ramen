@@ -19,6 +19,7 @@
 #
 class Information < ApplicationRecord
   belongs_to :admin
+  has_one_attached :image
 
   with_options presence: true do
     validates :title
