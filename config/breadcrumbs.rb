@@ -1,5 +1,55 @@
 crumb :root do
-  link "Home", root_path
+  link "トップ", root_path
+end
+
+crumb :products do
+  link "商品一覧", products_path
+  parent :root
+end
+
+crumb :product_show do |product|
+  link product.name, product_path
+  parent :products
+end
+
+crumb :user_registrations do
+  link "新規登録", new_user_registration_path
+  parent :root
+end
+
+crumb :user_sessions do
+  link "ログイン", new_user_session_path
+  parent :root
+end
+
+crumb :user_mypage do |user|
+  link user.nickname, user
+  parent :root
+end
+
+crumb :user_new_card do |user|
+  link "クレジットカード登録", new_card_path
+  parent :user_mypage, user
+end
+
+crumb :user_new_address do |user|
+  link "住所登録", new_address_path
+  parent :user_mypage, user
+end
+
+crumb :user_basket do |user|
+  link "買い物かご", basket_path
+  parent :user_mypage, user
+end
+
+crumb :user_new_reservation do |user|
+  link "来店日時の選択", new_reservation_charges_path
+  parent :user_basket, user
+end
+
+crumb :user_new_charge do |user|
+  link "購入確認", new_charge_path
+  parent :user_new_reservation, user
 end
 
 # crumb :projects do

@@ -1,68 +1,64 @@
-<div class="wrapper">
-  <div class="inner">
-
-    <div class="product-show-wrapper">
-      <div class="product-name">
-        <p><%= @product.name %></p>
-      </div>
-
-      <div class="product-body">
-        <div class='product-img-wrapper'>
-          <%= image_tag @product.image, class:"product-img" %>
-          <div class="like-block">
-            <span class="like-btn">イイね！</span>
-            <span class="like-count">11</span>
-          </div>
+<% breadcrumb :product_show, @product %>
+<div class="inner">
+  <div class="product-show-wrapper">
+    <div class="product-name">
+      <p><%= @product.name %></p>
+    </div>
+    <div class="product-body">
+      <div class='product-img-wrapper'>
+        <%= image_tag @product.image, class:"product-img" %>
+        <div class="like-block">
+          <span class="like-btn">イイね！</span>
+          <span class="like-count">11</span>
         </div>
-
-        <div class="product-info">
+      </div>
+      <div class="product-info">
+        <div class="product-info-block">
+          <div class="headline">
+            商品情報
+          </div>
+          <p class="card-text"><%= @product.text %></p>
+        </div>
+        <% if admin_signed_in? %>
+          <div class="product-info-block">
+            <%= link_to '商品の編集', edit_admins_product_path(@product), method: :get, class: "btn btn-outline-secondary", style: "width: 20rem;" %>
+            <%= link_to '削除', admins_product_path(@product), method: :delete, class:'btn btn-outline-secondary', style: "width: 20rem;" %>
+          </div>
+        <% else %>
           <div class="product-info-block">
             <div class="headline">
-              商品情報
+              トッピングをお選びください
             </div>
-            <p class="card-text"><%= @product.text %></p>
-          </div>
-          <% if admin_signed_in? %>
-            <div class="product-info-block">
-              <%= link_to '商品の編集', edit_admins_product_path(@product), method: :get, class: "btn btn-outline-secondary", style: "width: 20rem;" %>
-              <%= link_to '削除', admins_product_path(@product), method: :delete, class:'btn btn-outline-secondary', style: "width: 20rem;" %>
-            </div>
-          <% else %>
-            <div class="product-info-block">
-              <div class="headline">
-                トッピングをお選びください
+            <%= form_with model: @product_topping, url: product_add_to_baskets_path(@product), product_id: @product.id, local: true do |f| %>
+              <div class="topping-check">
+                <%= f.collection_check_boxes(:topping_ids, Topping.all, :id, :name, include_hidden: false) do |b|%>
+                  <div class="topping">
+                    <%= b.label do %>
+                      <%= b.check_box %>
+                      <%= b.object.name %>
+                      <%= "#{b.object.price}円" %>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
-              <%= form_with model: @product_topping, url: product_add_to_baskets_path(@product), product_id: @product.id, local: true do |f| %>
-                <div class="topping-check">
-                  <%= f.collection_check_boxes(:topping_ids, Topping.all, :id, :name, include_hidden: false) do |b|%>
-                    <div class="topping">
-                      <%= b.label do %>
-                        <%= b.check_box %>
-                        <%= b.object.name %>
-                        <%= "#{b.object.price}円" %>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-                <div class="headline">
-                  商品価格
-                </div>
-                <p class="price"><%= @product.display_price %></p>
-                <div class="product-submit">
-                  <%= link_to "商品一覧に戻る", products_path, class: "products-back-btn"%>
-                  <%= f.submit '買い物かごに入れる', class: 'btn btn-outline-success' %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+              <div class="headline">
+                商品価格
+              </div>
+              <p class="price"><%= @product.display_price %></p>
+              <div class="product-submit">
+                <%= link_to "商品一覧に戻る", products_path, class: "products-back-btn"%>
+                <%= f.submit '買い物かごに入れる', class: 'btn btn-outline-success' %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
+  </div>
 
-    <div class="product-show-wrapper">
-      <div class="comment-box">
-        <p>商品に対するコメント一覧</p>
-      </div>
+  <div class="product-show-wrapper">
+    <div class="comment-box">
+      <p>商品に対するコメント一覧</p>
     </div>
   </div>
 </div>

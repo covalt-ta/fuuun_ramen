@@ -1,6 +1,6 @@
-<div class="wrapper">
-  <div class="inner">
-    <h1>購入確認</h1>
+<% breadcrumb :user_new_charge, current_user %>
+<div class="inner">
+  <div class="wrapper">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -36,6 +36,7 @@
         </tr>
       </tbody>
     </table>
+
     <div class="float-right">
       <%= form_with url: charges_path, local: true do |f| %>
         <% @product_toppings.each do |product_topping| %>
@@ -50,5 +51,6 @@
         </div>
       <% end %>
     </div>
+
   </div>
 </div>

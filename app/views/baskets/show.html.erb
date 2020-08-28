@@ -1,43 +1,41 @@
-<div class="wrapper">
-  <div class="inner">
-    <h1>お買い物カゴ</h1>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">商品名</th>
-          <th scope="col">トッピング</th>
-          <th scope="col">価格</th>
-          <th></th>
+<% breadcrumb :user_basket, current_user %>
+<div class="inner">
+  <table class="table table-striped wrapper">
+    <thead>
+      <tr>
+        <th scope="col">商品名</th>
+        <th scope="col">トッピング</th>
+        <th scope="col">価格</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @product_toppings.each do |product_topping| %>
+        <tr class="product">
+          <td><%= product_topping.product.name %></td>
+          <td><%= product_topping.topping_names %></td>
+          <td><%= "#{product_topping.product_topping_price.to_s(:delimited)}円" %></td>
+          <td>
+            <%= link_to product_topping_delete_in_baskets_path(product_topping), method: :post, data: {confirm: '削除してもいいですか？'} do %>
+                <span class="btn btn-outline-secondary">削除する</span>
+            <% end %>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @product_toppings.each do |product_topping| %>
-          <tr class="product">
-            <td><%= product_topping.product.name %></td>
-            <td><%= product_topping.topping_names %></td>
-            <td><%= "#{product_topping.product_topping_price.to_s(:delimited)}円" %></td>
-            <td>
-              <%= link_to product_topping_delete_in_baskets_path(product_topping), method: :post, data: {confirm: '削除してもいいですか？'} do %>
-                  <span class="btn btn-outline-secondary">削除する</span>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <% if @product_toppings.empty? %>
-      <div class="text-center lead">お買い物カゴに商品はありません</div>
-    <% else %>
-      <div class="float-right badge badge-secondary ">
-        <span><%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%></span>
-      </div>
-      <br>
-      <div class="float-right">
-        <%= link_to "購入画面に進む", new_reservation_charges_path, class: "btn btn-lg btn-outline-secondary"%>
-      </div>
-    <% end %> 
-  </div>
-<div>
+      <% end %>
+    </tbody>
+  </table>
+  <% if @product_toppings.empty? %>
+    <div class="text-center lead">お買い物カゴに商品はありません</div>
+  <% else %>
+    <div class="float-right badge badge-secondary ">
+      <span><%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%></span>
+    </div>
+    <br>
+    <div class="float-right">
+      <%= link_to "購入画面に進む", new_reservation_charges_path, class: "btn btn-lg btn-outline-secondary"%>
+    </div>
+  <% end %>
+</div>
 <br>
 
 
