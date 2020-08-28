@@ -64,6 +64,7 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'payjp'
 gem 'hashid-rails', '~> 1.0'
+gem 'gretel'
 group :production do
   gem 'rails_12factor'
 end
