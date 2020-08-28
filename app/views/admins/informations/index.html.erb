@@ -6,7 +6,11 @@
         <% @informations.each do |information| %>
           <div class="info-index-content">
             <div class="info-index-content-image">
-              <%= image_tag information.image if information.image.attached? %>
+              <% if information.image.attached? %>
+                <%= image_tag information.image %>
+              <% else %>
+                <%= image_tag "sample-logo.png" %>
+              <% end %>
             </div>
             <div class="info-index-content-data">
               <div class="info-index-content-head">

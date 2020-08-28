@@ -102,7 +102,11 @@
             <% @informations.each do |information| %>
               <div class="information-item">
                 <div class="information-image-wrapper information-link hover-action">
-                  <%= image_tag information.image, class: "information-image" if information.image.attached? %>
+                  <% if information.image.attached? %>
+                    <%= image_tag information.image, class: "information-image" %>
+                  <% else %>
+                    <%= image_tag "sample-logo.png", class: "information-image" %>
+                  <% end %>
                 </div>
                 <div class="information-body">
                     <h3 class="information-title"><%= information.title%></h3>
