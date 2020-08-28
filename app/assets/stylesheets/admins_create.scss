@@ -1,64 +1,9 @@
-// Place all the styles related to the informations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 /*--------------------------------
- index.ユーザー、プロダクトメニュータブ
----------------------------------*/
-
-.tab-wrap:after {
-  content: '';
-  width: 100%;
-  height: 3px;
-  background: rgb(134, 197, 153);
-  ;
-  display: block;
-  order: -1;
-}
-.tab-label {
-  color: White;
-  background: LightGray;
-  font-weight: bold;
-  white-space: nowrap;
-  text-align: center;
-  padding: 10px .5em;
-  order: -1;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  border-radius: 5px 5px 0 0;
-  flex: 1;
-}
-.tab-label:not(:last-of-type) {
-  margin-right: 5px;
-}
-.tab-content {
-  width: 100%;
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
-}
-.tab-switch:checked+.tab-label {
-  background: rgb(134, 197, 153);
-}
-.tab-switch:checked+.tab-label+.tab-content {
-  height: auto;
-  overflow: auto;
-  padding: 15px;
-  opacity: 1;
-  transition: .5s opacity;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-}
-.tab-switch {
-  display: none;
-}
-
-/*--------------------------------
- index.html.erb
+ informations/index.html.erb
 ---------------------------------*/
 
 .information-wrapper {
-  margin: 20px 0;
+  margin: 40px 0;
 }
 
 .information-wrapper h3 {
@@ -118,7 +63,7 @@
 ---------------------------------*/
 
 .info-new-contents {
-  background-color: #f7f7f7;
+  background-color: white;
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
   border-radius: 10px;
@@ -147,4 +92,53 @@
   padding: 10px;
   text-align: center;
   margin: 0 auto;
+}
+
+/*--------------------------------
+ products/new.html.erb
+---------------------------------*/
+
+.weight-bold-text {
+  font-size: 15px;
+  margin-top: 30px;
+  line-height: 2px;
+}
+
+.product-new-flex {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.product-textform {
+  width: 100%;
+
+}
+
+.new-product-category {
+
+}
+
+.select-box {
+  width: 100%;
+  height: 50px;
+}
+
+.price-input {
+  width: 100%;
+  height: 50px;
+}
+
+.product-create-btn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 30px auto 0;
+}
+.back-btn {
+  text-decoration: none;
+  color: #a9a9a9;
+  margin-right: 20px;
 }

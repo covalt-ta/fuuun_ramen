@@ -3,6 +3,8 @@ class Admins::ProductsController < Admins::ApplicationController
 
   def new
     @product = current_admin.products.build
+    @topping = current_admin.toppings.build
+    @information = current_admin.informations.build
   end
 
   def create
@@ -12,7 +14,7 @@ class Admins::ProductsController < Admins::ApplicationController
       redirect_to root_path
     else
       flash.now[:alert] = "商品追加に失敗しました"
-      render :new
+      redirect_to action: :new
     end
   end
 

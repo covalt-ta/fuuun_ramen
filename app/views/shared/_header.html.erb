@@ -14,9 +14,8 @@
     <ul class="gnav-list">
       <% if admin_signed_in? %>
         <li class="gnav-item"><%= link_to "ダッシュボード", admins_root_path, class: "gnav-link" %></li>
-        <li class="gnav-item"><%= link_to "トピックス一覧", admins_informations_path, class: "gnav-link" %></li>
-        <li class="gnav-item"><%= link_to "トピックス登録", new_admins_information_path, class: "gnav-link" %></li>
-        <li class="gnav-item"><%= link_to "商品登録", new_admins_product_path, class: "gnav-link" %></li>
+        <li class="gnav-item"><%= link_to "最新情報一覧", admins_informations_path, class: "gnav-link" %></li>
+        <li class="gnav-item"><%= link_to "各種登録", new_admins_product_path, class: "gnav-link" %></li>
         <li class="gnav-item"><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "gnav-link" %></li>
       <% elsif user_signed_in? %>
         <li class="gnav-item"><%= link_to "マイページ", user_path(current_user), class: "gnav-link" %></li>

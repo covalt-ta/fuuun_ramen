@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace :admins do
     root to: "dashboards#index"
     resources :products, only: %i(new create edit update destroy)
+    resources :toppings, only: %i(new create edit update destroy)
     resources :informations, only: %i(index new create edit update destroy)
   end
 end
