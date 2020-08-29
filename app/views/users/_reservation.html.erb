@@ -16,7 +16,7 @@
     <tbody>
       <% @reservations.each do |reservation| %>
         <tr class="product">
-          <td><%= reservation.created_at %></td>
+          <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
           <td><%= "#{reservation.day} / #{reservation.get_time_zone}"%></td>
           <td><%= reservation.get_count_person %></td>
           <td><%= "#{reservation.total_price.to_s(:delimited)}円" %></td>
