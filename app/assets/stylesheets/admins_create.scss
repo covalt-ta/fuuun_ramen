@@ -38,8 +38,7 @@
 
 .info-index-content-data {
   width: calc(100% - 100px);
-  height: 200px;
-  // padding: 5px;
+  height: 230px;
   margin: 10px;
   position: relative;
   border-bottom: solid 1px rgba(192,197,194,0.7);
@@ -141,4 +140,38 @@
   text-decoration: none;
   color: #a9a9a9;
   margin-right: 20px;
+}
+
+/*--------------------------------
+ products/index.html.erb
+---------------------------------*/
+
+.info-content-price {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.category-name {
+  margin-left: 20px;
+  border: solid 1px rgb(192,197,194);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.info-content-text {
+  height: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // white-space: nowrap;
+}
+
+/*--------------------------------
+ toppingss/index.html.erb
+---------------------------------*/
+.info-index-content-data-topping {
+  width: calc(100% - 100px);
+  margin: 10px;
+  position: relative;
+  border-bottom: solid 1px rgba(192,197,194,0.7);
 }

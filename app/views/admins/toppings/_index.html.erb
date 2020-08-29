@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <div class='inner'>
+    <div class="information-wrapper">
+      <div class="info-index-contents">
+        <% toppings.each do |topping| %>
+        <div class="info-index-content">
+          <div class="info-index-content-data-topping">
+            <div class="info-index-content-head">
+              <h4><%=link_to topping.name, edit_admins_topping_path(topping)%></h4>
+              <%= link_to "削除する", admins_topping_path(topping), method: :delete, class: "btn btn-outline-dark"%>
+            </div>
+            <div class="info-content-price">
+              <p><%= "#{topping.price}円" %></p>
+            </div>
+            <span class="update-date"><%= topping.updated_at %><span>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

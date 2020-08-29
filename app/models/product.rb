@@ -35,4 +35,10 @@ class Product < ApplicationRecord
     validates :category_id, numericality: { other_than: 1}
     validates :admin_id
   end
+
+
+  def category_name
+    category = Category.find(category_id)
+    category.name
+  end
 end

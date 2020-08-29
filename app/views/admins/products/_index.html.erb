@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class='inner'>
+    <div class="information-wrapper">
+      <h3>商品一覧</h3>
+      <div class="info-index-contents">
+        <% @products.each do |product| %>
+          <div class="info-index-content">
+            <div class="info-index-content-image">
+              <%= image_tag product.image %>
+            </div>
+            <div class="info-index-content-data">
+              <div class="info-index-content-head">
+                <h4><%=link_to product.name, edit_admins_product_path(product)%></h4>
+                <%= link_to "削除する", admins_product_path(product), method: :delete, class: "btn btn-outline-dark"%>
+              </div>
+              <div class="info-content-price">
+                <p><%= product.display_price %></p>
+                <p class="category-name"><%= product.category_name %>
+              </div>
+              <div class="info-content-text">
+                <p><%= product.text %></p>
+              </div>
+              <span class="update-date"><%= product.updated_at %><span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

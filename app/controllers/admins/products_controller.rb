@@ -1,6 +1,14 @@
 class Admins::ProductsController < Admins::ApplicationController
   before_action :set_product, only: %i(edit update destroy)
 
+  def index
+    @products = Product.all.order(created_at: :DESC)
+    @toppings = Topping.all.order(created_at: :DESC)
+    @informations = Information.all.order(updated_at: :DESC)
+
+
+  end
+
   def new
     @product = current_admin.products.build
     @topping = current_admin.toppings.build
@@ -43,6 +51,6 @@ class Admins::ProductsController < Admins::ApplicationController
   end
 
   def set_product
-    @product = current_admin.products.find_by_hashid(params[:id])
+    @product = Product.find_by_hashid(params[:id])
   end
 end
