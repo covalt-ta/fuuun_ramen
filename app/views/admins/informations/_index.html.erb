@@ -1,7 +1,6 @@
 <div class="wrapper">
   <div class='inner'>
     <div class="information-wrapper">
-      <h3>トピックス一覧</h3>
       <div class="info-index-contents">
         <% informations.each do |information| %>
           <div class="info-index-content">
@@ -18,7 +17,7 @@
                 <%= link_to "削除する", admins_information_path(information), method: :delete, class: "btn btn-outline-dark"%>
               </div>
               <p><%= information.text %></p>
-              <span class="update-date"><%= information.updated_at %><span>
+              <span class="update-date"><%= "更新日時 #{information.updated_at.to_s(:datetime_jp)}" %><span>
             </div>
           </div>
         <% end %>

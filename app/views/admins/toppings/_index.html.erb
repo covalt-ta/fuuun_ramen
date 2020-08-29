@@ -12,7 +12,7 @@
             <div class="info-content-price">
               <p><%= "#{topping.price}円" %></p>
             </div>
-            <span class="update-date"><%= topping.updated_at %><span>
+            <span class="update-date"><%= "更新日時 #{topping.updated_at.to_s(:datetime_jp)}" %><span>
           </div>
         </div>
         <% end %>

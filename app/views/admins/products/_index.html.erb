@@ -1,7 +1,6 @@
 <div class="wrapper">
   <div class='inner'>
     <div class="information-wrapper">
-      <h3>商品一覧</h3>
       <div class="info-index-contents">
         <% @products.each do |product| %>
           <div class="info-index-content">
@@ -20,7 +19,7 @@
               <div class="info-content-text">
                 <p><%= product.text %></p>
               </div>
-              <span class="update-date"><%= product.updated_at %><span>
+              <span class="update-date"><%= "更新日時　#{product.updated_at.to_s(:datetime_jp)}" %><span>
             </div>
           </div>
         <% end %>
