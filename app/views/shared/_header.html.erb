@@ -14,6 +14,7 @@
     <ul class="gnav-list">
       <% if admin_signed_in? %>
         <li class="gnav-item"><%= link_to "ダッシュボード", admins_root_path, class: "gnav-link" %></li>
+        <li class="gnav-item"><%= link_to "予約", admins_reservations_path, class: "gnav-link" %></li>
         <li class="gnav-item"><%= link_to "一覧", admins_products_path, class: "gnav-link" %></li>
         <li class="gnav-item"><%= link_to "登録", new_admins_product_path, class: "gnav-link" %></li>
         <li class="gnav-item"><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "gnav-link" %></li>

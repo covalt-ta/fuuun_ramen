@@ -32,5 +32,6 @@ Rails.application.routes.draw do
     resources :products, only: %i(index new create edit update destroy)
     resources :toppings, only: %i(new create edit update destroy)
     resources :informations, only: %i(new create edit update destroy)
+    resources :reservations, only: %i(index show)
   end
 end
