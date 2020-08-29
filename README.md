@@ -16,7 +16,7 @@
 ### Association
 
 - has_one  :card, dependent: :destroy
-- has_one  :address, dependent: :destroy 
+- has_one  :address, dependent: :destroy
 - has_one  :basket, dependent: :destroy
 - has_one :order_record, dependent: :destroy
 - has_many :order_record_products, through: :reservations
@@ -36,6 +36,7 @@
 - has_many :products
 - has_many :toppings
 - has_many :informations
+- has_many :notices, dependent: :destroy
 
 
 # cardsテーブル
@@ -204,6 +205,22 @@
 - belongs_to :user
 - has_many :order_record_products, optional: true
 - has_many :product_toppings, through: :order_record_products
+- has_many :notices, dependent: :destroy
+
+## notices テーブル
+
+| Column      | Type       | Options                                |
+| ----------- | ---------- | -------------------------------------- |
+| action      | string     | default: '' null: false index: true    |
+| checked     | boolean    | default: false null: false index: true |
+| admin       | references | null: false index: true                |
+| reservation | references | index: true                            |
+
+### Association
+
+- belongs_to :admin
+- belongs_to :reservation, optional: true
+
 
 ### ActiveHash
 - TimeZone
@@ -253,7 +270,7 @@
 - belongs_to :user
 
 
-## Active Storage 
+## Active Storage
 画像用テーブルはActive Storageを使用
 
 ### Gem / ツール
