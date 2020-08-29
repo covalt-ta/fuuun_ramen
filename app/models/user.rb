@@ -27,13 +27,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_one :card, dependent: :destroy
   has_one :basket, dependent: :destroy
   has_one :order_record, dependent: :destroy
   has_one :address, dependent: :destroy
   has_many :reservations, dependent: :destroy
-  has_many :order_record_products, through: :reservations 
+  has_many :order_record_products, through: :reservations
 
   with_options presence: true do
     validates :nickname
@@ -70,7 +70,7 @@ class User < ApplicationRecord
   def checkout!(product_topping_ids:,day:, time_zone_id:,count_person_id:) #order_record_id以外のreservationの情報を引数に渡す
     customer_token = card.customer_token
     total_price = basket.total_price(product_topping_ids: product_topping_ids)
-    
+
     transaction do
       # クレジットカード決済
       Charge.create!(total_price, customer_token)

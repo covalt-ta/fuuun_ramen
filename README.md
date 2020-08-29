@@ -209,12 +209,12 @@
 
 ## notices テーブル
 
-| Column      | Type       | Options                                |
-| ----------- | ---------- | -------------------------------------- |
-| action      | string     | default: '' null: false index: true    |
-| checked     | boolean    | default: false null: false index: true |
-| admin       | references | null: false index: true                |
-| reservation | references | index: true                            |
+| Column      | Type       | Options                                   |
+| ----------- | ---------- | ----------------------------------------- |
+| action      | string     | default: '' null: false                   |
+| checked     | boolean    | default: false null: false                |
+| admin       | references | null: false index: true foreign_key: true |
+| reservation | references | index: true foreign_key: true             |
 
 ### Association
 

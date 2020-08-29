@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_102600) do
+ActiveRecord::Schema.define(version: 2020_08_29_114847) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -91,6 +91,17 @@ ActiveRecord::Schema.define(version: 2020_08_26_102600) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["admin_id"], name: "index_information_on_admin_id"
+  end
+
+  create_table "notices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false
+    t.bigint "admin_id", null: false
+    t.bigint "reservation_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_notices_on_admin_id"
+    t.index ["reservation_id"], name: "index_notices_on_reservation_id"
   end
 
   create_table "order_record_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -185,6 +196,8 @@ ActiveRecord::Schema.define(version: 2020_08_26_102600) do
   add_foreign_key "baskets", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "information", "admins"
+  add_foreign_key "notices", "admins"
+  add_foreign_key "notices", "reservations"
   add_foreign_key "order_record_products", "order_records"
   add_foreign_key "order_record_products", "product_toppings"
   add_foreign_key "order_record_products", "reservations"

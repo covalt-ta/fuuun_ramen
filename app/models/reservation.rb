@@ -18,9 +18,10 @@
 #  index_reservations_on_user_id          (user_id)
 #
 class Reservation < ApplicationRecord
+  belongs_to :user, optional: true
+  has_one :notice, dependent: :destroy
   has_many :order_record_products
   has_many :product_toppings, through: :order_record_products
-  belongs_to :user, optional: true
 
   with_options presence: true do
     validates :day
@@ -37,7 +38,7 @@ class Reservation < ApplicationRecord
 
   def total_price(product_topping_ids: nil)
     # product_toppingsを引数で渡すから取得している状態で呼び出す
-    if product_topping_ids 
+    if product_topping_ids
       product_toppings = self.product_toppings.where(id: product_topping_ids)
     else
       product_toppings = self.product_toppings

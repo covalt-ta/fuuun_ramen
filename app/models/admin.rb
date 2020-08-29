@@ -24,5 +24,6 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :products, dependent: :destroy
   has_many :toppings, dependent: :destroy
-  has_many :informations, dependent: :destroy  
+  has_many :informations, dependent: :destroy
+  has_many :notices, dependent: :destroy
 end
