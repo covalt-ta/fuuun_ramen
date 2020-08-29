@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <div class='inner'>
+    <div class="information-wrapper">
+      <div class="info-index-contents">
+        <div class="notice-index-content">
+          <% if @notices.exists? %>
+            <%= render @notices %>
+          <% else %>
+            <p class="not-notice">通知はありません</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="notice-index-content-data">
+  <div class="info-index-content-head">
+    <%= link_to admins_reservation_path(notice.reservation) do %>
+      <p><%= "#{notice.reservation_date} #{notice.reservation.get_time_zone}に#{notice.reservation.get_count_person}様のご予約が入りました" %></p>
+    <% end %>
+  </div>
+  <span class="update-date"><%= "更新日時 #{notice.created_at.to_s(:datetime_jp)}" %><span>
+</div>

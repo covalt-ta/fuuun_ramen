@@ -24,4 +24,8 @@ class Notice < ApplicationRecord
   default_scope -> { order(created_at: :DESC) }
   belongs_to :admin
   belongs_to :reservation
+
+  def reservation_date
+    reservation.day
+  end
 end

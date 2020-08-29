@@ -167,7 +167,7 @@
 }
 
 /*--------------------------------
- toppingss/index.html.erb
+ toppings/index.html.erb
 ---------------------------------*/
 .info-index-content-data-topping {
   width: calc(100% - 100px);
@@ -175,3 +175,21 @@
   position: relative;
   border-bottom: solid 1px rgba(192,197,194,0.7);
 }
+
+/*--------------------------------
+ notices/index.html.erb
+---------------------------------*/
+.notice-index-content {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 2px;
+}
+
+.notice-index-content-data {
+  width: calc(100% - 100px);
+  margin: 10px auto;
+  position: relative;
+  border-bottom: solid 1px rgba(192,197,194,0.7);
+}
+

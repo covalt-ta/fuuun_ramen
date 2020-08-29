@@ -322,6 +322,13 @@
   width: 100%;
 }
 
+
+.new-notice {
+  background-color: rgba(134, 197, 153, 0.3);
+  padding: 5px;
+  border-radius: 5px;
+}
+
 /* iOS対策 */
 .ios .gnav-link:after,
 .ios .gnav-link:hover:after {

@@ -67,7 +67,7 @@ class User < ApplicationRecord
     order_record || create_order_record
   end
 
-  def checkout!(product_topping_ids:,day:, time_zone_id:,count_person_id:) #order_record_id以外のreservationの情報を引数に渡す
+  def checkout!(product_topping_ids:, day:, time_zone_id:, count_person_id:) #order_record_id以外のreservationの情報を引数に渡す
     customer_token = card.customer_token
     total_price = basket.total_price(product_topping_ids: product_topping_ids)
 
@@ -77,6 +77,13 @@ class User < ApplicationRecord
 
       # reservationレコードの作成
       reservation = reservations.create!(day: day, time_zone_id: time_zone_id, count_person_id: count_person_id)
+
+      # noticeレコードの作成
+      notice = Notice.create!(
+        action: 'reservation',
+        reservation_id: reservation.id,
+        admin_id: 1
+      )
 
       # order_recordレコードの作成・取得
       order_record = prepare_order_record
