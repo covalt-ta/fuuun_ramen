@@ -1,0 +1,42 @@
+<div class="inner wrapper">
+  <div class="reservate-wrapper">
+    <div class="reservate-show-contents">
+      <h3>ご予約詳細</h3>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">来店日時</th>
+            <td><%= "#{@reservation.day}  #{@reservation.get_time_zone}"%></td>
+          </tr>
+          <tr>
+            <th scope="row">お名前</th>
+            <td><%= "#{@reservation.user.last_name} #{@reservation.user.first_name}様" %></td>
+          </tr>
+          <tr>
+            <th scope="row">人数</th>
+            <td><%= @reservation.get_count_person %></td>
+          </tr>
+          <tr>
+            <th scope="row">売上額</th>
+            <td><%= "#{@reservation.total_price.to_s(:delimited)}円" %></td>
+          </tr>
+          <tr>
+            <th scope="row">メニュー</th>
+            <td>
+              <% @reservation.order_record_products.each do |order_record_product| %>
+                <div>
+                  <%= order_record_product.product_topping.product.name %>
+                  <%= order_record_product.product_topping.topping_names%>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">予約日時</th>
+            <td><%= @reservation.created_at.to_s(:datetime_jp) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

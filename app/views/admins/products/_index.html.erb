@@ -9,7 +9,7 @@
             </div>
             <div class="info-index-content-data">
               <div class="info-index-content-head">
-                <h4><%=link_to product.name, edit_admins_product_path(product)%></h4>
+                <h4><%=link_to product.name, edit_admins_product_path(product), class: "content-link-btn" %></h4>
                 <%= link_to "削除する", admins_product_path(product), method: :delete, class: "btn btn-outline-dark"%>
               </div>
               <div class="info-content-price">

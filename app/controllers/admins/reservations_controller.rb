@@ -6,5 +6,6 @@ class Admins::ReservationsController < Admins::ApplicationController
   end
 
   def show
+    @reservation = Reservation.find(params[:id])
   end
 end
