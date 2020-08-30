@@ -3,6 +3,7 @@ class CreateToppings < ActiveRecord::Migration[6.0]
     create_table :toppings do |t|
       t.string :name, null: false
       t.integer :price, null: false
+      t.boolean :display, default: false
       t.references :admin, null: false, foreign_key: true
       t.timestamps
     end

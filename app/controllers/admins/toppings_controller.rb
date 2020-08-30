@@ -18,7 +18,7 @@ class Admins::ToppingsController < Admins::ApplicationController
   end
 
   def update
-    if @topping.update(information_params)
+    if @topping.update(topping_params)
       redirect_to admins_products_path
     else
       redirect_to action: :edit
@@ -35,7 +35,7 @@ class Admins::ToppingsController < Admins::ApplicationController
 
   private
   def topping_params
-    params.require(:topping).permit(:name, :price).merge(admin_id: current_admin.id)
+    params.require(:topping).permit(:name, :price, :display).merge(admin_id: current_admin.id)
   end
 
   def set_topping

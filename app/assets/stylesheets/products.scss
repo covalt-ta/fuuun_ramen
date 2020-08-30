@@ -113,6 +113,10 @@ show.html タブの中身
   margin-bottom: 5px;
 }
 
+.topping-alert {
+  font-size: 12px;
+}
+
 .topping-check {
   font-size: 12px;
   display: flex;
@@ -157,7 +161,7 @@ show.html タブの中身
 }
 
 .like-btn {
-  background-color: lightblue;
+  background-color: rgba(192,197,194,0.7);
   border-radius: 2rem;
   padding: 5px;
   font-size: 6px;

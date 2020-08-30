@@ -35,7 +35,7 @@
           <% end %>
         </div>
       </div>
-      <div class="mx-auto text-center">
+      <div class="mx-auto text-center home-order-link">
         <%= link_to "モバイルオーダーで注文する", products_path, class: "btn btn-outline-dark" %>
       </div>
     </div>
@@ -110,7 +110,7 @@
               </div>
               <div class="information-body">
                   <h3 class="information-title"><%= information.title%></h3>
-                  <%= information.updated_at%>
+                  <%= information.updated_at.to_s(:datetime_jp)%>
                   <p><%= information.text %></p>
               </div>
             </div>

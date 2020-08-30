@@ -47,7 +47,7 @@ class Admins::ProductsController < Admins::ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :text, :price, :category_id, :image).merge(admin_id: current_admin.id)
+    params.require(:product).permit(:name, :text, :price, :category_id, :image, :display).merge(admin_id: current_admin.id)
   end
 
   def set_product

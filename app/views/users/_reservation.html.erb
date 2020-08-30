@@ -1,6 +1,6 @@
 <% if @reservations.empty? %>
   <p>ご購入情報は現在ありません</p>
-  <%= link_to "商品を見る", root_path, class: 'btn btn-outline-secondary '%>
+  <%= link_to "商品を見る", products_path, class: 'btn btn-outline-secondary '%>
 <% else %>
   <table class="table table-striped">
     <thead>

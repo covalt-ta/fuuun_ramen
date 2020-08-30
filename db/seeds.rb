@@ -20,11 +20,3 @@ Admin.create!(
   email: "kota@gmail.com",
   password: "taku1234"
 )
-
-10.times do
-  Topping.create!(
-    name: Faker::Name.initials(number: 4),
-    price: Faker::Number.within(range: 50..500),
-    admin_id: 1
-  )
-end

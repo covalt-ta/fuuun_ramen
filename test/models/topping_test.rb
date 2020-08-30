@@ -3,6 +3,7 @@
 # Table name: toppings
 #
 #  id         :bigint           not null, primary key
+#  display    :boolean          default(FALSE)
 #  name       :string(255)      not null
 #  price      :integer          not null
 #  created_at :datetime         not null

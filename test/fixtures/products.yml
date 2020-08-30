@@ -3,6 +3,7 @@
 # Table name: products
 #
 #  id          :bigint           not null, primary key
+#  display     :boolean          default(FALSE)
 #  name        :string(255)      not null
 #  price       :integer          not null
 #  text        :text(65535)      not null

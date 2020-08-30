@@ -6,8 +6,16 @@
         <div class="info-index-content">
           <div class="info-index-content-data-topping">
             <div class="info-index-content-head">
-              <h4><%=link_to topping.name, edit_admins_topping_path(topping), class: "content-link-btn" %></h4>
-              <%= link_to "削除する", admins_topping_path(topping), method: :delete, class: "btn btn-outline-dark"%>
+              <h4><%= topping.name %></h4>
+              <div class="display-check">
+                <% if topping.display == false %>
+                  <%= link_to "販売する", admins_topping_path(topping, topping: { display: true }), method: :patch, class: "btn btn-outline-dark"%>
+                <% else %>
+                  <%= link_to "販売停止する", admins_topping_path(topping, topping: { display: false }), method: :patch, class: "btn btn-outline-dark"%>
+                <% end %>
+                <%= link_to "編集する", admins_topping_path(topping), class: "btn btn-outline-dark"%>
+                <%= link_to "削除する", admins_topping_path(topping), method: :delete, class: "btn btn-outline-dark"%>
+              </div>
             </div>
             <div class="info-content-price">
               <p><%= "#{topping.price}円" %></p>

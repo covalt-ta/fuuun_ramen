@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 2020_08_29_114847) do
     t.text "text", null: false
     t.integer "price", null: false
     t.integer "category_id", null: false
+    t.boolean "display", default: false
     t.bigint "admin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -165,6 +166,7 @@ ActiveRecord::Schema.define(version: 2020_08_29_114847) do
   create_table "toppings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
+    t.boolean "display", default: false
     t.bigint "admin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
