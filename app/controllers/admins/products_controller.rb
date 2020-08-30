@@ -27,6 +27,7 @@ class Admins::ProductsController < Admins::ApplicationController
   end
 
   def edit
+    redirect_to admins_products_path unless no_update_product(@product)
   end
 
   def update
@@ -41,7 +42,7 @@ class Admins::ProductsController < Admins::ApplicationController
     if @product.destroy
       redirect_to root_path, notice: '商品を削除しました'
     else
-      redirect_to :edit, alert: "商品の削除ができませんでした"
+      redirect_to admins_products_path, alert: "商品の削除ができませんでした"
     end
   end
 
@@ -52,5 +53,11 @@ class Admins::ProductsController < Admins::ApplicationController
 
   def set_product
     @product = Product.find_by_hashid(params[:id])
+  end
+
+  # 買い物かごや購入履歴がある商品の編集を制限
+  def no_update_product(product)
+    @products = ProductTopping.where(product_id: product.id)
+    @products.blank?
   end
 end

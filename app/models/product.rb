@@ -25,7 +25,7 @@ class Product < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to :admin
   has_one_attached :image
-  has_many :product_toppings, dependent: :destroy
+  has_many :product_toppings, dependent: :restrict_with_error
 
   include Hashid::Rails
 

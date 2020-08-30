@@ -154,6 +154,11 @@
 /*--------------------------------
  products/index.html.erb
 ---------------------------------*/
+.alert-edit-delete {
+  color: red;
+  font-size: 11px;
+  text-align: right;
+}
 
 .info-content-price {
   display: flex;
@@ -183,6 +188,12 @@
   margin: 10px;
   position: relative;
   border-bottom: solid 1px rgba(192,197,194,0.7);
+}
+
+.topping-index-content {
+  display: flex;
+  margin: 10px;
+  padding-left: 50px;
 }
 
 /*--------------------------------

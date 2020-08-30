@@ -20,7 +20,7 @@
 #
 class Topping < ApplicationRecord
   belongs_to :admin
-  has_many :product_topping_relations, dependent: :destroy
+  has_many :product_topping_relations, dependent: :restrict_with_error
   has_many :product_toppings, through: :product_topping_relations
 
   with_options presence: true do

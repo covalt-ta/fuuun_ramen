@@ -1,6 +1,7 @@
 <div class="wrapper">
   <div class='inner'>
     <div class="information-wrapper">
+      <p class="alert-edit-delete">購入済や買い物かごに保存された商品は編集・削除できません</p>
       <div class="info-index-contents">
         <% @products.each do |product| %>
           <div class="info-index-content">
@@ -16,7 +17,7 @@
                   <% else %>
                     <%= link_to "販売停止する", admins_product_path(product, product: { display: false }), method: :patch, class: "btn btn-outline-dark"%>
                   <% end %>
-                  <%= link_to "編集する", admins_product_path(product), class: "btn btn-outline-dark"%>
+                  <%= link_to "編集する", edit_admins_product_path(product), class: "btn btn-outline-dark"%>
                   <%= link_to "削除する", admins_product_path(product), method: :delete, class: "btn btn-outline-dark"%>
                 </div>
               </div>

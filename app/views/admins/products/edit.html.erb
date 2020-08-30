@@ -27,7 +27,7 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_area :name, class:"items-text", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
-        
+
         <div class="items-explain">
           <div class="weight-bold-text">
             商品の説明
@@ -97,7 +97,7 @@
       </div>
       <div class="sell-btn-contents">
         <%= f.submit "商品登録する" ,class:"sell-btn" %>
-        <%=link_to 'もどる', root_path, class:"back-btn" %>
+        <%=link_to 'もどる', admins_products_path, class:"back-btn" %>
       </div>
     </div>
     <% end %>
