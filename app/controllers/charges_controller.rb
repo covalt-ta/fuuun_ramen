@@ -24,7 +24,7 @@ class ChargesController < ApplicationController
   def create
     # 商品の購入金額の計算
     product_topping_ids = params[:product_topping_ids].map(&:to_i)
-    reservation = Reservation.new(session["reservation"]) 
+    reservation = Reservation.new(session["reservation"])
 
     current_user.checkout!(
       product_topping_ids: product_topping_ids,
@@ -32,7 +32,7 @@ class ChargesController < ApplicationController
       time_zone_id: reservation.time_zone_id,
       count_person_id: reservation.count_person_id
     )
-    
+
     session["reservation"].clear
     redirect_to root_path, notice: '決済に成功しました'
   end

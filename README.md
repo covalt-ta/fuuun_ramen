@@ -239,9 +239,45 @@
 - belongs_to :admin
 - has_one_attached :image
 
+## shops テーブル
+
+| Column              | Type       | Options                       |
+| ------------------- | ---------- | ----------------------------- |
+| name                | string     | null: false                   |
+| email               | string     | null: false                   |
+| open_time_zone_id   | integer    | null: false                   |
+| close_time_zone_id  | integer    | null: false                   |
+| holiday_id          | integer    |                               |
+| postal_code         | string     | null: false                   |
+| prefecture_id       | integer    | null: false                   |
+| city                | string     | null: false                   |
+| block               | string     | null: false                   |
+| building            | string     |                               |
+| phone_number        | string     | null: false                   |
+| admin               | references | null: false foreign_key: true |
+
+
+### Association
+
+- belongs_to :admin
+- has_many :holidays
+
 ### ActiveHash
 - TimeZone
-- Count_Person
+
+
+## holidays テーブル
+
+| Column | Type       | Options                       |
+| ------ | ---------- | ----------------------------- |
+| day    | date       | null: false                   |
+| shop   | references | null: false foreign_key: true |
+
+
+### Association
+
+- belongs_to :shop
+
 
 ## comments テーブル
 
