@@ -16,6 +16,8 @@ class ChargesController < ApplicationController
 
   def new
     session_reservation
+    move_to_holiday(@day)
+
     basket = current_user.prepare_basket
     @product_toppings = basket.product_toppings
     @total_price = basket.total_price
@@ -44,6 +46,10 @@ class ChargesController < ApplicationController
 
   def move_to_new_card
     redirect_to new_card_path and return unless current_user.card.present?
+  end
+
+  def move_to_holiday(day)
+    redirect_to basket_path and return if day.to_date.wday == Shop.find(1).holiday_id
   end
 
   def session_reservation
