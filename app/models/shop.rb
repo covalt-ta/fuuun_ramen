@@ -29,4 +29,18 @@
 class Shop < ApplicationRecord
   belongs_to :admin
   has_many :holidays
+
+  with_options presence: true do
+    validates :name
+    validates :email
+    validates :open_time_zone_id
+    validates :close_time_zone_id
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :prefecture_id, numericality: { other_than: 1 }
+    validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+    validates :block, format: { with: /\A[ぁ-んァ-ン一-龥\d]/ }
+    validates :phone_number, format: { with: /\A\d{,11}\z/ }
+    validates :admin_id
+  end
+  validates :building, format: { with: /\A[ぁ-んァ-ン一-龥\d]/ }, allow_nil: true, allow_blank: true
 end

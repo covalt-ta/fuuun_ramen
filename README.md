@@ -247,7 +247,7 @@
 | email               | string     | null: false                   |
 | open_time_zone_id   | integer    | null: false                   |
 | close_time_zone_id  | integer    | null: false                   |
-| holiday_id          | integer    |                               |
+| holiday             | integer    |                               |
 | postal_code         | string     | null: false                   |
 | prefecture_id       | integer    | null: false                   |
 | city                | string     | null: false                   |
