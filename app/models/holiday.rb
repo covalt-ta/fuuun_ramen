@@ -18,4 +18,7 @@
 #
 class Holiday < ApplicationRecord
   belongs_to :shop
+
+  validates :day, presence: true
+  validates :shop_id, presence: true
 end

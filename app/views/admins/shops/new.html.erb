@@ -2,13 +2,10 @@
   <div class="inner">
     <div class="information-wrapper">
       <h3>店舗情報 登録</h3>
-
-      <div class="info-new-contents">
+      <div class="shop-contents">
         <%= form_with model: [:admins, @shop], local: true do |f| %>
           <%= render 'shared/error_messages', model: f.object %>
-
-          <div class="new-product-textdata">
-
+          <div class="shop-forms">
             <div class='shop-form'>
               <%= f.label :店舗名, class: 'lavel' %>
               <%= f.text_field :name, class:"product-textform", placeholder:"必須 40文字まで", maxlength:"40" %>
@@ -63,12 +60,10 @@
               <%= f.label :電話番号, class: 'lavel' %>
               <%= f.text_field :phone_number, class:"input-default", placeholder:"例）09012345678",maxlength:"11"%>
             </div>
+            <div class="shop-submit">
+              <%= f.submit "保存", class: "btn btn-outline-dark"%>
+            </div>
           </div>
-
-          <div>
-            <%= f.submit "保存", class: "btn btn-outline-dark"%>
-          </div>
-
         <% end %>
       </div>
     </div>

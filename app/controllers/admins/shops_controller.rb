@@ -2,7 +2,7 @@ class Admins::ShopsController < Admins::ApplicationController
   before_action :set_shop, only: %i(show update)
 
   def new
-    redirect_to admins_shop_path(current_admin.shop) if Shop.all != nil
+    redirect_to admins_shops_path(current_admin.shop) if Shop.exists?
     @shop = Shop.new
   end
 
@@ -34,6 +34,7 @@ class Admins::ShopsController < Admins::ApplicationController
   end
 
   def set_shop
+    redirect_to admins_shop_path(current_admin.shop) unless Shop.exists?
     @shop = Shop.find(params[:id])
   end
 end
