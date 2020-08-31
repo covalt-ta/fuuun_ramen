@@ -50,11 +50,12 @@ class ChargesController < ApplicationController
 
   def move_to_holiday(day)
     redirect_to basket_path and return if day.to_date.wday == Shop.find(1).holiday_id
+    redirect_to basket_path and return if Holiday.exists?(day: day.to_date)
   end
 
   def session_reservation
-      @day = session["reservation"]["day"]
-      @time_zone = TimeZone.find(session["reservation"]["time_zone_id"]).name
-      @count_person = CountPerson.find(session["reservation"]["count_person_id"]).name
+    @day = session["reservation"]["day"]
+    @time_zone = TimeZone.find(session["reservation"]["time_zone_id"]).name
+    @count_person = CountPerson.find(session["reservation"]["count_person_id"]).name
   end
 end

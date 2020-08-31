@@ -1,11 +1,11 @@
 class CreateShops < ActiveRecord::Migration[6.0]
   def change
     create_table :shops do |t|
-      t.string :name,                null: false
-      t.string :email,               null: false
+      t.string :name,                null: false, unique: true
+      t.string :email,               null: false, unique: true
       t.integer :open_time_zone_id,  null: false
       t.integer :close_time_zone_id, null: false
-      t.integer :holiday_id
+      t.integer :holiday
       t.string :postal_code,         null: false
       t.integer :prefecture_id,      null: false
       t.string :city,                null: false

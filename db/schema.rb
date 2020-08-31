@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_051953) do
     t.string "email", null: false
     t.integer "open_time_zone_id", null: false
     t.integer "close_time_zone_id", null: false
-    t.integer "holiday_id"
+    t.integer "holiday"
     t.string "postal_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false

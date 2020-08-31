@@ -14,6 +14,11 @@
     <ul class="gnav-list">
       <% if admin_signed_in? %>
         <li class="gnav-item"><%= link_to "ダッシュボード", admins_root_path, class: "gnav-link" %></li>
+        <% if Shop.all == nil %>
+          <li class="gnav-item"><%= link_to "店舗登録", new_admins_shop_path, class: "gnav-link" %></li>
+        <% else %>
+          <li class="gnav-item"><%= link_to "店舗情報", admins_shop_path(current_admin.shop), class: "gnav-link" %></li>
+        <% end %>
         <% if unchecked_notices.any? %>
           <li class="gnav-item"><%= link_to "通知", admins_notices_path, class: "gnav-link new-notice" %></li>
         <% else %>

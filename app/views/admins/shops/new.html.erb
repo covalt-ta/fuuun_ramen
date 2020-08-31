@@ -1,0 +1,76 @@
+<div class="wrapper">
+  <div class="inner">
+    <div class="information-wrapper">
+      <h3>店舗情報 登録</h3>
+
+      <div class="info-new-contents">
+        <%= form_with model: [:admins, @shop], local: true do |f| %>
+          <%= render 'shared/error_messages', model: f.object %>
+
+          <div class="new-product-textdata">
+
+            <div class='shop-form'>
+              <%= f.label :店舗名, class: 'lavel' %>
+              <%= f.text_field :name, class:"product-textform", placeholder:"必須 40文字まで", maxlength:"40" %>
+            </div>
+
+            <div class='shop-form'>
+              <%= f.label :Email, class: 'lavel' %>
+              <%= f.email_field :email, class:"product-textform", placeholder:"test@gmail.com", maxlength:"40" %>
+            </div>
+
+            <div class='shop-form'>
+              <%= f.label :開店時刻, class: 'lavel' %>
+              <%= f.collection_select(:open_time_zone_id, TimeZone.all, :id, :name, {}, {class: "select-box"}) %>
+            </div>
+
+            <div class='shop-form'>
+              <%= f.label :閉店時刻, class: 'lavel' %>
+              <%= f.collection_select(:close_time_zone_id, TimeZone.all, :id, :name, {}, {class: "select-box"}) %>
+            </div>
+
+            <div class='shop-form'>
+              <%= f.label :定休日, class: 'lavel' %>
+              <%= f.select :holiday, [ ["日曜日",0], ["月曜日",1], ["火曜日",2], ["水曜日",3], ["木曜日",4], ["金曜日",5], ["土曜日",6] ], {include_blank: true} %>
+            </div>
+
+            <div class='shop-form'>
+              <%= f.label :郵便番号, class: 'lavel' %>
+              <%= f.text_field :postal_code, class:"input-default", placeholder:"例）123-4567", maxlength:"8" %>
+            </div>
+
+            <div class='shop-form'>
+              <%= f.label :都道府県, class: 'lavel' %>
+              <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) %>
+            </div>
+
+            <div class='shop-form'>
+              <%= f.label :市区町村, class: 'lavel' %>
+              <%= f.text_field :city, class:"input-default", placeholder:"例）横浜市緑区"%>
+            </div>
+
+            <div class='shop-form'>
+              <%= f.label :番地, class: 'lavel' %>
+              <%= f.text_field :block, class:"input-default", placeholder:"例）青山1-1-1"%>
+            </div>
+
+            <div class='shop-form'>
+              <%= f.label :建物, class: 'lavel' %>
+              <%= f.text_field :building, class:"input-default", placeholder:"例）柳ビル103"%>
+            </div>
+
+            <div class='shop-form'>
+              <%= f.label :電話番号, class: 'lavel' %>
+              <%= f.text_field :phone_number, class:"input-default", placeholder:"例）09012345678",maxlength:"11"%>
+            </div>
+          </div>
+
+          <div>
+            <%= f.submit "保存", class: "btn btn-outline-dark"%>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

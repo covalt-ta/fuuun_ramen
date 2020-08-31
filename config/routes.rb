@@ -34,5 +34,7 @@ Rails.application.routes.draw do
     resources :informations, only: %i(new create edit update destroy)
     resources :reservations, only: %i(index show)
     resources :notices, only: :index
+    resources :shops, only: %i(new show create update)
+    resources :holidays, only: %i(create destroy)
   end
 end
