@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_29_114847) do
+ActiveRecord::Schema.define(version: 2020_08_31_051953) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -82,6 +82,14 @@ ActiveRecord::Schema.define(version: 2020_08_29_114847) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "holidays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "day", null: false
+    t.bigint "shop_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shop_id"], name: "index_holidays_on_shop_id"
   end
 
   create_table "information", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -163,6 +171,24 @@ ActiveRecord::Schema.define(version: 2020_08_29_114847) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
+  create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.integer "open_time_zone_id", null: false
+    t.integer "close_time_zone_id", null: false
+    t.integer "holiday_id"
+    t.string "postal_code", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "block", null: false
+    t.string "building"
+    t.string "phone_number", null: false
+    t.bigint "admin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_shops_on_admin_id"
+  end
+
   create_table "toppings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
@@ -197,6 +223,7 @@ ActiveRecord::Schema.define(version: 2020_08_29_114847) do
   add_foreign_key "basket_products", "product_toppings"
   add_foreign_key "baskets", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "holidays", "shops"
   add_foreign_key "information", "admins"
   add_foreign_key "notices", "admins"
   add_foreign_key "notices", "reservations"
@@ -208,5 +235,6 @@ ActiveRecord::Schema.define(version: 2020_08_29_114847) do
   add_foreign_key "product_topping_relations", "toppings"
   add_foreign_key "product_toppings", "products"
   add_foreign_key "products", "admins"
+  add_foreign_key "shops", "admins"
   add_foreign_key "toppings", "admins"
 end
