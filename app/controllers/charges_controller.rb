@@ -49,7 +49,7 @@ class ChargesController < ApplicationController
   end
 
   def move_to_holiday(day)
-    redirect_to basket_path and return if day.to_date.wday == Shop.find(1).holiday_id
+    redirect_to basket_path and return if day.to_date.wday == Shop.find(@shop.id).holiday
     redirect_to basket_path and return if Holiday.exists?(day: day.to_date)
   end
 

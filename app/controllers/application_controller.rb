@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth
+  before_action :set_shop
 
   def after_sign_in_path_for(resource)
     if resource.is_a?(User)
@@ -19,5 +20,9 @@ class ApplicationController < ActionController::Base
     authenticate_or_request_with_http_basic do |username, password|
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
+  end
+  def set_shop
+    admin_user = Admin.first
+    @shop = Shop.find(admin_user.shop.id)
   end
 end
