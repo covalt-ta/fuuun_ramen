@@ -67,6 +67,8 @@ gem 'payjp'
 gem 'hashid-rails', '~> 1.0'
 gem 'gretel'
 gem 'rails-i18n'
+gem 'aws-sdk-s3', require: false
+gem 'dotenv-rails'
 
 group :production do
   gem 'rails_12factor'
