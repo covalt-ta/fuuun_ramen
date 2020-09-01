@@ -22,7 +22,11 @@ class ApplicationController < ActionController::Base
     end
   end
   def set_shop
-    admin_user = Admin.first
-    @shop = Shop.find(admin_user.shop.id)
+    if Admin.exists?
+      admin_user = Admin.first
+      @shop = Shop.find(admin_user.shop.id)
+    else
+      return
+    end
   end
 end
