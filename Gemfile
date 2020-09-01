@@ -66,6 +66,7 @@ gem 'image_processing', '~> 1.2'
 gem 'payjp'
 gem 'hashid-rails', '~> 1.0'
 gem 'gretel'
+gem 'rails-i18n'
 
 group :production do
   gem 'rails_12factor'
