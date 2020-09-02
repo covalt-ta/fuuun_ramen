@@ -19,6 +19,7 @@ class Admins::ToppingsController < Admins::ApplicationController
   end
 
   def update
+    # redirect_to admins_products_path unless no_update_topping(@topping)
     if @topping.update(topping_params)
       redirect_to admins_products_path
     else
@@ -45,7 +46,7 @@ class Admins::ToppingsController < Admins::ApplicationController
 
   # 買い物かごや購入履歴がある商品の編集を制限
   def no_update_topping(topping)
-    @toppings = ProductToppingRelation.where(topping_id: topping.id)
-    @products.blank?
+    toppings = ProductToppingRelation.where(topping_id: topping.id)
+    toppings.blank?
   end
 end
