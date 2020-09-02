@@ -335,6 +335,28 @@
   display: none;
 }
 
+/*--------------------------------
+ flash_messages
+---------------------------------*/
+.notifications {
+  position: relative;
+  top: 60px;
+  z-index: 50;
+  width: 100%;
+  padding: 5px 20px;
+  color: green;
+  text-align: center;
+}
+
+.notice {
+  // background-color: rgba(171, 233, 130, 0.3);
+  background-color: #2e8b57;
+}
+
+.alert {
+  // background-color: rgba(233, 130, 219, 0.3);
+  background-color: yellow;
+}
 
 /*--------------------------------
  ユーザー、プロダクトのメニュータブ
