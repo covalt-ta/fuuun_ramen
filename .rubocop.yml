@@ -9,7 +9,7 @@ AllCops:
     - "node_modules/**/*"
     - "Gemfile"
 
-  NewCops: enable
+  NewCops: disable
 
 # 1行あたりの文字数をチェックする
 Layout/LineLength:

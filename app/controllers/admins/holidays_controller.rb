@@ -1,6 +1,8 @@
 class Admins::HolidaysController < Admins::ApplicationController
   def create
-    if Holiday.create(holiday_params)
+    holiday = Holiday.new(holiday_params)
+    unless holiday.day.blank?
+      holiday.save
       redirect_to admins_shop_path(current_admin.shop), notice: '休日を登録しました'
     else
       redirect_to admins_shop_path(current_admin.shop), alert: '休日登録に失敗しました'
