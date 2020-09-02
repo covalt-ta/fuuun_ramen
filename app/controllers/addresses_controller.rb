@@ -1,8 +1,8 @@
 class AddressesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_address, only: %i(update destroy)
+  before_action :set_address, only: %i[update destroy]
   def new
-    @address =  Address.new
+    @address = Address.new
   end
 
   def create
@@ -30,6 +30,7 @@ class AddressesController < ApplicationController
   end
 
   private
+
   def address_params
     params.require(:address).permit(:postal_code, :prefecture_id, :city, :block, :building, :phone_number).merge(user_id: current_user.id)
   end

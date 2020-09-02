@@ -1,5 +1,5 @@
 class Admins::ToppingsController < Admins::ApplicationController
-  before_action :set_topping, only: %i(edit update destroy)
+  before_action :set_topping, only: %i[edit update destroy]
 
   def new
     @topping = current_admin.toppings.build
@@ -10,7 +10,7 @@ class Admins::ToppingsController < Admins::ApplicationController
     if @topping.save
       redirect_to new_admins_product_path, notice: "「#{@topping.name}」を追加しました"
     else
-      redirect_to new_admins_product_path, alert: "トッピング商品の追加に失敗しました"
+      redirect_to new_admins_product_path, alert: 'トッピング商品の追加に失敗しました'
     end
   end
 
@@ -35,6 +35,7 @@ class Admins::ToppingsController < Admins::ApplicationController
   end
 
   private
+
   def topping_params
     params.require(:topping).permit(:name, :price, :display).merge(admin_id: current_admin.id)
   end

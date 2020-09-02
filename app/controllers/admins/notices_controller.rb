@@ -7,14 +7,14 @@ class Admins::NoticesController < Admins::ApplicationController
     end
   end
 
-    private
+  private
 
-    # 既読30件のみを残して削除する
-    def notice_count_delete
-      notices = current_admin.notices.where(checked: true)
-      while notices.count > 30 do
-        notice = notices.order(cereated_at: :ASC).limit(1)
-        notice.destroy_all
-      end
+  # 既読30件のみを残して削除する
+  def notice_count_delete
+    notices = current_admin.notices.where(checked: true)
+    while notices.count > 30
+      notice = notices.order(cereated_at: :ASC).limit(1)
+      notice.destroy_all
     end
+  end
 end

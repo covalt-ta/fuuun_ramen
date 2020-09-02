@@ -17,6 +17,5 @@
 #
 FactoryBot.define do
   factory :product_topping do
-    
   end
 end

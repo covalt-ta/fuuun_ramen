@@ -1,5 +1,5 @@
 class Admins::InformationsController < Admins::ApplicationController
-  before_action :set_information, only: %i(edit update destroy)
+  before_action :set_information, only: %i[edit update destroy]
 
   def new
     @information = current_admin.informations.build
@@ -10,7 +10,7 @@ class Admins::InformationsController < Admins::ApplicationController
     if @information.save
       redirect_to new_admins_product_path, notice: "「#{@information.title}」を作成しました"
     else
-      redirect_to new_admins_product_path, alert: "最新情報を作成できませんでした"
+      redirect_to new_admins_product_path, alert: '最新情報を作成できませんでした'
     end
   end
 
@@ -34,6 +34,7 @@ class Admins::InformationsController < Admins::ApplicationController
   end
 
   private
+
   def information_params
     params.require(:information).permit(:title, :text, :image)
   end

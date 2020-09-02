@@ -1,12 +1,10 @@
 class Admins::ProductsController < Admins::ApplicationController
-  before_action :set_product, only: %i(edit update destroy)
+  before_action :set_product, only: %i[edit update destroy]
 
   def index
     @products = Product.all.order(updated_at: :DESC)
     @toppings = Topping.all.order(updated_at: :DESC)
     @informations = Information.all.order(updated_at: :DESC)
-
-
   end
 
   def new
@@ -20,7 +18,7 @@ class Admins::ProductsController < Admins::ApplicationController
     if @product.save
       redirect_to new_admins_product_path, notice: "「#{@product.name}」を追加しました"
     else
-      redirect_to new_admins_product_path, alert: "商品の追加に失敗しました"
+      redirect_to new_admins_product_path, alert: '商品の追加に失敗しました'
     end
   end
 
@@ -45,6 +43,7 @@ class Admins::ProductsController < Admins::ApplicationController
   end
 
   private
+
   def product_params
     params.require(:product).permit(:name, :text, :price, :category_id, :image, :display).merge(admin_id: current_admin.id)
   end

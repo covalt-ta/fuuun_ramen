@@ -20,6 +20,5 @@
 #
 FactoryBot.define do
   factory :product_topping_relation do
-    
   end
 end

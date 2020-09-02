@@ -20,6 +20,5 @@
 #
 FactoryBot.define do
   factory :topping do
-    
   end
 end

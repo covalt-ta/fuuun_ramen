@@ -1,5 +1,5 @@
 class Admins::ShopsController < Admins::ApplicationController
-  before_action :set_shop, only: %i(show update)
+  before_action :set_shop, only: %i[show update]
 
   def new
     redirect_to admins_shops_path(current_admin.shop) if Shop.exists?
@@ -28,9 +28,10 @@ class Admins::ShopsController < Admins::ApplicationController
   end
 
   private
+
   def shop_params
     params.require(:shop).permit(:name, :email, :open_time_zone_id, :close_time_zone_id,
-      :holiday, :postal_code, :prefecture_id, :city, :block, :building, :phone_number).merge(admin_id: current_admin.id)
+                                 :holiday, :postal_code, :prefecture_id, :city, :block, :building, :phone_number).merge(admin_id: current_admin.id)
   end
 
   def set_shop

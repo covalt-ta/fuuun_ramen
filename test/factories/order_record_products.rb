@@ -23,6 +23,5 @@
 #
 FactoryBot.define do
   factory :order_record_product do
-    
   end
 end

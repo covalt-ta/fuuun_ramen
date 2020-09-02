@@ -25,5 +25,4 @@ class Card < ApplicationRecord
     validates :customer_token
     validates :user_id
   end
-
 end

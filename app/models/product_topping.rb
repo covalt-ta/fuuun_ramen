@@ -25,7 +25,7 @@ class ProductTopping < ApplicationRecord
   def product
     Product.find(product_id)
   end
-  
+
   def topping_names
     names = toppings.map(&:name)
   end

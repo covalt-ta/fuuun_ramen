@@ -37,7 +37,6 @@ class Product < ApplicationRecord
     validates :admin_id
   end
 
-
   def category_name
     category = Category.find(category_id)
     category.name

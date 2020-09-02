@@ -1,8 +1,8 @@
 class Charge
   def initialize
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
   end
-  
+
   def create!(total_price, customer_token)
     Payjp::Charge.create(
       amount: total_price,
@@ -12,7 +12,7 @@ class Charge
   end
 
   def self.create!(total_price, customer_token)
-    charge = self.new
+    charge = new
     charge.create!(total_price, customer_token)
   end
 end
