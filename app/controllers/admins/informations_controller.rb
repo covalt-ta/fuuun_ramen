@@ -8,9 +8,9 @@ class Admins::InformationsController < Admins::ApplicationController
   def create
     @information = current_admin.informations.build(information_params)
     if @information.save
-      redirect_to admins_root_path
+      redirect_to new_admins_product_path, notice: "「#{@information.title}」を作成しました"
     else
-      redirect_to action: :new
+      redirect_to new_admins_product_path, alert: "最新情報を作成できませんでした"
     end
   end
 
@@ -19,17 +19,17 @@ class Admins::InformationsController < Admins::ApplicationController
 
   def update
     if @information.update(information_params)
-      redirect_to action: :index
+      redirect_to admins_products_path, notice: "「#{@information.title}」を更新しました"
     else
-      redirect_to action: :edit
+      redirect_to admins_products_path, alert: "「#{@information.title}」を更新できませんでした"
     end
   end
 
   def destroy
     if @information.destroy
-      redirect_to action: :index
+      redirect_to admins_products_path, notice: "「#{@information.title}」を削除しました"
     else
-      redirect_to action: edit
+      redirect_to admins_products_path, alert: "「#{@information.title}」を削除できませんでした"
     end
   end
 

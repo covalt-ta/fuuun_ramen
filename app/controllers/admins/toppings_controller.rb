@@ -8,30 +8,29 @@ class Admins::ToppingsController < Admins::ApplicationController
   def create
     @topping = current_admin.toppings.build(topping_params)
     if @topping.save
-      redirect_to admins_root_path
+      redirect_to new_admins_product_path, notice: "「#{@topping.name}」を追加しました"
     else
-      redirect_to action: :new
+      redirect_to new_admins_product_path, alert: "トッピング商品の追加に失敗しました"
     end
   end
 
   def edit
-    redirect_to admins_products_path unless no_update_topping(@topping)
+    redirect_to admins_products_path, alert: "「#{@topping.name}」は編集・削除できません" unless no_update_topping(@topping)
   end
 
   def update
-    # redirect_to admins_products_path unless no_update_topping(@topping)
     if @topping.update(topping_params)
-      redirect_to admins_products_path
+      redirect_to admins_products_path, notice: "「#{@topping.name}」を更新しました"
     else
-      redirect_to action: :edit
+      redirect_to admins_products_path, alert: "「#{@topping.name}」を更新できませんでした"
     end
   end
 
   def destroy
     if @topping.destroy
-      redirect_to admins_products_path
+      redirect_to admins_products_path, notice: "「#{@topping.name}」を削除しました"
     else
-      redirect_to admins_products_path
+      redirect_to admins_products_path, alert: "「#{@topping.name}」は削除できませんでした"
     end
   end
 

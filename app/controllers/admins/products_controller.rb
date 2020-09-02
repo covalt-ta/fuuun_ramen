@@ -18,31 +18,29 @@ class Admins::ProductsController < Admins::ApplicationController
   def create
     @product = current_admin.products.build(product_params)
     if @product.save
-      flash[:notice] = "商品が追加されました"
-      redirect_to root_path
+      redirect_to new_admins_product_path, notice: "「#{@product.name}」を追加しました"
     else
-      flash.now[:alert] = "商品追加に失敗しました"
-      redirect_to action: :new
+      redirect_to new_admins_product_path, alert: "商品の追加に失敗しました"
     end
   end
 
   def edit
-    redirect_to admins_products_path unless no_update_product(@product)
+    redirect_to admins_products_path, alert: "「#{@product.name}」は編集・削除ができません" unless no_update_product(@product)
   end
 
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: "商品を編集しました"
+      redirect_to admins_products_path, notice: "「#{@product.name}」を編集しました"
     else
-      redirect_to :edit, alert: "商品の編集ができませんでした"
+      redirect_to admins_products_path, alert: "「#{@product.name}」の編集ができませんでした"
     end
   end
 
   def destroy
     if @product.destroy
-      redirect_to root_path, notice: '商品を削除しました'
+      redirect_to admins_products_path, notice: "「#{@product.name}」を削除しました"
     else
-      redirect_to admins_products_path, alert: "商品の削除ができませんでした"
+      redirect_to admins_products_path, alert: "「#{@product.name}」の削除ができませんでした"
     end
   end
 
