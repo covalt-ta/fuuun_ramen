@@ -20,7 +20,7 @@ default: &default
 
 development:
   <<: *default
-  database: myapp_development # fuuun_ramen_development # 
+  database: myapp_development # fuuun_ramen_development #
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -51,5 +51,6 @@ test:
 production:
   <<: *default
   database: myapp_production
-  username: fuuun_ramen
-  password: <%= ENV['FUUUN_RAMEN_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/msql.sock
