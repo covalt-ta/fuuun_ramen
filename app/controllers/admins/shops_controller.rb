@@ -16,7 +16,7 @@ class Admins::ShopsController < Admins::ApplicationController
 
   def show
     @holiday = Holiday.new
-    @holidays = Holiday.all
+    @holidays = Holiday.all.order(day: :ASC)
   end
 
   def update
