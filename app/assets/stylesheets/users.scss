@@ -1,4 +1,169 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*--------------------------------
+ user/sign_up
+---------------------------------*/
+.user-new-headtitle {
+  text-align: center;
+}
 
+.user-new-contents {
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 10px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.user-new-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.user-form-group {
+  width: 80%;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-input-default {
+  height: 50px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.info-text {
+  font-size: 14px;
+  color: green;
+}
+
+.user-name-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-input-name {
+  width: 48%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.user-birth-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user-birth-wrap>select {
+  width: 27%;
+  margin-top: 5px;
+  height: 45px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.user-birth-wrap>p {
+  line-height: 60px;
+  padding: 0 5px;
+  font-size: 12px;
+}
+
+.agreement {
+  width: 80%;
+  margin: 0 auto 10px;
+  text-align: center;
+}
+
+.agreement-link {
+  text-align: center;
+  text-decoration: none;
+  color: rgb(134, 197, 153);
+}
+
+.register-btn {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.register-green-btn {
+  width: 100%;
+  background: rgb(134, 197, 153);
+  border: 1px solid rgb(134, 197, 153);
+  border-radius: 5px;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.register-green-btn:hover {
+  color: rgb(134, 197, 153);
+  background-color: #fff;
+}
+
+/*--------------------------------
+ home/test_sign_in.html.erb
+---------------------------------*/
+.test-signin-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.test-signin {
+  width: 100%;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+.test-user-signin-btn {
+  width: 50%;
+  margin: 0 auto;
+  background: rgb(134, 197, 153);
+  border: 1px solid rgb(134, 197, 153);
+  border-radius: 5px;
+  color: #fff;
+  line-height: 48px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.test-user-signin-btn:hover {
+  color: rgb(134, 197, 153);
+  background-color: #fff;
+}
+
+.test-admin-signin-btn {
+  width: 50%;
+  margin: 0 auto;
+  background: rgba(102, 107, 106, 0.8);
+  border: 1px solid rgba(102, 107, 106, 0.8);
+  border-radius: 5px;
+  color: #fff;
+  line-height: 48px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.test-admin-signin-btn:hover {
+  background-color: #fff;
+  color: rgba(102, 107, 106, 0.8);
+}
+
+
+
+.actions-left {
+  text-align: right;
+}
+.actions-rigth {
+  text-align: left;
+}

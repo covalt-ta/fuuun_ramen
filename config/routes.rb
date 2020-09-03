@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root 'home#index'
+  get 'home/test_sign_in', to: 'home#test_sign_in'
 
   resources :products, only: %i(index show) do
     scope module: :product_toppings do
