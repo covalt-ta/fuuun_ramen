@@ -43,4 +43,22 @@ class Shop < ApplicationRecord
     validates :admin_id
   end
   validates :building, format: { with: /\A[ぁ-んァ-ン一-龥\d]/ }, allow_nil: true, allow_blank: true
+
+  def prefecture
+    prefecture = Prefecture.find(prefecture_id)
+    prefecture.name
+  end
+
+  def address
+    self.prefecture + city + block + building
+  end
+
+  def open_time
+    TimeZone.find(open_time_zone_id).name
+  end
+
+  def close_time
+    TimeZone.find(close_time_zone_id).name
+  end
+
 end
