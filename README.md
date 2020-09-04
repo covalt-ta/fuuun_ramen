@@ -279,6 +279,16 @@
 - belongs_to :shop
 
 
+## contacts テーブル
+
+| Column       | Type   | Options     |
+| ------------ | ------ | ----------- |
+| name         | string | null: false |
+| email        | string | null: false |
+| text         | text   | null: false |
+| phone_number | string |             |
+
+
 ## comments テーブル
 
 | Column  | Type       | Options                       |
