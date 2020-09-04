@@ -193,9 +193,9 @@
 }
 
 .shop-image-wrapper {
-  width: 500px;
-  height: 500px;
-
+  min-width: 500px;
+  min-height: 500px;
+  flex: 1;
 }
 
 .shop-image {
@@ -205,23 +205,52 @@
   object-fit: cover;
 }
 
-
+.shop-info {
+  width: 100%;
+  flex: 1;
+  padding: 40px 20px 0;
+  display: flex;
+  flex-direction: column;
+}
 
 .shop-data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 30px;
   padding-bottom: 10px;
-  border-bottom: solid 2px #333;;
+  border-bottom: solid 1px rgb(134, 197, 153);
+  letter-spacing: 0.5em;
 }
 
-.contact-item {
-  width: 50px;
-  margin: 0 20px;
+.contact-form-group {
+  width: 80%;
+  margin: 0 auto 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-input-default {
+  height: 25px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.contact-input-area {
+  height: 150px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.contact-submit-text {
+  margin-top: 5px;
+  font-size: 12px;
   text-align: center;
 }
 
-.contact-text {
-  margin-top: 10px;
-  text-align: center;
-}
 
 /*--------------------------------
  フッター

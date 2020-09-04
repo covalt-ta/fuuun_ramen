@@ -133,39 +133,35 @@
         </div>
         <div class="shop-info">
           <ul class="shop-data">
-            <li>【住　　所】  〒121−0000　東京都世田谷区宮坂2−10−1</li>
-            <li>【営業時間】  10:00 〜 翌2:00</li>
-            <li>【電話番号】  03 - 3333 - xxxx</li>
+            <li>【住　　所】<%= @shop.address if @shop %></li>
+            <li>【営業時間】<%= "#{@shop.open_time} ~ #{@shop.close_time}" if @shop %></li>
+            <li>【電話番号】<%= @shop.phone_number if @shop %> </li>
           </ul>
           <div class="contact">
             <%= form_with model: @contact, url: contact_path, local: true do |f| %>
-              <div class="user-form-group">
+              <div class="contact-form-group">
                 <%= f.label :お名前（必須）, class: 'lavel' %>
-                <%= f.text_field :name, class:"user-input-default", placeholder:"例) 鈴木一郎" %>
+                <%= f.text_field :name, class:"contact-input-default", placeholder:"例) 鈴木一郎" %>
               </div>
-              <div class="user-form-group">
+              <div class="contact-form-group">
                 <%= f.label :メールアドレス（必須）, class: 'lavel' %>
-                <%= f.email_field :email, class:"user-input-default", placeholder:"PC・携帯どちらでも可" %>
+                <%= f.email_field :email, class:"contact-input-default", placeholder:"PC・携帯どちらでも可" %>
               </div>
-              <div class="user-form-group">
+              <div class="contact-form-group">
                 <%= f.label :電話番号, class: 'lavel' %>
-                <%= f.text_field :phone_number, class:"user-input-default", placeholder:"例) 09012345678 ハイフンは不要です" %>
+                <%= f.text_field :phone_number, class:"contact-input-default", placeholder:"例) 09012345678 ハイフンは不要です" %>
               </div>
-              <div class="user-form-group">
+              <div class="contact-form-group">
                 <%= f.label :お問い合わせ内容（必須）, class: 'lavel' %>
-                <%= f.text_area :text, class:"user-input-default", placeholder:"お問い合わせ内容をご記載ください" %>
+                <%= f.text_area :text, class:"contact-input-area", placeholder:"お問い合わせ内容をご記載ください" %>
               </div>
               <div class='register-btn'>
                 <%= f.submit "送信する" ,class:"register-green-btn" %>
+                <p class="contact-submit-text">お問い合わせありがとうございます。</p>
               </div>
             <% end%>
           </div>
         <div>
-      </div>
-      <div class="section-lead">
-        <p>
-          お問い合わせありがとうございます。
-        </p>
       </div>
     </div>
   </section>
