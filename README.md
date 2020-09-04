@@ -7,7 +7,7 @@
 
 URL: http://46.51.231.102/
 
-![サイトのイメージ](images/site_image.png)
+![サイトのイメージ](app/assets/images/site_image.png)
 
 # テーブル設計
 
