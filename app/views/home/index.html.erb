@@ -138,24 +138,27 @@
             <li>【電話番号】  03 - 3333 - xxxx</li>
           </ul>
           <div class="contact">
-            <table>
-              <tr>
-                <td align="right"><b> お名前：</b></td>
-                <td><input type="text" name="name" size="40" maxlength="20"></td>
-              </tr>
-              <tr>
-                <td align="right"><b> メールアドレス：</b></td>
-                <td><input type="text" name="name" size="40" maxlength="20"></td>
-              </tr>
-              <tr>
-                <td align="right"><b> お電話番号：</b></td>
-                <td><input type="text" name="name" size="40" maxlength="20"></td>
-              </tr>
-              <tr>
-                <td align="right"><b> お問い合わせ内容：</b></td>
-                <td><textarea rows="10" cols="40">お問い合わせ内容をご入力ください</textarea></td>
-              </tr>
-            </table>
+            <%= form_with model: @contact, url: contact_path, local: true do |f| %>
+              <div class="user-form-group">
+                <%= f.label :お名前（必須）, class: 'lavel' %>
+                <%= f.text_field :name, class:"user-input-default", placeholder:"例) 鈴木一郎" %>
+              </div>
+              <div class="user-form-group">
+                <%= f.label :メールアドレス（必須）, class: 'lavel' %>
+                <%= f.email_field :email, class:"user-input-default", placeholder:"PC・携帯どちらでも可" %>
+              </div>
+              <div class="user-form-group">
+                <%= f.label :電話番号, class: 'lavel' %>
+                <%= f.text_field :phone_number, class:"user-input-default", placeholder:"例) 09012345678 ハイフンは不要です" %>
+              </div>
+              <div class="user-form-group">
+                <%= f.label :お問い合わせ内容（必須）, class: 'lavel' %>
+                <%= f.text_area :text, class:"user-input-default", placeholder:"お問い合わせ内容をご記載ください" %>
+              </div>
+              <div class='register-btn'>
+                <%= f.submit "送信する" ,class:"register-green-btn" %>
+              </div>
+            <% end%>
           </div>
         <div>
       </div>
@@ -164,22 +167,9 @@
           お問い合わせありがとうございます。
         </p>
       </div>
-      <div class="section-body contact">
-        <ul class="contact-list">
-          <li class="contact-item">
-            <a class="contact-link" href="https://twitter.com/" target="_blank"><img class="contact-image"
-                src="img/contact/icon_tw.png" alt=""></a>
-          </li>
-          <li class="contact-item">
-            <a class="contact-link" href="https://www.facebook.com/" target="_blank"><img class="contact-image"
-                src="img/contact/icon_fb.png" alt=""></a>
-          </li>
-        </ul>
-      </div>
     </div>
   </section>
   <!-- /.contact-section -->
-
 </main>
 
 <!-- .footer -->

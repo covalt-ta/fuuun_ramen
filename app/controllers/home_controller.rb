@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   def index
     @products = Product.where(display: true).order(updated_at: :DESC).first(3)
     @informations = Information.order(updated_at: :DESC).first(6)
+    @contact = Contact.new
   end
 
   def test_sign_in

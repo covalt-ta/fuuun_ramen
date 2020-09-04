@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :cards, only: %i(new create destroy)
   resources :addresses, only: %i(new create update destroy)
   resource :basket, only: :show
+  resource :contact, only: :create
   resources :charges, only: %i(new create) do
     collection do
       get 'new_reservation'
