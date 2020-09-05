@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :users, only: %i(show)
   resources :cards, only: %i(new create destroy)
   resources :addresses, only: %i(new create update destroy)
+  resources :product_eats, only: %i(create destroy)
   resource :basket, only: :show
   resource :contact, only: :create
   resources :charges, only: %i(new create) do
