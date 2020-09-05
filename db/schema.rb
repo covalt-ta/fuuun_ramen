@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_031906) do
+ActiveRecord::Schema.define(version: 2020_09_05_154653) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -139,6 +139,16 @@ ActiveRecord::Schema.define(version: 2020_09_04_031906) do
     t.index ["user_id"], name: "index_order_records_on_user_id"
   end
 
+  create_table "product_eats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_product_eats_on_product_id"
+    t.index ["user_id", "product_id"], name: "index_product_eats_on_user_id_and_product_id", unique: true
+    t.index ["user_id"], name: "index_product_eats_on_user_id"
+  end
+
   create_table "product_topping_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_topping_id"
     t.bigint "topping_id"
@@ -240,6 +250,8 @@ ActiveRecord::Schema.define(version: 2020_09_04_031906) do
   add_foreign_key "order_record_products", "product_toppings"
   add_foreign_key "order_record_products", "reservations"
   add_foreign_key "order_records", "users"
+  add_foreign_key "product_eats", "products"
+  add_foreign_key "product_eats", "users"
   add_foreign_key "product_topping_relations", "product_toppings"
   add_foreign_key "product_topping_relations", "toppings"
   add_foreign_key "product_toppings", "products"
