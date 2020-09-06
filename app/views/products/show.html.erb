@@ -8,12 +8,7 @@
       <div class='product-img-wrapper'>
         <%= image_tag @product.image, class:"product-img" %>
         <div class="eat-block">
-          <% if ProductEat.find_by(user_id: current_user.id, product_id: @product.id) %>
-            <span class="uneat-btn"><%= link_to "食べた!", product_product_eat_path(@product) , method: :delete %></span>
-          <% else %>
-            <span class="eat-btn"><%= link_to "食べた!", product_product_eats_path(@product) , method: :post %></span>
-          <% end %>
-          <span class="eat-count"><%= @product.product_eats.count %></span>
+          <%= render partial: 'eat', locals: { product: @product} %>
         </div>
       </div>
       <div class="product-info">

@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product_topping = ProductTopping.new
     @topping = Topping.where(display: true)
+    # @product_eat = ProductEat.new
     redirect_to root_path if @product.display == false
   end
 end

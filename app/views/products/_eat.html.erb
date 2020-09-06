@@ -1,0 +1,6 @@
+<% if user_signed_in? && product.product_eats.find_by(user_id: current_user.id) %>
+  <span class="uneat-btn"><%= link_to "食べた!", product_product_eat_path(product_id: product.id, id: product.product_eats[0].id), method: :delete, remote: true %></span>
+<% else %>
+  <span class="eat-btn"><%= link_to "食べた!", product_product_eats_path(product), method: :post, remote: true %></span>
+<% end %>
+<span class="eat-count"><%= product.product_eats.count %></span>
