@@ -154,22 +154,50 @@ show.html タブの中身
   padding-top: 10px;
 }
 
-.like-block {
+.eat-block {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
 }
 
-.like-btn {
+.eat-btn {
   background-color: rgba(192,197,194,0.7);
   border-radius: 2rem;
-  padding: 5px;
+  text-align: center;
+  padding: 5px 7px;
   font-size: 6px;
   opacity: 0.7;
   margin-right: 3px;
 }
 
-.like-count {
+.eat-btn a {
+  color: #2e8b57;
+}
+.eat-btn a:hover {
+  color: #2e8b57;
+  text-decoration: none;
+}
+
+.uneat-btn {
+  background-color: #2e8b57;
+  border-radius: 2rem;
+  text-align: center;
+  padding: 5px 7px;
+  font-size: 6px;
+  opacity: 0.7;
+  margin-right: 3px;
+}
+
+.uneat-btn a {
+  color: white;
+}
+
+.uneat-btn a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.eat-count {
   font-size: 16px;
   opacity: 0.8;
 }

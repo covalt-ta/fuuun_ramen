@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'home/test_sign_in', to: 'home#test_sign_in'
 
   resources :products, only: %i(index show) do
+    resources :product_eats, only: %i(create destroy)
     scope module: :product_toppings do
       resources :add_to_baskets, only: :create
     end
@@ -22,7 +23,6 @@ Rails.application.routes.draw do
   resources :users, only: %i(show)
   resources :cards, only: %i(new create destroy)
   resources :addresses, only: %i(new create update destroy)
-  resources :product_eats, only: %i(create destroy)
   resource :basket, only: :show
   resource :contact, only: :create
   resources :charges, only: %i(new create) do
