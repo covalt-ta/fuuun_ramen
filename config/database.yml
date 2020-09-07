@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: password
+  password: # password # 本番環境のデプロイ時にpasswordを外す
   # host: localhost # database.ymlの記述とあわせる 開発中のローカル環境ではdbとしておく EC2デプロイではlocalhost
   # soket: /tmp/mysql.sock
 
