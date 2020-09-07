@@ -8,6 +8,9 @@
 
 URL: http://46.51.231.102/
 
+ユーザー名：admin
+パスワード：0429
+
 ![WEBサイトのイメージ](app/assets/images/site_image.png)
 
 # 環境・使用技術
@@ -50,7 +53,9 @@ URL: http://46.51.231.102/
 - Rubocop
 - Capistrano
 - 外部API（PAY.JP）
+- レスポンシブ【準備中】
 - その他準備中
+
 
 # ER図
 
