@@ -55,8 +55,42 @@
   </div>
 
   <div class="product-show-wrapper">
-    <div class="comment-box">
-      <p>商品に対するコメント一覧</p>
+    <div class="comment-header">
+      <p>商品に対するご感想をお聞かせください</p>
     </div>
+
+    <div class="comment-body">
+      <% if current_user %>
+        <%= form_with model: [@product, @comment], class: "comment-form-block", local: true do |f| %>
+          <%= f.text_area :comment, class: "comment-form", placeholder: "ご感想をお聞かせください。※140文字以内", row: 2 %>
+          <%= f.submit "投稿する", class: "comment-submit-btn" %>
+          <% end %>
+        <% else %>
+          <p class="login-alert-message">コメントの投稿には
+          <%= link_to "新規登録", new_user_registration_path %>/
+          <%= link_to "ログイン", new_user_session_path %>が必要です</p>
+      <% end %>
+      <div class="comments">
+        <h4>＜ご感想一覧＞</h4>
+          <% if @comments %>
+            <% @comments.each do |comment| %>
+              <div class="comment">
+                <div class="comment-title">
+                  <p><%= comment.user.nickname %>様 : <%= comment.created_at.to_s(:datetime_jp)%></p>
+                  <% if user_signed_in? && current_user.id == comment.user_id%>
+                    <p><%= link_to "削除する", product_comment_path(@product.id, comment.id), class: "comment-delete-btn", method: :delete %></p>
+                  <% end %>
+                </div>
+                <%= comment.comment %>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+
+
+
+
+
   </div>
 </div>
