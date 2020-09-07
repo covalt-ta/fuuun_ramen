@@ -35,6 +35,7 @@ class User < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :order_record_products, through: :reservations
   has_many :product_eats, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   with_options presence: true do
     validates :nickname

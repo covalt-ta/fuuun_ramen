@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {sessions: 'admins/sessions'}
+
   devise_scope :admin do
     get "sign_in", :to => "admins/sessions#new"
   end
+
   devise_for :users
   root 'home#index'
   get 'home/test_sign_in', to: 'home#test_sign_in'
 
   resources :products, only: %i(index show) do
+    resources :comments, only: %i(create destroy)
     resources :product_eats, only: %i(create destroy)
     scope module: :product_toppings do
       resources :add_to_baskets, only: :create
