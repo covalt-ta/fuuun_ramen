@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+
   root 'home#index'
   get 'home/test_sign_in', to: 'home#test_sign_in'
 
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: %i(show)
+  resources :users, only: %i(show update)
   resources :cards, only: %i(new create destroy)
   resources :addresses, only: %i(new create update destroy)
   resource :basket, only: :show
