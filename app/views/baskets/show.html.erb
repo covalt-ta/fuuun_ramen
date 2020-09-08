@@ -13,7 +13,11 @@
       <% @product_toppings.each do |product_topping| %>
         <tr class="product">
           <td><%= product_topping.product.name %></td>
-          <td><%= product_topping.topping_names %></td>
+          <td>
+            <% unless product_topping.topping_names.empty?%>
+              <%= product_topping.topping_names %>
+            <% end %>
+          </td>
           <td><%= "#{product_topping.product_topping_price.to_s(:delimited)}円" %></td>
           <td>
             <%= link_to product_topping_delete_in_baskets_path(product_topping), method: :post, data: {confirm: '削除してもいいですか？'} do %>

@@ -28,6 +28,7 @@ class ProductTopping < ApplicationRecord
 
   def topping_names
     names = toppings.map(&:name)
+    names.join(" / ")
   end
 
   def get_topping_ids
