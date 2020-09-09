@@ -1,7 +1,9 @@
 <% unless current_user.address %>
-  <p>ご住所の登録はありません</p>
-  <p>配送商品をご購入する場合にはご住所のご登録が必要となります。<p>
-  <%= link_to "住所を登録する", new_address_path, class: 'btn btn-outline-secondary '%>
+  <div class="not-contents">
+    <p>ご住所の登録はありません</p>
+    <p>配送商品をご購入する場合にはご住所のご登録が必要となります。<p>
+    <%= link_to "住所を登録する", new_address_path, class: 'card-form-btn'%>
+  </div>
 <% else %>
   <div class="user-account-contents">
     <%= form_with model: @address, url: "/addresses", local: true do |f| %>

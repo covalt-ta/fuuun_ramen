@@ -1,18 +1,21 @@
 <% if card %>
-  <div class="form-group">
-    <div class="Card_info">
-      【カード番号】
-      <br>
-      <%= "**** **** **** " + card[:last4] %>
-      <br>
-      【有効期限】
-      <br>
-      <%= card[:exp_month] %>/<%= card[:exp_year] %>
+  <div class="user-new-form">
+    <div class="card-contents">
+      <div class="card-content">
+        <p class="lavel">【カード番号】</p>
+        <p class="card-data"><%= "**** **** **** " + card[:last4] %></p>
+      </div>
+      <div class="card-content">
+        <p class="lavel">【有効期限】</p>
+        <p class="card-data"><%= card[:exp_month] %>/<%= card[:exp_year] %></p>
+      </div>
+      <%= link_to "登録削除", card_path(current_user), method: :delete, class: 'card-delete-btn'%>
     </div>
-    <%= link_to "登録削除", card_path(current_user), method: :delete, class: 'btn btn-outline-secondary '%>
   </div>
 <% else %>
-  <p>クレジットカードの登録はありません</p>
-  <p>商品の決済にはクレジットカードのご登録が必要となります。<p>
-  <%= link_to "カードを登録する", new_card_path, class: 'btn btn-outline-secondary '%>
+  <div class="not-contents">
+    <p>クレジットカードの登録はありません</p>
+    <p>商品の決済にはクレジットカードのご登録が必要となります。<p>
+    <%= link_to "カードを登録する", new_card_path, class: 'card-form-btn'%>
+  </div>
 <% end %>

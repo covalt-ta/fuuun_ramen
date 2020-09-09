@@ -14,10 +14,11 @@ class CardsController < ApplicationController
       customer_token: customer.id,
       user_id: current_user.id
     )
+
     if card.save
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: 'クレジットカードを登録しました'
     else
-      redirect_to :new
+      redirect_to new_card_path, alert: 'クレジットカードを登録できませんでした'
     end
   end
 

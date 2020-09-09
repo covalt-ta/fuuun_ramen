@@ -244,3 +244,81 @@ new_reservation.html
   width: 50%;
   margin: 0 auto;
 }
+
+/*--------------------------------
+_card.html.erb
+---------------------------------*/
+
+.card-contents {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.card-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  // flex-direction: column;
+  // text-align: center;
+}
+
+.card-data {
+  width: 200px;
+  margin-left: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: green;
+}
+
+.card-date {
+  width: 200px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.card-delete-btn {
+  margin-top: 20px;
+  color: gray;
+  text-align: center;
+}
+
+.card-delete-btn:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+.not-contents {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.address-btn {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card-form-btn {
+  width: 50%;
+  padding: 10px 20px;
+  background: rgb(134, 197, 153);
+  border: 1px solid rgb(134, 197, 153);
+  border-radius: 5px;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.card-form-btn:hover {
+  color: rgb(134, 197, 153);
+  background-color: #fff;
+  text-decoration: none;
+}
