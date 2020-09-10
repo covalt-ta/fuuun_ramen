@@ -14,8 +14,8 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: password # 本番環境のデプロイ時にpasswordをコメントアウト
-  host: db # docker-compose.ymlの記述とあわせる 開発中のローカル環境ではdbとしておく EC2デプロイではlocalhost
+  password: # password # 本番環境のデプロイ時にpasswordをコメントアウト
+  host: localhost # db # docker-compose.ymlの記述とあわせる 開発中のローカル環境ではdbとしておく EC2デプロイではlocalhost
   # soket: /tmp/mysql.sock
 
 development:
