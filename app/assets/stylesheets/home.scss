@@ -101,6 +101,32 @@
   opacity: 1;
 }
 
+
+.home-products-link {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.home-products-link-btn{
+  background-color: rgb(134, 197, 153);
+  border: 1px solid rgb(134, 197, 153);
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.home-products-link-btn:hover {
+  color: rgb(134, 197, 153);
+  background-color: #fff;
+  text-decoration: none;
+}
+
+
+
+
 /*--------------------------------
  About
 ---------------------------------*/

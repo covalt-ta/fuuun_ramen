@@ -20,24 +20,25 @@
       <div class="section-body">
         <div class="products-list js-my-gallery">
           <% @products.each do |product| %>
-          <figure class="products-item">
-            <%= link_to product_path(product) do %>
-              <div data-size="960x720" class="products-image-wrapper products-link hover-action">
-                <%= image_tag product.image.variant(resize:'960x720'), class: "products-image" if product.image.attached? %>
-              </div>
-            <% end %>
-            <figcaption class="products-body">
-              <div class="products-title"><%= product.name %></div>
-              <div class="products-text"><%= product.text %></div>
-              <div class="products-text"><%= product.display_price %></div>
-            </figcaption>
-          </figure>
+            <figure class="products-item">
+              <%= link_to product_path(product) do %>
+                <div data-size="960x720" class="products-image-wrapper products-link hover-action">
+                  <%= image_tag product.image.variant(resize:'960x720'), class: "products-image" if product.image.attached? %>
+                </div>
+              <% end %>
+              <figcaption class="products-body">
+                <div class="products-title"><%= product.name %></div>
+                <div class="products-text"><%= product.text %></div>
+                <div class="products-text"><%= product.display_price %></div>
+              </figcaption>
+            </figure>
           <% end %>
         </div>
+        <div class="home-products-link">
+          <%= link_to "モバイルオーダーで注文する", products_path, class: "home-products-link-btn" %>
+        </div>
       </div>
-      <div class="mx-auto text-center home-order-link">
-        <%= link_to "モバイルオーダーで注文する", products_path, class: "btn btn-outline-dark" %>
-      </div>
+
     </div>
   </section>
 
@@ -170,9 +171,9 @@
 
 <!-- .footer -->
 <footer class="footer">
-  <div class="page-top" id="js-page-top">
+  <%# <div class="page-top" id="js-page-top">
     トップへもどる
-  </div>
+  </div> %>
   <div class="inner">
     <div class="copyright">Copyright&copy;Fuuun Ramen. All Rights Reserved.</div>
   </div>
