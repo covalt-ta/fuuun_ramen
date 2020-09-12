@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   def create
     comment = Comment.new(comment_params)
-    if comment.save!
+    if comment.save
       redirect_to product_path(@product), notice: "コメントを投稿しました"
     else
       redirect_to product_path(@product), alert: "コメントを投稿できませんでした"
