@@ -34,8 +34,9 @@ class Product < ApplicationRecord
   with_options presence: true do
     validates :name, length: { maximum: 40 }
     validates :text, length: { maximum: 1000 }
-    validates :price
+    validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 999_999 }
     validates :category_id, numericality: { other_than: 1}
+    validates :image
     validates :admin_id
   end
 
