@@ -4,13 +4,13 @@ RSpec.describe Product, type: :model do
   let(:product) { FactoryBot.create(:product)}
 
   describe 'バリデーションのテスト' do
-    context '商品の保存ができる場合' do
-      it '管理者が紐付いていて全ての項目が必要条件を満たしていると保存される' do
+    context '保存ができる場合' do
+      it '管理者が紐付いていて全ての項目が必要条件を満たしていると保存できる' do
         expect(product).to be_valid
       end
     end
 
-    context '商品の保存ができない場合' do
+    context '保存ができない場合' do
       it '管理者が紐付いていないと保存できない' do
         product.admin = nil
         product.valid?
