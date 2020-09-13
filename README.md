@@ -1,5 +1,5 @@
 # 概要
-架空のラーメン店「Fuuun Ramen」のWebサイトです。
+架空のラーメン店「Fuuun Ramen」のモバイルオーダーWebサイトです。
 店舗機能とユーザー機能に別れています。
 
 「実店舗が集客・売上をオンラインから得る」
@@ -59,7 +59,7 @@ URL: http://fuuun-ramen.com
 
 # ER図
 
-![ER図](app/assets/images/FuuunRamen_ER.jpg)
+![ER図](app/assets/images/FuuunRamen_20200913.jpg)
 
 # 機能一覧
 - ユーザー機能（お客様）
