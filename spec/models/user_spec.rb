@@ -25,7 +25,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { FactoryBot.build(:user)}
+  let(:user) { FactoryBot.create(:user)}
 
   describe 'バリデーションのテスト' do
     context 'ユーザー作成ができる場合' do
@@ -128,12 +128,51 @@ RSpec.describe User, type: :model do
       end
     end
   end
-  # describe 'アソシエーションのテスト' do
-  #   user.save
-  #   context 'Basketとの関係' do
-  #     it '1:1となっている' do
-
-  #     end
-  #   end
-  # end
+  describe 'アソシエーションのテスト' do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+    context 'Basketとの関係' do
+      let(:target) { :basket }
+      it 'Basketとの関連付けはhas_oneであること' do
+        expect(association.macro).to eq :has_one
+      end
+    end
+    context 'OrderRecordとの関係' do
+      let(:target) { :order_record }
+      it 'OrderRecordとの関連付けはhas_oneであること' do
+        expect(association.macro).to eq :has_one
+      end
+    end
+    context 'Cardとの関係' do
+      let(:target) { :card }
+      it 'Cardとの関連付けはhas_oneであること' do
+        expect(association.macro).to eq :has_one
+      end
+    end
+    context 'Addressとの関係' do
+      let(:target) { :address }
+      it 'Addressとの関連付けはhas_oneであること' do
+        expect(association.macro).to eq :has_one
+      end
+    end
+    context 'Commentとの関係' do
+      let(:target) { :comments }
+      it 'Commentとの関連付けはhas_manyであること' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+    context 'ProductEatとの関係' do
+      let(:target) { :product_eats }
+      it 'ProductEatとの関連付けはhas_manyであること' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+    context 'Reservationとの関係' do
+      let(:target) { :reservations }
+      it 'Reservationとの関連付けはhas_manyであること' do
+        expect(association.macro).to eq :has_many
+      end
+    end
+  end
 end
