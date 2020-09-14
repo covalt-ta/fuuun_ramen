@@ -5,8 +5,15 @@ RSpec.describe ProductTopping, type: :model do
 
   describe 'バリデーションのテスト' do
     context '保存ができる場合' do
-      it 'productと紐づいていると保存される' do
+      it 'productと紐づいている' do
         expect(product_topping).to be_valid
+      end
+    end
+    context '保存ができない場合' do
+      it 'productと紐づいていない' do
+        product_topping.product = nil
+        product_topping.valid?
+        expect(product_topping.errors[:product]).to include("を入力してください")
       end
     end
   end
