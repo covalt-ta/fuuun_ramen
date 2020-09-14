@@ -8,7 +8,7 @@ class ChargesController < ApplicationController
 
   def create_reservation
     reservation = Reservation.new(reservation_params)
-    render :new_reservation and return unless reservation.valid?
+    redirect_to new_reservation_charges_path, alert: "選択内容が正しくありません" and return unless reservation.valid?
 
     session[:reservation] = reservation.attributes
     redirect_to action: :new
