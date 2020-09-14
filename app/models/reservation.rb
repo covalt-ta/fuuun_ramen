@@ -25,8 +25,14 @@ class Reservation < ApplicationRecord
 
   with_options presence: true do
     validates :day
-    validates :time_zone_id
-    validates :count_person_id, presence: true
+    validates :time_zone_id, numericality: { other_than: 1 }
+    validates :count_person_id
+  end
+
+  validate :day_not_before_today
+
+  def day_not_before_today
+    errors.add(:day, "ご予約日は今日以降を選択してください") if day.nil? || day < Date.today
   end
 
   def get_time_zone
