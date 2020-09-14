@@ -25,6 +25,12 @@ class Notice < ApplicationRecord
   belongs_to :admin
   belongs_to :reservation
 
+  with_options presence: true do
+    validates :action
+    validates :admin
+    validates :reservation
+  end
+
   def reservation_date
     reservation.day
   end
