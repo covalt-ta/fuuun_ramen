@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @product_topping = ProductTopping.new
-    @topping = Topping.where(display: true)
+    @toppings = Topping.where(display: true)
     @comment = Comment.new
     @comments = @product.comments.order(created_at: :DESC)
     redirect_to root_path if @product.display == false

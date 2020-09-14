@@ -22,12 +22,12 @@
           <div class="headline">
             トッピングをお選びください
           </div>
-          <% unless @topping.any? %>
+          <% unless @toppings.any? %>
             <p class="topping-alert">現在お選びできるトッピング商品がありません</p>
           <% end %>
           <%= form_with model: @product_topping, url: product_add_to_baskets_path(@product), product_id: @product.id, local: true do |f| %>
             <div class="topping-check">
-              <%= f.collection_check_boxes(:topping_ids, @topping.all, :id, :name, include_hidden: false) do |b|%>
+              <%= f.collection_check_boxes(:topping_ids, @toppings.all, :id, :name, include_hidden: false) do |b|%>
                 <div class="topping">
                   <%= b.label do %>
                     <%= b.check_box %>
