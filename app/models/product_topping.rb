@@ -22,10 +22,6 @@ class ProductTopping < ApplicationRecord
   has_many :product_topping_relations, dependent: :destroy
   has_many :toppings, through: :product_topping_relations
 
-  def product
-    Product.find(product_id)
-  end
-
   def topping_names
     names = toppings.map(&:name)
     names.join(" / ")
