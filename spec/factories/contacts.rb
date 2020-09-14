@@ -12,6 +12,9 @@
 #
 FactoryBot.define do
   factory :contact do
-    
+    name         { Faker::Name.initials(number: 4) }
+    email        { Faker::Internet.free_email }
+    phone_number { Faker::Number.leading_zero_number(digits: 10) }
+    text         { Faker::Lorem.sentence }
   end
 end
