@@ -26,10 +26,20 @@ RSpec.describe Product, type: :model do
         product.valid?
         expect(product.errors[:name]).to include("を入力してください")
       end
+      it 'nameが41文字以上だと保存できない' do
+        product.name = "あ" * 41
+        product.valid?
+        expect(product.errors[:name]).to include("は40文字以内で入力してください")
+      end
       it 'textが空だと保存できない' do
         product.text = nil
         product.valid?
         expect(product.errors[:text]).to include("を入力してください")
+      end
+      it 'textが1001文字以上だと保存できない' do
+        product.text = "あ" * 1001
+        product.valid?
+        expect(product.errors[:text]).to include("は1000文字以内で入力してください")
       end
       it 'priceが空だと保存できない' do
         product.price = nil
@@ -49,9 +59,17 @@ RSpec.describe Product, type: :model do
     end
   end
   describe 'アソシエーションのテスト' do
+    let(:association) do
+      # reflect_on_associationで対象クラスと引数で指定するクラスの関連を返す
+      described_class.reflect_on_association(target)
+    end
     context 'Adminモデルとの関係' do
+      let(:target) { :admin }
       it 'N:1となっている' do
-        expect(Product.reflect_on_association(:admin).macro).to eq :belongs_to
+        expect(association.macro).to eq :belongs_to
+      end
+      it '関連モデル名はAdminとなっている' do
+        expect(association.class_name).to eq 'Admin'
       end
     end
   end
