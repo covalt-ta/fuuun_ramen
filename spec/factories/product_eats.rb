@@ -21,6 +21,7 @@
 #
 FactoryBot.define do
   factory :product_eat do
-    
+    association :user, strategy: :create
+    association :product, strategy: :create
   end
 end
