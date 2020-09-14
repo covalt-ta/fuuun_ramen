@@ -19,5 +19,4 @@ class OrderRecord < ApplicationRecord
   belongs_to :user
   has_many :order_record_products, dependent: :destroy
   has_many :product_toppings, through: :order_redord_products
-  has_one :reservation
 end
