@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :product_topping_relation do
-    product_topping
-    topping
+    association :product_topping, strategy: :create
+    association :topping, strategy: :create
   end
 end

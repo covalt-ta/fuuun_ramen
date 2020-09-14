@@ -1,6 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe ProductToppingRelation, type: :model do
+  describe 'バリデーションのテスト' do
+    let(:product_topping_relation) { FactoryBot.create(:product_topping_relation)}
+
+    context '保存ができる場合' do
+      it 'ProductToppingとToppingが存在すること' do
+        expect(product_topping_relation).to be_valid
+      end
+    end
+    context '保存ができない場合' do
+      it 'ProductToppingが存在しない' do
+        product_topping_relation.product_topping = nil
+        product_topping_relation.valid?
+        expect(product_topping_relation.errors[:product_topping]).to include("を入力してください")
+      end
+      it 'Toppingが存在しない' do
+        product_topping_relation.topping = nil
+        product_topping_relation.valid?
+        expect(product_topping_relation.errors[:topping]).to include("を入力してください")
+      end
+    end
+  end
   describe 'アソシエーションのテスト' do
     let(:association) do
       described_class.reflect_on_association(target)
