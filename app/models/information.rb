@@ -22,7 +22,7 @@ class Information < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
-    validates :title
-    validates :text
+    validates :title, length: { maximum: 40 }
+    validates :text, length: { maximum: 1000 }
   end
 end
