@@ -61,4 +61,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # create(:user)など,FactoryBotを先頭につけなくても使えるようになる
+  config.include FactoryBot::Syntax::Methods
+  # Deviseのメソッド(sign_inヘルパーなど）をrequest spec内で使用できるように
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  # capybaraを用いた結合テストにはDevise::Test::IntegrationHelpersではなくWarden::Test::Helpersを用いる
+  # config.include Warden::Test::Helpers, type: :reques
 end
