@@ -26,13 +26,18 @@ class UsersController < ApplicationController
     params.require(:user).permit(:nickname, :email, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday)
   end
 
+  # 未ログインユーザー、ログインユーザーが自分以外のユーザーのページ閲覧を制限
   def ensure_correct_user
-    if current_user.id != params[:id].to_i
-      flash[:alert] = "閲覧権限がありません"
-      redirect_back(fallback_location: root_path)
+    if user_signed_in?
+      if current_user.id != params[:id].to_i
+        redirect_to root_path, alert: "閲覧権限がありません"
+      end
+    else
+      redirect_to new_user_session_path
     end
   end
 
+  # テストユーザーの編集制限
   def check_test_user
     if current_user.email == "test@test.jp"
       redirect_to user_path(current_user), alert: "テストユーザーの為、編集できません"
