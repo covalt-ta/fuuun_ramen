@@ -4,7 +4,6 @@ FactoryBot.define do
     text         { Faker::Lorem.sentence }
     price        { Faker::Number.between(from: 0, to: 999_999) }
     category_id  { 2 }
-    display      { true }
     association :admin, strategy: :create
 
     after(:build) do |product|
