@@ -6,10 +6,11 @@ class AddressesController < ApplicationController
   end
 
   def create
-    if current_user.create_address(address_params)
+    address = Address.new(address_params)
+    if address.save
       redirect_to user_path(current_user), notice: 'ご住所を登録できました'
     else
-      redirect_to action: :new, alert: 'ご住所の登録に失敗しました'
+      redirect_to new_address_path, alert: 'ご住所の登録に失敗しました'
     end
   end
 
