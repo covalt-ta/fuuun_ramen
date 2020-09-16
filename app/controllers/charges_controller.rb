@@ -50,8 +50,8 @@ class ChargesController < ApplicationController
   end
 
   def move_to_holiday(day)
-    redirect_to basket_path and return if day.to_date.wday == Shop.find(@shop.id).holiday
-    redirect_to basket_path and return if Holiday.exists?(day: day.to_date)
+    redirect_to basket_path, alert: "申し訳ございません。休日の為、ご予約できません" and return if day.to_date.wday == Shop.find(@shop.id).holiday
+    redirect_to basket_path, alert: "申し訳ございません。定休日の為、ご予約できません" and return if Holiday.exists?(day: day.to_date)
   end
 
   def session_reservation
