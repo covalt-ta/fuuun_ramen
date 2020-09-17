@@ -6,7 +6,7 @@ class ProductToppings::AddToBasketsController < ProductToppings::ApplicationCont
     product_topping = ProductTopping.create!(product_id: product.id, topping_ids: product_topping_params)
     basket.basket_products.create!(product_topping_id: product_topping.id)
 
-    redirect_to basket_path
+    redirect_to basket_path, notice: "#{product.name}を買い物かごに追加しました"
   end
 
   private
