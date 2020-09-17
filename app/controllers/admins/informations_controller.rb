@@ -1,10 +1,6 @@
 class Admins::InformationsController < Admins::ApplicationController
   before_action :set_information, only: %i[edit update destroy]
 
-  def new
-    @information = current_admin.informations.build
-  end
-
   def create
     @information = current_admin.informations.build(information_params)
     if @information.save

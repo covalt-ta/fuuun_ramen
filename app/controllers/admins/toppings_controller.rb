@@ -1,10 +1,6 @@
 class Admins::ToppingsController < Admins::ApplicationController
   before_action :set_topping, only: %i[edit update destroy]
 
-  def new
-    @topping = current_admin.toppings.build
-  end
-
   def create
     @topping = current_admin.toppings.build(topping_params)
     if @topping.save
