@@ -7,11 +7,14 @@ class Admins::ShopsController < Admins::ApplicationController
   end
 
   def create
-    if @shop = Shop.create(shop_params)
+    @shop = Shop.new(shop_params)
+
+    if @shop.save
       redirect_to admins_shop_path(@shop), notice: '店舗情報を登録しました'
     else
       redirect_to new_admins_shop_path, alert: '店舗情報を登録できませんでした'
     end
+
   end
 
   def show
