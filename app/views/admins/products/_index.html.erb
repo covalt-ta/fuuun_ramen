@@ -13,9 +13,9 @@
                 <h4><%=product.name %></h4>
                 <div class="display-check">
                   <% if product.display == false %>
-                    <%= link_to "販売する", admins_product_path(product, product: { display: true }), method: :patch, class: "btn btn-outline-dark"%>
+                    <%= link_to "販売する", admins_product_path(product, product: { display: true }), method: :patch, class: "btn btn-outline-dark display"%>
                   <% else %>
-                    <%= link_to "販売停止する", admins_product_path(product, product: { display: false }), method: :patch, class: "btn btn-outline-dark"%>
+                    <%= link_to "販売停止する", admins_product_path(product, product: { display: false }), method: :patch, class: "btn btn-outline-dark display"%>
                   <% end %>
                   <%= link_to "編集する", edit_admins_product_path(product), class: "btn btn-outline-dark"%>
                   <%= link_to "削除する", admins_product_path(product), method: :delete, class: "btn btn-outline-dark"%>

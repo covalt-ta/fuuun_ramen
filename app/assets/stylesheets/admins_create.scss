@@ -33,6 +33,7 @@
   height: 100%;
   padding: 2px;
   object-fit: cover;
+  border-radius: 0.5rem;
 }
 
 .info-index-content-data {
@@ -161,6 +162,24 @@
   text-decoration: none;
   color: #a9a9a9;
   margin-right: 20px;
+}
+
+/*--------------------------------
+ products/edit.html.erb
+---------------------------------*/
+
+.edit-product-img-wrapper {
+  margin: 0 auto;
+  width: 100%;
+  height: 400px;
+  padding: 0 20px;
+}
+
+.edit-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
 }
 
 /*--------------------------------
