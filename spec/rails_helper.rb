@@ -65,10 +65,14 @@ RSpec.configure do |config|
 
   # create(:user)など,FactoryBotを先頭につけなくても使えるようになる
   config.include FactoryBot::Syntax::Methods
+
   # Deviseのメソッド(sign_inヘルパーなど）をrequest spec内で使用できるように
   config.include Devise::Test::IntegrationHelpers, type: :request
   # capybaraを用いた結合テストにはDevise::Test::IntegrationHelpersではなくWarden::Test::Helpersを用いる
   # config.include Warden::Test::Helpers, type: :reques
+
+  # sign_inサポートモジュールの読み込み
+  config.include SignInSupport
 
   # Capybara setting
   config.before(:each, type: :system) do
