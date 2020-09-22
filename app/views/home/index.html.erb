@@ -19,7 +19,7 @@
       </div>
       <div class="section-body">
         <div class="products-list js-my-gallery">
-          <% @products.each do |product| %>
+          <% @ranking_products.each do |product| %>
             <figure class="products-item">
               <%= link_to product_path(product) do %>
                 <div data-size="960x720" class="products-image-wrapper products-link hover-action">

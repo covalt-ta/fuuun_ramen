@@ -9,6 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("../card")
+require("../slick")
+
 
 import 'bootstrap'
 import '../src/application.scss'

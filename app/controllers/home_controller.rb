@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @products = Product.where(display: true).order(updated_at: :DESC).first(3)
+    @ranking_products = Product.where(id: Product.set_ranking.first(3))
     @informations = Information.order(updated_at: :DESC).first(6)
     @contact = Contact.new
   end

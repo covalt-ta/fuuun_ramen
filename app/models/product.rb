@@ -44,4 +44,8 @@ class Product < ApplicationRecord
     category = Category.find(category_id)
     category.name
   end
+
+  def self.set_ranking
+    where(display: true).joins(:product_eats).group("products.id").order("count_all DESC").count.keys
+  end
 end

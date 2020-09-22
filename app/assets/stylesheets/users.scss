@@ -322,3 +322,128 @@ _card.html.erb
   background-color: #fff;
   text-decoration: none;
 }
+
+/*--------------------------------
+basket/show.html.erb
+---------------------------------*/
+.menu-btn-wrapper {
+  display: block;
+  margin: 20px 0;
+}
+
+.menu-btn {
+  width: 100%;
+  padding: 10px 5px;
+  background-color: #fff;
+  border: 1px solid rgb(134, 197, 153);
+  border-radius: 5px;
+  color: rgb(134, 197, 153);
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.menu-btn:hover {
+  color: #fff;
+  background-color: rgb(134, 197, 153);
+  text-decoration: none;
+}
+
+.charge-btn {
+  width: 50%;
+  margin: 5px 0 0 auto;
+  text-align: right;
+}
+
+.charge-green-btn {
+  width: 100%;
+  padding: 10px;
+  background: rgb(134, 197, 153);
+  border: 1px solid rgb(134, 197, 153);
+  border-radius: 5px;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.charge-green-btn:hover {
+  color: rgb(134, 197, 153);
+  background-color: #fff;
+  text-decoration: none;
+}
+
+.menu-link {
+  margin-top: 20px;
+  margin-right: 20px;
+  color: gray;
+  text-align: center;
+}
+
+.menu-link:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+
+.recommend {
+  margin: 50px auto;
+  width: 70%;
+}
+
+.recommend h3 {
+  text-align: center;
+  margin: 10px auto;
+  width: 90%;
+  font-size: 20px;
+  color: rgba(102, 107, 106, 0.8);
+  border-bottom: solid 1px rgb(134, 197, 153);
+  position: relative;
+}
+
+
+.recommend-product-wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(134, 197, 153, 0.1);
+  border-radius: 0.5rem;
+}
+
+.recommend-product-image-wrapper {
+  width: 100%;
+  height: 250px;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+}
+
+.recommend-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.2rem;
+}
+
+.recommend-product-name {
+  font-size: 0.5rem;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.fa-chevron-circle-left {
+  font-size: 30px;
+  position: absolute;
+  z-index: 100;
+  left: -50px;
+  top: 150px;
+  color: rgba(134, 197, 153, 0.7);
+}
+
+.fa-chevron-circle-right {
+  font-size: 30px;
+  position: absolute;
+  z-index: 100;
+  right: -50px;
+  top: 150px;
+  color: rgba(134, 197, 153, 0.7);
+}

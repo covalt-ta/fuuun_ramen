@@ -1,6 +1,7 @@
 <% breadcrumb :user_basket, current_user %>
 <div class="inner">
-  <table class="table table-striped wrapper">
+  <span class="menu-btn-wrapper"><%= link_to 'メニューに戻る', products_path , class: "menu-btn"%></span>
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">商品名</th>
@@ -21,7 +22,7 @@
           <td><%= "#{product_topping.product_topping_price.to_s(:delimited)}円" %></td>
           <td>
             <%= link_to product_topping_delete_in_baskets_path(product_topping), method: :post, data: {confirm: '削除してもいいですか？'} do %>
-                <span class="btn btn-outline-secondary">削除する</span>
+              <span class="btn btn-outline-secondary">削除する</span>
             <% end %>
           </td>
         </tr>
@@ -35,97 +36,27 @@
       <span><%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%></span>
     </div>
     <br>
-    <div class="float-right">
-      <%= link_to "購入画面に進む", new_reservation_charges_path, class: "btn btn-lg btn-outline-secondary"%>
+    <div class="charge-btn">
+      <%= link_to 'メニューに戻る', products_path , class: "menu-link"%>
+      <%= link_to "購入画面に進む", new_reservation_charges_path, class: "charge-green-btn"%>
     </div>
   <% end %>
-</div>
-<br>
-
-
-<div class="container mb-5">
-  <h1 class="h3 mb-4">オススメ商品</h1>
-  <div id="carousel-card" class="carousel slide" data-interval="5000">
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-card" data-slide-to="0" class="active">
-        <img src="https://placehold.it/100x50" alt="img">
-      </li>
-      <li data-target="#carousel-card" data-slide-to="1">
-        <img src="https://placehold.it/100x50" alt="img">
-      </li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item px-5 active">
-        <div class="row">
-          <div class="col-4">
-            <div class="card">
-              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
+  <div class="recommend">
+    <h3>おすすめ商品</h3>
+    <div class="previews">
+      <div class="slider">
+        <% @recommend_product.each do |product| %>
+          <div class="recommend-product-wrapper">
+            <div class="recommend-product-image-wrapper">
+              <%= link_to product_path(product) do %>
+                <%= image_tag product.image, class: "recommend-product-image" %>
+              <% end %>
             </div>
+            <p class="recommend-product-name"><%= product.name %></p>
+            <p class="recommend-product-name"><%= product.display_price %></p>
           </div>
-          <div class="col-4">
-            <div class="card">
-              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="card">
-              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item px-5">
-        <div class="row">
-          <div class="col-4">
-            <div class="card">
-              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="card">
-              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="card">
-              <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-              </div>
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carousel-card" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel-card" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
   </div>
-  <style>
-  #carousel-card .carousel-control-next,
-  #carousel-card .carousel-control-prev {
-    width: 5%;
-    background-color: #333;
-  }
-  </style>
 </div>
