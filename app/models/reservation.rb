@@ -43,24 +43,13 @@ class Reservation < ApplicationRecord
     CountPerson.find(count_person_id).name
   end
 
+  def get_count_person_value
+    CountPerson.find(count_person_id).value
+  end
+
   def total_price(product_topping_ids: nil)
     # product_toppingsを引数で渡すから取得している状態で呼び出す
-    product_toppings = if product_topping_ids
-                         self.product_toppings.where(id: product_topping_ids)
-                       else
-                         self.product_toppings
-                       end
-
-    # productの金額
-    product_ids = product_toppings.pluck(:product_id)
-    reservation_products = product_ids.map { |id| Product.find(id)}
-    product_total_price = reservation_products.sum { |reservation_product| reservation_product[:price]}
-
-    # toppingの金額
-    toppings = product_toppings.map(&:toppings)
-    topping_total = toppings.map { |topping| topping.sum { |topping| topping[:price]}}
-    topping_total_price = topping_total.sum
-
-    product_total_price + topping_total_price
+    product_toppings = product_topping_ids ? self.product_toppings.where(id: product_topping_ids) : self.product_toppings
+    PriceCalculator.total(product_toppings)
   end
 end
