@@ -14,7 +14,7 @@
           <tr class="product">
             <td><%= product_topping.product.name %></td>
             <td><%= product_topping.topping_names %></td>
-            <td><%= "#{product_topping.product_topping_price.to_s(:delimited)}円" %></td>
+            <td><%= "#{product_topping.price.to_s(:delimited)}円" %></td>
           </tr>
         <% end %>
       </tbody>

@@ -19,7 +19,7 @@
               <%= product_topping.topping_names %>
             <% end %>
           </td>
-          <td><%= "#{product_topping.product_topping_price.to_s(:delimited)}円" %></td>
+          <td><%= "#{product_topping.price.to_s(:delimited)}円" %></td>
           <td>
             <%= link_to product_topping_delete_in_baskets_path(product_topping), method: :post, data: {confirm: '削除してもいいですか？'} do %>
               <span class="btn btn-outline-secondary">削除する</span>
