@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: {sessions: 'admins/sessions'}
 
   devise_scope :admin do
-    get "sign_in", :to => "admins/sessions#new"
+    get "sign_in", to: "admins/sessions#new"
   end
 
   devise_for :users
@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root to: "dashboards#index"
+    get 'dashboards/search', to: 'dashboards#search'
     resources :products, only: %i(index new create edit update destroy)
     resources :toppings, only: %i(create edit update destroy)
     resources :informations, only: %i(create edit update destroy)
