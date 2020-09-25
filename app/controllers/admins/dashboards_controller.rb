@@ -21,7 +21,8 @@ class Admins::DashboardsController < Admins::ApplicationController
     topping_count_ary = @product_toppings.map {|p| p.toppings.map {|t| t.id}}
     @topping_count = topping_count_ary.flatten.group_by(&:itself).map{|key, value| [key, value.count]}.to_h
     topping_ids = Hash[@topping_count.sort_by{ |_, v| -v}].keys
-    @topping_ranking = Topping.where(id: topping_ids)
+    # 「.order・・・」はランキング順のtopping_idsを渡してもランキング順の取得ができてなかった為の記述
+    @topping_ranking = Topping.where(id: topping_ids).order("field(id, #{topping_ids.join(',')})")
   end
 
   def search
