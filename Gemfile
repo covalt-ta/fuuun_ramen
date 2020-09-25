@@ -70,6 +70,7 @@ gem 'gretel'
 gem 'rails-i18n'
 gem 'aws-sdk-s3', require: false
 gem 'dotenv-rails'
+gem 'ransack'
 
 group :production do
   gem 'unicorn', '5.4.1'
