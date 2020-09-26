@@ -384,30 +384,101 @@
   padding: 0 20px;
   margin-top: 50px;
   display: flex;
+  justify-content: space-between;
 }
 
-
 .dashboard-contents {
+  width: 100%;
+}
+
+.dashboard-content {
   background-color: #f7f7f7;
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
   border-radius: 10px;
   padding: 10px;
-  width: 50%;
-  margin: 20px auto;
+  width: 90%;
+  margin: 0 auto 50px;
 }
 
-.dashboard-content {
+.data-title {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.monthly-data h3 {
+  text-align: center;
+  color: #2e8b57;
+}
+
+.data-content {
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  margin: 20px auto;
   display: flex;
   justify-content: space-between;
+}
+
+.data {
+  font-size: 2rem;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.search-label {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.search-data h3 {
+  text-align: center;
+  color: #2e8b57;
+}
+
+.result-nil {
+  color: #2e8b57;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.date-field {
+  border: solid 1px rgb(192,197,194);
+  color: #2e8b57;
+  text-align: center;
+  border-radius: 2px;
+  width: 200px;
+}
+
+.search-btn {
+  border: solid 1px rgb(192,197,194);
+  background-color: #f7f7f7;
+  color: #2e8b57;
+  width: 60px;
+  font-size: 15px;
+  border-radius: 2px;
+}
+
+.search-btn:hover {
+  background-color: rgb(134, 197, 153);
+  color: #f7f7f7;
 }
 
 /*--------------------------------
  admins/dashboards/_side_bar.html.erb
 ---------------------------------*/
 .side-bar-menu {
-  width: 250px;
-  height: 340px;
+  min-width: 250px;
+  height: 390px;
   text-align: center;
   background-color: rgb(134, 197, 153);
   box-shadow: 0 2px 6px #c1ced7;
@@ -415,7 +486,7 @@
   border-radius: 10px;
   padding: 10px;
   // position: fixed;
-  margin-right: 30px;
+  margin-right: 10px;
 }
 
 .side-bar-menu li {

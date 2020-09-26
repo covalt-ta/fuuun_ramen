@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   namespace :admins do
     root to: "dashboards#index"
     get 'dashboards/search', to: 'dashboards#search'
+    get 'dashboards/ranking', to: 'dashboards#ranking'
     resources :products, only: %i(index new create edit update destroy)
     resources :toppings, only: %i(create edit update destroy)
     resources :informations, only: %i(create edit update destroy)

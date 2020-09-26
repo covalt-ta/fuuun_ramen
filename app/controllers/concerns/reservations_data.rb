@@ -5,11 +5,6 @@ module ReservationsData
     reservations.sum { |reservation| reservation.get_count_person_value }
   end
 
-  # Take Out数を算出する
-  def self.count_takeout(days)
-    Reservation.where(day: days, count_person_id: 1).count
-  end
-
   # product_toppingsを取得する
   def self.product_toppings(reservations)
     # 今月の予約に紐づく全てのproduct_topping.idを取得
