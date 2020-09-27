@@ -1,5 +1,6 @@
 class Admins::DashboardsController < Admins::ApplicationController
   before_action :search_reservation
+  require "csv"
 
   def index
     # 当月の予約を取得
@@ -21,12 +22,14 @@ class Admins::DashboardsController < Admins::ApplicationController
     # 予約済product_toppingsと当月売上合計を算出する
     @results_product_toppings = ReservationsData.product_toppings(@p.result)
     @results_total_price = PriceCalculator.total(@results_product_toppings)
+
+
   end
 
   def search
+    @p = Reservation.includes(:product_toppings, :user).ransack(params[:q])
     @results = @p.result.order(day: :ASC)
     # 検索ヒットした予約に紐づくproduct_toppingsを取得
-    @product_toppings = ReservationsData.product_toppings(@results)
   end
 
   def ranking
@@ -42,10 +45,45 @@ class Admins::DashboardsController < Admins::ApplicationController
     topping_ids = Hash[@topping_count.sort_by{ |_, v| -v}].keys
     # 「.order・・・」はランキング順のtopping_idsを渡してもランキング順の取得ができてなかった為の記述
     @topping_ranking = Topping.where(id: topping_ids).order("field(id, #{topping_ids.join(',')})")
+
+
+    # CSV出力
+    respond_to do |format|
+      format.html
+      format.csv do |csv|
+        send_ranking_csv(@product_ranking, @product_count, @topping_ranking, @topping_count, params[:target_period])
+      end
+    end
   end
 
   private
   def search_reservation
     @p = Reservation.includes(:product_toppings).ransack(params[:q])
+    # 検索対象期間
+    @target_period = "#{params[:q][:day_gteq]}-#{params[:q][:day_lteq]}" if params[:q]
+  end
+
+  def send_ranking_csv(product_ranking, product_count, topping_ranking, topping_count, target_period)
+    filename = "ranking-#{target_period}.csv"
+
+    csv_data = CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |csv|
+      product_header = %w(順位 商品名 件数 販売金額)
+      csv << product_header
+      product_ranking.each do |ranking|
+        values = [product_ranking.index(ranking) + 1, ranking.name, product_count[ranking.id],ranking.price * product_count[ranking.id]]
+        csv << values
+      end
+
+      blank = %w( )
+      csv << blank
+
+      topping_header = %w(順位 トッピング名 件数 販売金額)
+      csv << topping_header
+      topping_ranking.each do |ranking|
+        values = [topping_ranking.index(ranking) + 1, ranking.name, topping_count[ranking.id],ranking.price * topping_count[ranking.id]]
+        csv << values
+      end
+    end
+    send_data(csv_data, filename: filename)
   end
 end
