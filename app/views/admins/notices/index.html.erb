@@ -1,15 +1,15 @@
-<div class="wrapper">
-  <div class='inner'>
-    <div class="notice-index-wrapper">
+<div class="dashboard-wrapper">
+  <%= render partial: 'admins/dashboards/side_bar' %>
+  <div class="admins-contents-wrapper">
+    <div class="admins-contents-width">
     <h3>通知一覧</h3>
-      <div class="info-index-contents">
-        <div class="notice-index-content">
-          <% if @notices.exists? %>
-            <%= render @notices %>
-          <% else %>
-            <p class="not-notice">通知はありません</p>
-          <% end %>
-        </div>
+    <div class="info-index-contents">
+      <div class="notice-index-content">
+        <% if @notices.exists? %>
+          <%= render @notices %>
+        <% else %>
+          <p class="not-notice">通知はありません</p>
+        <% end %>
       </div>
     </div>
   </div>

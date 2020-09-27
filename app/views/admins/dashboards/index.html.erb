@@ -1,5 +1,59 @@
-<div class="wrapper">
-  <div class="inner">
-    <h1>Dash Board</h1>
+<div class="dashboard-wrapper">
+  <%= render partial: 'side_bar' %>
+  <div class="admin-tab-wrap">
+    <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">ダッシュボード</label>
+    <div class="tab-content">
+      <div class="panel">
+        <div class="dashboard-content">
+          <div class="monthly-data">
+            <h3>今月の進捗</h3>
+            <div class="data-content">
+              <p class="data-title">売上</p>
+              <span class="data"><%= "#{@total_price.to_s(:delimited)}円" %></span>
+            </div>
+            <div class="data-content">
+              <p class="data-title">来客数</p>
+              <span class="data"><%= "#{@count_person.to_s(:delimited)}名" %></span>
+            </div>
+            <div class="data-content">
+              <p class="data-title">テイクアウト件数</p>
+              <span class="data"><%= "#{@count_takeout.to_s(:delimited)}名" %></span>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-content">
+          <div class="search-data">
+            <h3>売上データ検索</h3>
+            <%= search_form_for @p, url: admins_root_path do |f| %>
+              <div class="search-form">
+                <%= f.label :day, '来店日', class: "search-label" %>
+                <%= f.date_field :day_gteq, include_blank: true, class: "date-field" %>
+                <span class="serach-label">~</span>
+                <%= f.date_field :day_lteq, include_blank: true, class: "date-field"  %>
+                <%= f.submit '検索', class: "search-btn" %>
+              </div>
+            <% end %>
+
+            <%# 検索結果の個数で条件分岐 %>
+            <% if @p.result.length != 0 && params[:q] %>
+              <div class="data-content">
+                <p class="data-title">売上</p>
+                <span class="data"><%= "#{@results_total_price.to_s(:delimited)}円" %></span>
+              </div>
+              <div class="data-content">
+                <p class="data-title">来客数</p>
+                <span class="data"><%= "#{@results_count_person.to_s(:delimited)}名" %></span>
+              </div>
+              <div class="data-content">
+                <p class="data-title">テイクアウト件数</p>
+                <span class="data"><%= "#{@results_count_takeout.to_s(:delimited)}名" %></span>
+              </div>
+            <% else %>
+              <p class="result-nil">表示する検索結果がありません。</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

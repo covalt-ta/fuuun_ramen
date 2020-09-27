@@ -1,31 +1,28 @@
-<div class="wrapper">
-  <div class='inner'>
-    <div class="information-wrapper">
-      <p class="alert-edit-delete">購入済や買い物かごに保存された商品は編集・削除できません</p>
-      <div class="info-index-contents">
-        <% toppings.each do |topping| %>
-        <div class="topping-index-content">
-          <div class="info-index-content-data-topping">
-            <div class="info-index-content-head">
-              <h4><%= topping.name %></h4>
-              <div class="display-check">
-                <% if topping.display == false %>
-                  <%= link_to "販売する", admins_topping_path(topping, topping: { display: true }), method: :patch, class: "btn btn-outline-dark"%>
-                <% else %>
-                  <%= link_to "販売停止する", admins_topping_path(topping, topping: { display: false }), method: :patch, class: "btn btn-outline-dark"%>
-                <% end %>
-                <%= link_to "編集する", edit_admins_topping_path(topping), class: "btn btn-outline-dark"%>
-                <%= link_to "削除する", admins_topping_path(topping), method: :delete, class: "btn btn-outline-dark"%>
-              </div>
-            </div>
-            <div class="info-content-price">
-              <p><%= "#{topping.price}円" %></p>
-            </div>
-            <span class="update-date"><%= "更新日時 #{topping.updated_at.to_s(:datetime_jp)}" %><span>
+<div class='inner'>
+  <p class="alert-edit-delete">購入済や買い物かごに保存された商品は編集・削除できません</p>
+  <div class="info-index-contents">
+    <% toppings.each do |topping| %>
+    <div class="topping-index-content">
+      <div class="info-index-content-data-topping">
+        <div class="info-index-content-head">
+          <h4><%= topping.name %></h4>
+          <div class="display-check">
+            <% if topping.display == false %>
+              <%= link_to "販売する", admins_topping_path(topping, topping: { display: true }), method: :patch, class: "btn btn-outline-dark"%>
+            <% else %>
+              <%= link_to "販売停止する", admins_topping_path(topping, topping: { display: false }), method: :patch, class: "btn btn-outline-dark"%>
+            <% end %>
+            <%= link_to "編集する", edit_admins_topping_path(topping), class: "btn btn-outline-dark"%>
+            <%= link_to "削除する", admins_topping_path(topping), method: :delete, class: "btn btn-outline-dark"%>
           </div>
         </div>
-        <% end %>
+        <div class="info-content-price">
+          <p><%= "#{topping.price}円" %></p>
+        </div>
+        <span class="update-date"><%= "更新日時 #{topping.updated_at.to_s(:datetime_jp)}" %><span>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
+

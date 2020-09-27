@@ -1,46 +1,40 @@
-<div class="wrapper">
-  <div class="inner">
-    <div class="information-wrapper">
-      <h3>商品登録</h3>
+<div class="inner">
+  <div class="info-new-contents">
+    <%= form_with model: [:admins, @product], local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+      <div class="product-new-flex">
 
-      <div class="info-new-contents">
-        <%= form_with model: [:admins, @product], local: true do |f| %>
-          <%= render 'shared/error_messages', model: f.object %>
-          <div class="product-new-flex">
-
-            <div class="info-img-upload">
-              <p class="weight-bold-text">商品画像</p>
-              <div class="info-image-upload">
-                <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp' %>
-              </div>
-            </div>
-
-            <div class="new-product-textdata">
-              <p class="weight-bold-text">商品名</p>
-              <%= f.text_area :name, class:"product-textform", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
-
-              <p class="weight-bold-text">商品の説明</p>
-              <%= f.text_area :text, class:"product-textform textarea", placeholder:"商品の説明（必須 1,000文字まで）（味、素材、ポイント）例）革新の一杯
-                自家製の香味油と辛みそを加えることで、一杯のラーメンの中でいくつもの味の奥行きと調和を楽しめます。コクと深みを追求した自信作です。" ,rows:"7" ,maxlength:"1000" %>
-            </div>
-
-            <div class="new-product-category">
-              <p class="weight-bold-text">カテゴリー</p>
-              <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"product-textform"}) %>
-            </div>
-
-            <div class="new-product-price">
-              <p class="weight-bold-text">販売価格(¥0〜999,999)</p>
-              <%= f.text_field :price, class:"product-textform", placeholder:"例）500" %>
-            </div>
-
-            <div class="product-create-btn">
-              <%=link_to '戻る', admins_root_path, class:"back-btn" %>
-              <%= f.submit "商品登録する" ,class:"btn btn-outline-secondary", id:"product-submit" %>
-            </div>
+        <div class="info-img-upload">
+          <p class="weight-bold-text">商品画像</p>
+          <div class="info-image-upload">
+            <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp' %>
           </div>
-        <% end %>
+        </div>
+
+        <div class="new-product-textdata">
+          <p class="weight-bold-text">商品名</p>
+          <%= f.text_area :name, class:"product-textform", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+
+          <p class="weight-bold-text">商品の説明</p>
+          <%= f.text_area :text, class:"product-textform textarea", placeholder:"商品の説明（必須 1,000文字まで）（味、素材、ポイント）例）革新の一杯
+            自家製の香味油と辛みそを加えることで、一杯のラーメンの中でいくつもの味の奥行きと調和を楽しめます。コクと深みを追求した自信作です。" ,rows:"7" ,maxlength:"1000" %>
+        </div>
+
+        <div class="new-product-category">
+          <p class="weight-bold-text">カテゴリー</p>
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"product-textform"}) %>
+        </div>
+
+        <div class="new-product-price">
+          <p class="weight-bold-text">販売価格(¥0〜999,999)</p>
+          <%= f.text_field :price, class:"product-textform", placeholder:"例）500" %>
+        </div>
+
+        <div class="product-create-btn">
+          <%=link_to '戻る', admins_root_path, class:"back-btn" %>
+          <%= f.submit "商品登録する" ,class:"btn btn-outline-secondary", id:"product-submit" %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

@@ -1,28 +1,23 @@
-<div class="wrapper">
-  <div class="inner">
-    <div class="information-wrapper">
-      <h3>トッピング登録</h3>
-      <div class="info-new-contents">
-        <%= form_with model: [:admins, @topping], local: true do |f| %>
-          <%= render 'shared/error_messages', model: f.object %>
-          <div class="product-new-flex">
+<div class="inner">
+  <div class="info-new-contents">
+    <%= form_with model: [:admins, @topping], local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+      <div class="product-new-flex">
 
-            <div class="new-product-textdata">
-              <p class="weight-bold-text">トッピング名</p>
-              <%= f.text_area :name, class:"product-textform", placeholder:"例: 煮玉子(20文字以内)", maxlength:"40" %>
-            </div>
+        <div class="new-product-textdata">
+          <p class="weight-bold-text">トッピング名</p>
+          <%= f.text_area :name, class:"product-textform", placeholder:"例: 煮玉子(20文字以内)", maxlength:"40" %>
+        </div>
 
-            <div class="new-product-price">
-              <p class="weight-bold-text">価格(¥0〜999,999)</p>
-              <%= f.text_field :price, class:"product-textform", placeholder:"例）50" %>
-            </div>
-            <div class="product-create-btn">
-              <%=link_to '戻る', admins_root_path, class:"back-btn" %>
-              <%= f.submit "商品登録する" ,class:"btn btn-outline-secondary" %>
-            </div>
-          </div>
-        <% end %>
+        <div class="new-product-price">
+          <p class="weight-bold-text">価格(¥0〜999,999)</p>
+          <%= f.text_field :price, class:"product-textform", placeholder:"例）50" %>
+        </div>
+        <div class="product-create-btn">
+          <%=link_to '戻る', admins_root_path, class:"back-btn" %>
+          <%= f.submit "商品登録する" ,class:"btn btn-outline-secondary" %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

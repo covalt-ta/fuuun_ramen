@@ -34,6 +34,7 @@
 // breadcrumbsが入らない箇所にはwrapperを設定
 .breadcrumbs {
   padding-top: 40px;
+  margin-bottom: 10px;
   margin-left: 30px;
   color: #a9a9a9;
   padding-right: 5px;
@@ -267,12 +268,11 @@
 ---------------------------------*/
 
 .tab-wrap {
-  flex: 2;
   display: flex;
   flex-wrap: wrap;
-  margin:15px 0;
   background-color: #f7f7f7;
 }
+
 .tab-wrap:after {
   content: '';
   width: 100%;
@@ -317,10 +317,4 @@
 }
 .tab-switch {
   display: none;
-}
-
-
-.test {
-  margin-top: 50px;
-  margin-left: 50px;
 }

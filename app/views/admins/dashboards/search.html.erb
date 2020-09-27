@@ -1,0 +1,56 @@
+<div class="dashboard-wrapper">
+  <%= render partial: 'side_bar' %>
+  <div class="admins-contents-wrapper">
+    <div class="dashboard-contents">
+      <div class="dashboard-content">
+        <div class="search-data">
+          <h3>予約検索</h3>
+          <%= search_form_for @p, url: admins_dashboards_search_path do |f| %>
+
+            <div class="reservation-search-form">
+              <%= f.label :day, '来店日', class: "search-label" %>
+              <%= f.date_field :day_gteq, include_blank: true, class: "date-field" %>
+              <span class="serach-label">~</span>
+              <%= f.date_field :day_lteq, include_blank: true, class: "date-field"  %>
+              <div>
+                <%= f.label :user_nickname_or_user_first_name_or_user_last_name_or_user_first_name_kana_or_user_last_name_kana, "お客様名", "search-label" %>
+                <%= f.search_field :user_nickname_or_user_first_name_or_user_last_name_or_user_first_name_kana_or_user_last_name_kana_cont %>
+              </div>
+              <div>
+                <%= f.label :count_person_id_in, "人数" %>
+                <%= f.collection_check_boxes :count_person_id_in, CountPerson.all, :id, :name %>
+              </div>
+              <div>
+                <%= f.label :product_toppings_product_id_in, "商品" %>
+                <%= f.collection_check_boxes :product_toppings_product_id_in, Product.all, :id, :name %>
+              </div>
+              <%= f.submit '検索', class: "search-btn" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="search-data">
+          <h3>検索結果</h3>
+          <%# 検索結果の個数で条件分岐 %>
+          <% if @results.length !=0 && params[:q] %>
+            <ul>
+              <% @results.each do |result| %>
+                <li>
+                  <%= link_to admins_reservation_path(result) do %>
+                    <%= result.user.nickname %>様
+                    <%= result.day %>
+                    <%= result.get_time_zone %>
+                    <%= result.get_count_person %>
+                    <%= result.total_price %>円
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+            <%= link_to "csvで出力する", admins_dashboards_search_path(format: :csv, target_period: @target_period) %>
+          <% else %>
+            <p class="result-nil">表示する検索結果はありません</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

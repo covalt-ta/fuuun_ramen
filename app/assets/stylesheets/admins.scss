@@ -1,13 +1,20 @@
 /*--------------------------------
  informations/index.html.erb
 ---------------------------------*/
-.information-wrapper {
-  margin: 40px 0;
+
+.admins-contents-width {
+  margin: 0 auto;
+  width: 90%;
 }
 
-.information-wrapper h3 {
+.admins-contents-width h3{
   text-align: center;
 }
+
+.admins-contents-wrapper h3 {
+  text-align: center;
+}
+
 .info-index-contents {
   background-color: white;
   box-shadow: 0 2px 6px #c1ced7;
@@ -72,7 +79,7 @@
 ---------------------------------*/
 
 .info-new-contents {
-  background-color: white;
+  background-color: #f7f7f7;
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
   border-radius: 10px;
@@ -185,6 +192,14 @@
 /*--------------------------------
  products/index.html.erb
 ---------------------------------*/
+.admin-tab-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f7f7f7;
+  margin-left: 300px;
+  min-width: 1000px;
+}
+
 .alert-edit-delete {
   color: red;
   font-size: 11px;
@@ -285,7 +300,8 @@
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
   border-radius: 10px;
-  padding: 20px
+  padding: 20px;
+  margin: 0 auto;
 
 }
 
@@ -387,6 +403,12 @@
   justify-content: space-between;
 }
 
+.admins-contents-wrapper {
+  width: 100%;
+  margin-left: 250px;
+}
+
+
 .dashboard-contents {
   width: 100%;
 }
@@ -485,8 +507,9 @@
   overflow: hidden;
   border-radius: 10px;
   padding: 10px;
-  // position: fixed;
+  position: fixed;
   margin-right: 10px;
+  z-index: 40;
 }
 
 .side-bar-menu li {

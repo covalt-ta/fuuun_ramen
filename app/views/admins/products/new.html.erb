@@ -1,5 +1,6 @@
-<div class='form-wrap inner wrapper'>
-  <div class="tab-wrap">
+<div class='dashboard-wrapper'>
+  <%= render partial: 'admins/dashboards/side_bar' %>
+  <div class="admin-tab-wrap">
     <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">商品の登録</label>
     <div class="tab-content">
       <div class="panel"><%= render 'form_new' %></div>

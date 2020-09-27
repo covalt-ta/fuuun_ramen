@@ -1,5 +1,6 @@
-<div class="inner wrapper">
-  <div class="reservate-wrapper">
+<div class="dashboard-wrapper">
+  <%= render partial: 'admins/dashboards/side_bar' %>
+  <div class="admins-contents-wrapper">
     <div class="reservate-show-contents">
       <h3>ご予約詳細</h3>
       <table class="table">
@@ -37,6 +38,9 @@
           </tr>
         </tbody>
       </table>
+      <%= link_to :back do %>
+        <button>戻る</button>
+      <% end %>
     </div>
   </div>
 </div>
