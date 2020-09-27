@@ -22,8 +22,6 @@ class Admins::DashboardsController < Admins::ApplicationController
     # 予約済product_toppingsと当月売上合計を算出する
     @results_product_toppings = ReservationsData.product_toppings(@p.result)
     @results_total_price = PriceCalculator.total(@results_product_toppings)
-
-
   end
 
   def search

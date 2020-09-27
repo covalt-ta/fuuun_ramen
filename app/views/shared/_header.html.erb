@@ -13,21 +13,13 @@
   <div class="gnav-right">
     <ul class="gnav-list">
       <% if admin_signed_in? %>
-        <li class="gnav-item"><%= link_to "ダッシュボード", admins_root_path, class: "gnav-link" %></li>
-        <% unless Shop.exists? %>
-          <li class="gnav-item"><%= link_to "店舗登録", new_admins_shop_path, class: "gnav-link" %></li>
-        <% else %>
-          <li class="gnav-item"><%= link_to "店舗情報", admins_shop_path(current_admin.shop), class: "gnav-link" %></li>
-        <% end %>
         <% if unchecked_notices.any? %>
           <li class="gnav-item"><%= link_to "通知", admins_notices_path, class: "gnav-link new-notice" %></li>
         <% else %>
           <li class="gnav-item"><%= link_to "通知", admins_notices_path, class: "gnav-link" %></li>
         <% end %>
-        <li class="gnav-item"><%= link_to "予約", admins_reservations_path, class: "gnav-link" %></li>
-        <li class="gnav-item"><%= link_to "登録一覧", admins_products_path, class: "gnav-link" %></li>
-        <li class="gnav-item"><%= link_to "新規登録", new_admins_product_path, class: "gnav-link" %></li>
-        <li class="gnav-item"><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "gnav-link" %></li>
+        <li class="gnav-item"><%= link_to "ダッシュボード", admins_root_path, class: "gnav-link" %></li>
+        <li class="gnav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "gnav-link" %></li>
       <% elsif user_signed_in? %>
         <li class="gnav-item"><%= link_to "マイページ", user_path(current_user), class: "gnav-link" %></li>
         <li class="gnav-item"><%= link_to "買い物カゴ", basket_path(current_user), class: "gnav-link" %></li>
