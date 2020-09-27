@@ -19,6 +19,63 @@
               <p class="data-title">テイクアウト件数</p>
               <span class="data"><%= "#{@count_takeout.to_s(:delimited)}名" %></span>
             </div>
+            <h3><%= "本日の予約（#{@today}）"%></h3>
+
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">来店日時</th>
+                  <th scope="col">お客様</th>
+                  <th scope="col">来店人数</th>
+                  <th scope="col">合計金額</th>
+                  <th scope="col">商品</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @reservations.each do |reservation| %>
+                  <tr class="product">
+                    <td>
+                      <%= link_to admins_reservation_path(reservation) do %>
+                        <span class="reservate-link"><%= "#{reservation.day} / #{reservation.get_time_zone}"%></span>
+                      <% end %>
+                    </td>
+                    <td><%= "#{reservation.user.last_name} #{reservation.user.first_name}様" %></td>
+                    <td><%= reservation.get_count_person %></td>
+                    <td><%= "#{reservation.total_price.to_s(:delimited)}円" %></td>
+                    <td>
+                      <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter<%= reservation.id %>">
+                        販売商品の詳細
+                      </button>
+                    </td>
+                    <div class="modal fade" id="exampleModalCenter<%= reservation.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">商品詳細</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <% reservation.order_record_products.each do |order_record_product| %>
+                              <div>
+                                <%= order_record_product.product_topping.product.name %>
+                                <%= order_record_product.product_topping.topping_names%>
+                              </div>
+                            <% end %>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <p class="result-nil"><%= "本日のご予約は現在ありません" if @reservations.blank? %></p>
           </div>
         </div>
         <div class="dashboard-content">
@@ -49,7 +106,7 @@
                 <span class="data"><%= "#{@results_count_takeout.to_s(:delimited)}名" %></span>
               </div>
             <% else %>
-              <p class="result-nil">表示する検索結果がありません。</p>
+              <p class="result-nil">表示する検索結果がありません</p>
             <% end %>
           </div>
         </div>

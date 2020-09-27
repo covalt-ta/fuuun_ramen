@@ -1,6 +1,6 @@
 class Admins::ReservationsController < Admins::ApplicationController
   def index
-    @today = Date.today
+    @today = Date.current
     to_month = @today + 1.month
     @reservations = Reservation.includes(:user, order_record_products: :product_topping).where(day: @today..to_month).order(day: :ASC, time_zone_id: :ASC)
   end
