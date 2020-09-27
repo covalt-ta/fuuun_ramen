@@ -29,7 +29,14 @@ class Admins::DashboardsController < Admins::ApplicationController
   def search
     @p = Reservation.includes(:product_toppings, :user).ransack(params[:q])
     @results = @p.result.order(day: :ASC)
-    # 検索ヒットした予約に紐づくproduct_toppingsを取得
+
+    # CSV出力
+    respond_to do |format|
+      format.html
+      format.csv do |csv|
+        send_reservation_csv(@results, params[:target_period])
+      end
+    end
   end
 
   def ranking
@@ -63,8 +70,27 @@ class Admins::DashboardsController < Admins::ApplicationController
     @target_period = "#{params[:q][:day_gteq]}-#{params[:q][:day_lteq]}" if params[:q]
   end
 
+  def send_reservation_csv(reservations, target_period)
+    filename = "reservation_#{target_period}.csv"
+    csv_data = CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |csv|
+      header = %w(氏名 来店日 来店時刻 予約日 人数 金額 商品)
+      csv << header
+      reservations.each do |reservation|
+        values = [reservation.user.last_name + reservation.user.first_name,
+          reservation.day,
+          reservation.get_time_zone,
+          reservation.created_at.to_s(:datetime_jp),
+          reservation.get_count_person_value,
+          reservation.total_price,
+          reservation.get_product_toppings]
+        csv << values
+      end
+    end
+    send_data(csv_data, filename: filename)
+  end
+
   def send_ranking_csv(product_ranking, product_count, topping_ranking, topping_count, target_period)
-    filename = "ranking-#{target_period}.csv"
+    filename = "ranking_#{target_period}.csv"
 
     csv_data = CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |csv|
       product_header = %w(順位 商品名 件数 販売金額)

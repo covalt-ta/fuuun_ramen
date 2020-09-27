@@ -47,6 +47,11 @@ class Reservation < ApplicationRecord
     CountPerson.find(count_person_id).value
   end
 
+  def get_product_toppings
+    order_record_products.map {|order_record_product| "#{order_record_product.product_topping.product.name} <#{order_record_product.product_topping.topping_names}>"}
+  end
+
+
   def total_price(product_topping_ids: nil)
     # product_toppingsを引数で渡すから取得している状態で呼び出す
     product_toppings = product_topping_ids ? self.product_toppings.where(id: product_topping_ids) : self.product_toppings
