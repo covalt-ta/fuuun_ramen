@@ -4,6 +4,7 @@
     <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">ダッシュボード</label>
     <div class="tab-content">
       <div class="panel">
+
         <div class="dashboard-content">
           <div class="monthly-data">
             <h3>今月の進捗</h3>
@@ -85,7 +86,7 @@
               <div class="search-form">
                 <%= f.label :day, '来店日', class: "search-label" %>
                 <%= f.date_field :day_gteq, include_blank: true, class: "date-field" %>
-                <span class="serach-label">~</span>
+                <span class="search-label">~</span>
                 <%= f.date_field :day_lteq, include_blank: true, class: "date-field"  %>
                 <%= f.submit '検索', class: "search-btn" %>
               </div>
@@ -132,7 +133,9 @@
             <% else %>
               <p class="result-nil">表示する検索結果がありません</p>
             <% end %>
-            <%= link_to "csvで出力する", admins_root_path(format: :csv, target_period_start: @target_period_range.first, target_period_end: @target_period_range.last, target_period: @target_period) if @target_period_range %>
+            <% if @target_period_range %>
+              <%= link_to "csvで出力する", admins_root_path(format: :csv, target_period_start: @target_period_range.first, target_period_end: @target_period_range.last, target_period: @target_period), class: "csv-btn" %>
+            <% end %>
           </div>
         </div>
       </div>
