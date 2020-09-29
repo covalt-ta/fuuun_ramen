@@ -27,6 +27,13 @@ class Admins::DashboardsController < Admins::ApplicationController
     @today = Date.current
     @reservations = Reservation.includes(:user, order_record_products: :product_topping).where(day: @today).order(day: :ASC, time_zone_id: :ASC)
 
+    # CSV出力
+    respond_to do |format|
+      format.html
+      format.csv do |csv|
+        send_sales_csv(params[:target_period_start], params[:target_period_end], @p.result, params[:target_period])
+      end
+    end
   end
 
   def search
@@ -71,6 +78,29 @@ class Admins::DashboardsController < Admins::ApplicationController
     @p = Reservation.includes(:product_toppings).ransack(params[:q])
     # 検索対象期間
     @target_period = "#{params[:q][:day_gteq]}-#{params[:q][:day_lteq]}" if params[:q]
+
+    # 検索対象期間を範囲オブジェクトで取得
+    if params[:q] && params[:q][:day_gteq].blank? != true && params[:q][:day_lteq].blank? != true
+      @target_period_range = params[:q][:day_gteq].to_date..params[:q][:day_lteq].to_date
+    end
+  end
+
+  def send_sales_csv(target_period_start, target_period_end, reservations, target_period)
+    target_period_range = target_period_start.to_date..target_period_end.to_date
+    filename = "sales_#{target_period}.csv"
+    csv_data = CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |csv|
+      header = %w(日付 売上 来客数 テイクアウト数)
+      csv << header
+      target_period_range.each do |day|
+        values = [day,
+          ReservationsData.sales_for_target_day(reservations, day),
+          ReservationsData.customers_for_target_day(reservations, day),
+          ReservationsData.takeouts_for_target_day(reservations, day)
+          ]
+        csv << values
+      end
+    end
+    send_data(csv_data, filename: filename)
   end
 
   def send_reservation_csv(reservations, target_period)

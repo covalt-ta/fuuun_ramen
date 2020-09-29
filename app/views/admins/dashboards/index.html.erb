@@ -105,9 +105,34 @@
                 <p class="data-title">テイクアウト件数</p>
                 <span class="data"><%= "#{@results_count_takeout.to_s(:delimited)}名" %></span>
               </div>
+              <% if @target_period_range %>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">日付</th>
+                      <th scope="col">売上</th>
+                      <th scope="col">来客数</th>
+                      <th scope="col">テイクアウト数</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @target_period_range.each do |day| %>
+                      <tr class="product">
+                        <td><%= day %></td>
+                        <td><%= ReservationsData.sales_for_target_day(@p.result, day) %></td>
+                        <td><%= ReservationsData.customers_for_target_day(@p.result, day) %></td>
+                        <td><%= ReservationsData.takeouts_for_target_day(@p.result, day) %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              <% else %>
+                <p class="result-nil">日ごと詳細を確認する場合は検索対象日を入力してください</p>
+              <% end %>
             <% else %>
               <p class="result-nil">表示する検索結果がありません</p>
             <% end %>
+            <%= link_to "csvで出力する", admins_root_path(format: :csv, target_period_start: @target_period_range.first, target_period_end: @target_period_range.last, target_period: @target_period) if @target_period_range %>
           </div>
         </div>
       </div>
