@@ -1,4 +1,235 @@
 /*--------------------------------
+ admins/dashboards/index.html.erb
+---------------------------------*/
+
+.dashboard-wrapper {
+  padding: 0 20px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.admins-contents-wrapper {
+  width: 100%;
+  margin-left: 250px;
+}
+
+
+.dashboard-contents {
+  width: 100%;
+}
+
+.dashboard-content {
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90%;
+  margin: 0 auto 50px;
+}
+
+.data-title {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+
+.monthly-data h3 {
+  text-align: center;
+  color: #2e8b57;
+}
+
+.data-content {
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.data {
+  font-size: 2rem;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+  width: 70%;
+}
+
+.search-label {
+  color: #2e8b57;
+  font-size: 12px;
+  margin: 10px;
+}
+
+.search-data h3 {
+  text-align: center;
+  color: #2e8b57;
+}
+
+.result-nil {
+  color: #2e8b57;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.date-field {
+  border: solid 1px rgb(192,197,194);
+  color: #2e8b57;
+  text-align: center;
+  border-radius: 2px;
+  width: 200px;
+}
+
+.search-btn {
+  border: solid 1px rgb(192,197,194);
+  background-color: #f7f7f7;
+  color: #2e8b57;
+  width: 60px;
+  font-size: 15px;
+  border-radius: 2px;
+}
+
+.search-btn:hover {
+  background-color: rgb(134, 197, 153);
+  color: #f7f7f7;
+}
+
+.csv-btn {
+  display: block;
+  width: 150px;
+  margin: 0 auto;
+  text-align: center;
+  border: solid 1px rgb(192,197,194);
+  background-color: rgb(134, 197, 153);
+  color: #f7f7f7;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.csv-btn:hover {
+  background-color: #f7f7f7;
+  color: #2e8b57;
+  text-decoration: none;
+}
+
+/*--------------------------------
+ admins/dashboards/search.html.erb
+---------------------------------*/
+
+.reservation-search-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 90%;
+
+}
+
+.reservation-date-search-form {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px auto;
+  width: 60%;
+}
+
+.user-search-form {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px auto;
+  // background-color: red;
+  width: 60%;
+}
+
+.user-date-field {
+  border: solid 1px rgb(192,197,194);
+  color: #2e8b57;
+  text-align: center;
+  border-radius: 2px;
+  width: 80%;
+}
+
+.reservation-search-user-check {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.check-box-wrapper {
+  border: solid 1px rgb(192,197,194);
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.search-btn-center {
+  border: solid 1px rgb(192,197,194);
+  background-color: #f7f7f7;
+  color: #2e8b57;
+  width: 60px;
+  display: block;
+  margin: 20px auto;
+  font-size: 15px;
+  border-radius: 2px;
+
+}
+
+.search-btn-center:hover {
+  background-color: rgb(134, 197, 153);
+  color: #f7f7f7;
+}
+
+/*--------------------------------
+ admins/dashboards/_side_bar.html.erb
+---------------------------------*/
+.side-bar-menu {
+  min-width: 250px;
+  height: 390px;
+  text-align: center;
+  background-color: rgb(134, 197, 153);
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 10px;
+  position: fixed;
+  margin-right: 10px;
+  z-index: 40;
+}
+
+.side-bar-menu li {
+  border-bottom: solid 0.5px #f7f7f7;
+  height: 50px;
+}
+
+.side-bar-link {
+  display: inline-block;
+  width: 100%;
+  color: white;
+  line-height: 50px;
+  letter-spacing: 5px;
+  font-size: 20px;
+
+}
+
+.side-bar-link:hover {
+  background-color: #f7f7f7;
+  color: rgb(134, 197, 153);
+  text-decoration: none;
+}
+
+
+/*--------------------------------
  informations/index.html.erb
 ---------------------------------*/
 
@@ -392,143 +623,4 @@
   color: white;
 }
 
-/*--------------------------------
- admins/dashboards/index.html.erb
----------------------------------*/
 
-.dashboard-wrapper {
-  padding: 0 20px;
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.admins-contents-wrapper {
-  width: 100%;
-  margin-left: 250px;
-}
-
-
-.dashboard-contents {
-  width: 100%;
-}
-
-.dashboard-content {
-  background-color: #f7f7f7;
-  box-shadow: 0 2px 6px #c1ced7;
-  overflow: hidden;
-  border-radius: 10px;
-  padding: 10px;
-  width: 90%;
-  margin: 0 auto 50px;
-}
-
-.data-title {
-  margin-top: 10px;
-  margin-left: 10px;
-  font-size: 15px;
-}
-
-.monthly-data h3 {
-  text-align: center;
-  color: #2e8b57;
-}
-
-.data-content {
-  background-color: white;
-  box-shadow: 0 2px 6px #c1ced7;
-  overflow: hidden;
-  border-radius: 10px;
-  padding: 10px;
-  width: 100%;
-  margin: 20px auto;
-  display: flex;
-  justify-content: space-between;
-}
-
-.data {
-  font-size: 2rem;
-}
-
-.search-form {
-  display: flex;
-  justify-content: center;
-  margin: 0 20px;
-}
-
-.search-label {
-  font-size: 12px;
-  margin-top: 10px;
-}
-
-.search-data h3 {
-  text-align: center;
-  color: #2e8b57;
-}
-
-.result-nil {
-  color: #2e8b57;
-  text-align: center;
-  font-size: 15px;
-  margin-top: 5px;
-}
-
-.date-field {
-  border: solid 1px rgb(192,197,194);
-  color: #2e8b57;
-  text-align: center;
-  border-radius: 2px;
-  width: 200px;
-}
-
-.search-btn {
-  border: solid 1px rgb(192,197,194);
-  background-color: #f7f7f7;
-  color: #2e8b57;
-  width: 60px;
-  font-size: 15px;
-  border-radius: 2px;
-}
-
-.search-btn:hover {
-  background-color: rgb(134, 197, 153);
-  color: #f7f7f7;
-}
-
-/*--------------------------------
- admins/dashboards/_side_bar.html.erb
----------------------------------*/
-.side-bar-menu {
-  min-width: 250px;
-  height: 390px;
-  text-align: center;
-  background-color: rgb(134, 197, 153);
-  box-shadow: 0 2px 6px #c1ced7;
-  overflow: hidden;
-  border-radius: 10px;
-  padding: 10px;
-  position: fixed;
-  margin-right: 10px;
-  z-index: 40;
-}
-
-.side-bar-menu li {
-  border-bottom: solid 0.5px #f7f7f7;
-  height: 50px;
-}
-
-.side-bar-link {
-  display: inline-block;
-  width: 100%;
-  color: white;
-  line-height: 50px;
-  letter-spacing: 5px;
-  font-size: 20px;
-
-}
-
-.side-bar-link:hover {
-  background-color: #f7f7f7;
-  color: rgb(134, 197, 153);
-  text-decoration: none;
-}
