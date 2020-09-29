@@ -1,20 +1,28 @@
-<div class="wrapper">
-  <div class='inner'>
-    <div class="information-wrapper">
-      <h3>トピックス投稿</h3>
-      <div class="info-new-contents">
-        <%= form_with model: [:admins, @information], url: admins_information_path(@information), local: true do |f| %>
-          <div class="info-content-data">
-            <%= f.text_field :title, placeholder: "タイトルを入力", class: "info-content"%>
-            <%= f.text_area :text, placeholder: "テキストを入力", rows: "5", class: "info-content" %>
+<div class="dashboard-wrapper">
+  <%= render partial: 'admins/dashboards/side_bar' %>
+  <div class="admin-tab-wrap">
+    <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">最新情報の編集</label>
+    <div class="tab-content">
+      <div class="panel">
+        <div class="information-wrapper">
+          <div class="info-new-contents">
+            <%= form_with model: [:admins, @information], url: admins_information_path(@information), local: true do |f| %>
+              <div class="info-content-data">
+                <%= f.label :タイトル, class: 'lavel' %>
+                <%= f.text_field :title, placeholder: "タイトルを入力", class: "info-content"%>
+                <%= f.label :本文, class: 'lavel' %>
+                <%= f.text_area :text, placeholder: "テキストを入力", rows: "5", class: "info-content" %>
+              </div>
+              <div class="info-image-upload">
+                <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp', class: "information-content" %>
+              </div>
+              <div class="info-submit">
+                <%=link_to '戻る', :back, class:"back-btn" %>
+                <%= f.submit "更新する", class: "btn btn-outline-secondary"%>
+              </div>
+            <% end %>
           </div>
-          <div class="info-image-upload">
-            <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp', class: "information-content" %>
-          </div>
-          <div class="info-submit">
-            <%= f.submit "更新する", class: "btn btn-outline-secondary"%>
-          </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>

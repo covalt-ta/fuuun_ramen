@@ -35,12 +35,6 @@
   font-size: 15px;
 }
 
-
-.monthly-data h3 {
-  text-align: center;
-  color: #2e8b57;
-}
-
 .data-content {
   background-color: #f7f7f7;
   box-shadow: 0 2px 6px #c1ced7;
@@ -122,6 +116,14 @@
   color: #2e8b57;
   text-decoration: none;
 }
+
+.dashboard-contents-title {
+  text-align: center;
+  color: #2e8b57;
+  font-size: 18px;
+  margin: 20px;
+}
+
 
 /*--------------------------------
  admins/dashboards/search.html.erb
@@ -310,7 +312,7 @@
 ---------------------------------*/
 
 .info-new-contents {
-  background-color: #f7f7f7;
+  background-color: white;
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
   border-radius: 10px;
@@ -544,7 +546,7 @@
  shops/show.html.erb
 ---------------------------------*/
 .shop-contents {
-  background-color: #f7f7f7;
+  background-color: white;
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
   border-radius: 10px;

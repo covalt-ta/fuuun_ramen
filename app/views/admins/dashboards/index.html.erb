@@ -7,7 +7,7 @@
 
         <div class="dashboard-content">
           <div class="monthly-data">
-            <h3>今月の進捗</h3>
+            <h3 class="dashboard-contents-title">今月の進捗</h3>
             <div class="data-content">
               <p class="data-title">売上</p>
               <span class="data"><%= "#{@total_price.to_s(:delimited)}円" %></span>
@@ -20,7 +20,7 @@
               <p class="data-title">テイクアウト件数</p>
               <span class="data"><%= "#{@count_takeout.to_s(:delimited)}名" %></span>
             </div>
-            <h3><%= "本日の予約（#{@today}）"%></h3>
+            <h3 class="dashboard-contents-title"><%= "本日の予約（#{@today}）"%></h3>
 
             <table class="table table-hover">
               <thead>
@@ -81,7 +81,7 @@
         </div>
         <div class="dashboard-content">
           <div class="search-data">
-            <h3>売上データ検索</h3>
+            <h3 class="dashboard-contents-title">売上データ検索</h3>
             <%= search_form_for @p, url: admins_root_path do |f| %>
               <div class="search-form">
                 <%= f.label :day, '来店日', class: "search-label" %>

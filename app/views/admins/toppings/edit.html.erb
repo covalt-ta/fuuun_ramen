@@ -1,28 +1,33 @@
-<div class="wrapper">
-  <div class="inner">
-    <%= render partial: 'admins/dashboards/side_bar' %>
-    <div class="information-wrapper">
-      <h3>トッピング編集</h3>
-      <div class="info-new-contents">
-        <%= form_with model: [:admins, @topping], local: true do |f| %>
-          <%= render 'shared/error_messages', model: f.object %>
-          <div class="product-new-flex">
+<div class="dashboard-wrapper">
+  <%= render partial: 'admins/dashboards/side_bar' %>
+  <div class="admin-tab-wrap">
+    <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">トッピング編集</label>
+    <div class="tab-content">
+      <div class="panel">
 
-            <div class="new-product-textdata">
-              <p class="weight-bold-text">トッピング名</p>
-              <%= f.text_area :name, class:"product-textform", placeholder:"トッピング名（例: 煮玉子)", maxlength:"40" %>
-            </div>
+        <div class="information-wrapper">
+          <div class="info-new-contents">
+            <%= form_with model: [:admins, @topping], local: true do |f| %>
+              <%= render 'shared/error_messages', model: f.object %>
+              <div class="product-new-flex">
 
-            <div class="new-product-price">
-              <p class="weight-bold-text">価格(¥0〜999,999)</p>
-              <%= f.text_field :price, class:"price-input", placeholder:"例）50" %>
-            </div>
-            <div class="product-create-btn">
-              <%=link_to '戻る', admins_products_path, class:"back-btn" %>
-              <%= f.submit "更新する" ,class:"btn btn-outline-secondary" %>
-            </div>
+                <div class="new-product-textdata">
+                  <p class="weight-bold-text">トッピング名</p>
+                  <%= f.text_area :name, class:"product-textform", placeholder:"トッピング名（例: 煮玉子)", maxlength:"40" %>
+                </div>
+
+                <div class="new-product-price">
+                  <p class="weight-bold-text">価格(¥0〜999,999)</p>
+                  <%= f.text_field :price, class:"price-input", placeholder:"例）50" %>
+                </div>
+                <div class="product-create-btn">
+                  <%=link_to '戻る', :back, class:"back-btn" %>
+                  <%= f.submit "更新する" ,class:"btn btn-outline-secondary" %>
+                </div>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>

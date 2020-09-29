@@ -1,71 +1,68 @@
 <div class="dashboard-wrapper">
   <%= render partial: 'side_bar' %>
-  <div class="admins-contents-wrapper">
-    <div class="dashboard-contents">
-      <div class="dashboard-content">
-        <%= search_form_for @p, url: admins_dashboards_ranking_path do |f| %>
-          <div class="search-form">
-            <%= f.label :day, '来店日', class: "search-label" %>
-            <%= f.date_field :day_gteq, include_blank: true, class: "date-field" %>
-            <span class="serach-label">~</span>
-            <%= f.date_field :day_lteq, include_blank: true, class: "date-field"  %>
-            <%= f.submit '検索', class: "search-btn" %>
-          </div>
-        <% end %>
-        <h3><%= "商品ランキング" %></h3>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">ランキング</th>
-              <th scope="col">商品名</th>
-              <th scope="col">販売件数</th>
-              <th scope="col">販売金額</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%# 検索結果の個数で条件分岐 %>
-            <% if @p.result.length != 0 && params[:q] %>
-              <% @product_ranking.each do |product| %>
-                <tr class="product">
-                  <td><%= @product_ranking.index(product) + 1 %>位</td>
-                  <td><%= product.name %></td>
-                  <td><%= @product_count[product.id] %>件</td>
-                  <td><%= "#{(product.price * @product_count[product.id]).to_s(:delimited)}円" %></td>
+  <div class="admin-tab-wrap">
+    <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">ランキング</label>
+    <div class="tab-content">
+      <div class="panel">
+        <div class="dashboard-content">
+          <%= search_form_for @p, url: admins_dashboards_ranking_path do |f| %>
+            <div class="search-form">
+              <%= f.label :day, '対象期間', class: "search-label" %>
+              <%= f.date_field :day_gteq, include_blank: true, class: "date-field" %>
+              <span class="search-label">~</span>
+              <%= f.date_field :day_lteq, include_blank: true, class: "date-field"  %>
+              <%= f.submit '検索', class: "search-btn" %>
+            </div>
+          <% end %>
+          <%# 検索結果の個数で条件分岐 %>
+          <% if @p.result.length != 0 && params[:q] %>
+            <h3 class="dashboard-contents-title"><%= "商品ランキング" %></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">ランキング</th>
+                  <th scope="col">商品名</th>
+                  <th scope="col">販売件数</th>
+                  <th scope="col">販売金額</th>
                 </tr>
-              <% end %>
-            <% else %>
-              <p class="result-nil">表示する検索結果がありません。</p>
-            <% end %>
-          </tbody>
-        </table>
-
-        <h3><%= "トッピングランキング" %></h3>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">ランキング</th>
-              <th scope="col">トッピング名</th>
-              <th scope="col">販売件数</th>
-              <th scope="col">販売金額</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%# 検索結果の個数で条件分岐 %>
-            <% if @topping_ranking.empty? == false && params[:q] %>
-              <% @topping_ranking.each do |topping| %>
-                <tr class="product">
-                  <td><%= @topping_ranking.index(topping) + 1 %>位</td>
-                  <td><%= topping.name %></td>
-                  <td><%= @topping_count[topping.id] %>件</td>
-                  <td><%= "#{(topping.price * @topping_count[topping.id]).to_s(:delimited)}円" %></td>
+              </thead>
+              <tbody>
+                <% @product_ranking.each do |product| %>
+                  <tr class="product">
+                    <td><%= @product_ranking.index(product) + 1 %>位</td>
+                    <td><%= product.name %></td>
+                    <td><%= @product_count[product.id] %>件</td>
+                    <td><%= "#{(product.price * @product_count[product.id]).to_s(:delimited)}円" %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <h3 class="dashboard-contents-title"><%= "トッピングランキング" %></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">ランキング</th>
+                  <th scope="col">トッピング名</th>
+                  <th scope="col">販売件数</th>
+                  <th scope="col">販売金額</th>
                 </tr>
-              <% end %>
-            <% else %>
-              <p class="result-nil">表示する検索結果がありません。</p>
-            <% end %>
-          </tbody>
-        </table>
-        <%= link_to "csvで出力する", admins_dashboards_ranking_path(format: :csv, target_period: @target_period) if params[:q] %>
+              </thead>
+              <tbody>
+                <% @topping_ranking.each do |topping| %>
+                  <tr class="product">
+                    <td><%= @topping_ranking.index(topping) + 1 %>位</td>
+                    <td><%= topping.name %></td>
+                    <td><%= @topping_count[topping.id] %>件</td>
+                    <td><%= "#{(topping.price * @topping_count[topping.id]).to_s(:delimited)}円" %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <%= link_to "csvで出力する", admins_dashboards_ranking_path(format: :csv, target_period: @target_period), class: "csv-btn" %>
+          <% else %>
+            <p class="result-nil">表示する検索結果がありません。</p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
