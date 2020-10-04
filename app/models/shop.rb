@@ -60,4 +60,8 @@ class Shop < ApplicationRecord
     TimeZone.find(close_time_zone_id).name
   end
 
+  def regular_holiday
+    week = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
+    week[holiday]
+  end
 end
