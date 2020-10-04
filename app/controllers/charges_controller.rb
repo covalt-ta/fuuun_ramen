@@ -4,6 +4,7 @@ class ChargesController < ApplicationController
 
   def new_reservation
     @reservation = Reservation.new
+    @holidays = Holiday.where('day >= ?', Date.today).order(day: :ASC)
   end
 
   def create_reservation
