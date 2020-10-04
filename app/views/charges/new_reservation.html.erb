@@ -17,10 +17,25 @@
             <%= f.label :お持ち帰りorご来店人数を選択, class: 'lavel' %>
             <%= f.collection_select(:count_person_id, CountPerson.all, :id, :name, {}, {class: "select-box"})%>
           </div>
-
           <div class='register-btn'>
             <%= f.submit '購入確認へ進む', class: "register-green-btn" %>
           </div>
+        </div>
+      <% end %>
+      <% if @shop.holiday || @holidays.empty? == false %>
+        <div class="precautions">
+          <p class="precautions-title">ご予約日程についてのご案内<p>
+          <ul class="precautions-holidays">
+            <li><%= "※毎週＜#{@shop.regular_holiday}＞は定休日の為、ご予約できません" if @shop.holiday %></li>
+            <% if @holidays.empty? == false %>
+              <li>※休日の為、下記日程はご予約できません</li>
+              <div class="precautions-holidays-flex">
+                <% @holidays.each do |holiday| %>
+                  <span><%= "<#{holiday.day}>" %></span>
+                <% end %>
+              </div>
+            <% end %>
+          </ul>
         </div>
       <% end %>
     </div>
