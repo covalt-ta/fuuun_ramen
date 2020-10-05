@@ -76,6 +76,7 @@ gem 'rails-i18n'
 gem 'aws-sdk-s3', require: false
 gem 'dotenv-rails'
 gem 'ransack'
+gem 'font-awesome-sass'
 
 group :production do
   gem 'unicorn', '5.4.1'
