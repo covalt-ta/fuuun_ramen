@@ -13,6 +13,8 @@ COPY Gemfile.lock ./Gemfile.lock
 RUN gem install bundler
 RUN bundle install
 COPY . /myapp
+# 簡単な方法
+# COPY ~/.ssh/fuuunramen.pem ~/root/.ssh/
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
