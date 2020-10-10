@@ -11,7 +11,7 @@ class Admins::ToppingsController < Admins::ApplicationController
   end
 
   def edit
-    redirect_to admins_products_path, alert: "「#{@topping.name}」は編集・削除できません" unless no_update_topping(@topping)
+    redirect_to admins_products_path, alert: "「#{@topping.name}」は編集・削除ができません" unless no_update_topping(@topping)
   end
 
   def update

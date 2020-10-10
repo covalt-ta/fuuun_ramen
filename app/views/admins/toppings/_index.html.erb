@@ -8,12 +8,12 @@
           <h4><%= topping.name %></h4>
           <div class="display-check">
             <% if topping.display == false %>
-              <%= link_to "販売する", admins_topping_path(topping, topping: { display: true }), method: :patch, class: "btn btn-outline-dark"%>
+              <%= link_to "販売する", admins_topping_path(topping, topping: { display: true }), method: :patch, class: "btn btn-outline-dark topping-display"%>
             <% else %>
-              <%= link_to "販売停止する", admins_topping_path(topping, topping: { display: false }), method: :patch, class: "btn btn-outline-dark"%>
+              <%= link_to "販売停止する", admins_topping_path(topping, topping: { display: false }), method: :patch, class: "btn btn-outline-dark topping-display"%>
             <% end %>
-            <%= link_to "編集する", edit_admins_topping_path(topping), class: "btn btn-outline-dark"%>
-            <%= link_to "削除する", admins_topping_path(topping), method: :delete, class: "btn btn-outline-dark"%>
+            <%= link_to "編集する", edit_admins_topping_path(topping), class: "btn btn-outline-dark topping-edit"%>
+            <%= link_to "削除する", admins_topping_path(topping), method: :delete, class: "btn btn-outline-dark topping-delete"%>
           </div>
         </div>
         <div class="info-content-price">
