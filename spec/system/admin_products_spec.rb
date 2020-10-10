@@ -30,7 +30,7 @@ RSpec.describe "AdminProducts", type: :system do
         sign_in_admin(admin)
         click_on '登録一覧'
         page.all(".display")[0].click
-        visit root_path
+        visit products_path
         expect(page).to have_content(product.name)
       end
     end
