@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Charges", type: :request do
   let(:user) { create(:user) }
   let(:product_topping) { create(:product_topping) }
-  let(:holiday) { create(:holiday) }
+  let!(:shop) { create(:shop) }
 
   describe "予約日時入力 (GET #new_reservation)" do
     context 'ログインユーザーの場合' do
