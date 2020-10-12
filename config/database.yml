@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  host: localhost # 開発中のローカル環境ではdbとしておく EC2デプロイではlocalhost
+  host: db # 開発中のローカル環境ではdbとしておく EC2デプロイではlocalhost
   # soket: /tmp/mysql.sock
 
 development:
