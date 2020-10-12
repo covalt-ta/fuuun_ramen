@@ -60,6 +60,6 @@
 #     # password: "please use keys"
 #   }
 server '46.51.231.102', user: 'ec2-user', roles: %w{app db web}
-set :ssh_options, {
-  keys: [File.expand_path('~/.ssh/fuuunramen.pem)')]
-}
+# set :ssh_options, {
+#   keys: [File.expand_path('~/.ssh/fuuunramen.pem)')]
+# }
