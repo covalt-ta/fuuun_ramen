@@ -205,6 +205,17 @@ show.html タブの中身
 /*--------------------------------
 show.html コメント欄
 ---------------------------------*/
+.comment-show-wrapper {
+  margin: 20px auto;
+  padding-bottom: 20px;
+  width: 100%;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+
 .comment-header {
   padding-top: 30px;
   padding-left: 30px;
