@@ -63,6 +63,25 @@ index.html タブの中身
 }
 
 
+.basket-in-btn {
+  height: 30px;
+  width: 100px;
+  background: rgb(134, 197, 153);
+  border: 1px solid rgb(134, 197, 153);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 10px 5px;
+}
+
+.basket-in-btn:hover {
+  color: rgb(134, 197, 153);
+  background-color: #fff;
+  text-decoration: none;
+}
+
+
 /*--------------------------------
 show.html タブの中身
 ---------------------------------*/
@@ -292,6 +311,7 @@ show.html コメント欄
 .comment-title {
   display: flex;
   justify-content: space-between;
+  font-size: 12px;
 }
 
 .comment {
