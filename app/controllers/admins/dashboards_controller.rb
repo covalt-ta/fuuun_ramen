@@ -53,14 +53,15 @@ class Admins::DashboardsController < Admins::ApplicationController
     # 商品のランキングデータの算出
     @product_count = Reservation.ransack(params[:q]).result.joins(:product_toppings).group(:product_id).count
     product_ids = Hash[@product_count.sort_by{ |_, v| -v}].keys # 配列でproduct_id [id,id,id]
-    @product_ranking = Product.where(id: product_ids) # ランキング順にproductを取得
+    # ランキング順にproductデータを取得
+    @product_ranking = Product.where(id: product_ids).order("field(id, #{product_ids.join(',')})")
 
     # トッピングのランキングデータの算出
     @results_product_toppings = ReservationsData.product_toppings(@p.result)
     topping_count_ary = @results_product_toppings.map {|p| p.toppings.map {|t| t.id}}
     @topping_count = topping_count_ary.flatten.group_by(&:itself).map{|key, value| [key, value.count]}.to_h
     topping_ids = Hash[@topping_count.sort_by{ |_, v| -v}].keys
-    # 「.order・・・」はランキング順のtopping_idsを渡してもランキング順の取得ができてなかった為の記述
+    # ランキング順にtoppingデータを取得
     @topping_ranking = Topping.where(id: topping_ids).order("field(id, #{topping_ids.join(',')})")
 
 
