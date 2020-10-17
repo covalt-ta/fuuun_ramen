@@ -59,7 +59,7 @@ URL: http://fuuun-ramen.com
 
 ### 本番環境
 
-- AWS(EC2, S3, Route53)
+- AWS(VPC, EC2, S3, Route53, CloudFront)
 - MariaDB
 - Nginx, Unicorn
 
