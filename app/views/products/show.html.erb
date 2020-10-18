@@ -16,7 +16,7 @@
           <div class="headline">
             商品情報
           </div>
-          <p class="card-text"><%= @product.text %></p>
+          <p class="card-text"><%= simple_format(@product.text) %></p>
         </div>
         <div class="product-info-block">
           <div class="headline">

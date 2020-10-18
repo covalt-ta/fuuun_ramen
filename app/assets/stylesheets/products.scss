@@ -55,9 +55,10 @@ index.html タブの中身
 .card-title {
   font-size: 14px;
 }
-.card-text{
+.card-text + p {
   font-size: 12px;
 }
+
 .card-btn {
   font-size: 12px;
 }
