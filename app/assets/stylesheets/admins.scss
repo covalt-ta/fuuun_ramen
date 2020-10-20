@@ -366,6 +366,27 @@
   margin: 0 auto;
 }
 
+.product-image-upload {
+  padding: 10px 20px;
+  display: flex;
+}
+
+.product-image-wrapper {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: solid 1px rgba(192,197,194,0.7);
+  border-radius: 0.2rem;
+  margin-left: 10px;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  text-align: center;
+}
+
 .product-textform {
   width: 100%;
   border: solid 1px rgba(192,197,194,0.7);

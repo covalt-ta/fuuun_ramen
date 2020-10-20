@@ -4,10 +4,10 @@
       <%= render 'shared/error_messages', model: f.object %>
       <div class="product-new-flex">
         <div class="info-img-upload">
-          <div id="product-image-list"></div>
           <p class="weight-bold-text">商品画像</p>
-          <div class="info-image-upload">
+          <div class="product-image-upload">
             <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp' %>
+            <div id="product-image-list"></div>
           </div>
         </div>
 
