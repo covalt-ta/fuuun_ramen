@@ -65,7 +65,7 @@ URL: http://fuuun-ramen.com
 
 ### インフラ構成図
 
-- 準備中
+![インフラ構成図](app/assets/images/system_configuration_diagram.jpg)
 
 ### テスト
 
@@ -77,8 +77,8 @@ URL: http://fuuun-ramen.com
 - Action Mailer
 - Rubocop
 - Capistrano
-- CircleCI
 - 外部API（PAY.JP）
+- CircleCI【準備中】
 - レスポンシブ【準備中】
 
 
