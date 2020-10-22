@@ -6,10 +6,16 @@
         <div class="info-img-upload">
           <p class="weight-bold-text">商品画像</p>
           <div class="product-image-upload">
-            <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp' %>
-            <div id="product-image-list"></div>
+            <label>
+              <span class="fa fa-image fa-5x file-image"></span>
+              <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp', class: "hidden" %>
+            </label>
+            <div class="product-preview-border">
+              <div id="product-image-list"></div>
+            </div>
           </div>
         </div>
+
 
         <div class="new-product-textdata">
           <p class="weight-bold-text">商品名</p>
