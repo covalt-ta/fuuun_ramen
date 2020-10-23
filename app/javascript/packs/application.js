@@ -10,7 +10,7 @@ require("channels")
 require("jquery")
 require("../card")
 require("../slick")
-
+require("./preview")
 
 import 'bootstrap'
 import '../src/application.scss'

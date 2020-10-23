@@ -3,14 +3,15 @@
     <%= form_with model: [:admins, @product], local: true do |f| %>
       <%= render 'shared/error_messages', model: f.object %>
       <div class="product-new-flex">
-
         <div class="info-img-upload">
           <p class="weight-bold-text">商品画像</p>
-          <div class="info-image-upload">
-            <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp' %>
+          <div class="product-image-upload">
+            <label class="product-preview-border">
+              <div id="product-image-list"></div>
+              <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp', class: "hidden" %>
+            </label>
           </div>
         </div>
-
         <div class="new-product-textdata">
           <p class="weight-bold-text">商品名</p>
           <%= f.text_area :name, class:"product-textform", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
