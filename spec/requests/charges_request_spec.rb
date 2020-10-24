@@ -4,6 +4,8 @@ RSpec.describe "Charges", type: :request do
   let(:user) { create(:user) }
   let(:product_topping) { create(:product_topping) }
   let!(:shop) { create(:shop) }
+  let!(:basket) { create(:basket, user_id: user.id)}
+  let!(:basket_product) { create(:basket_product, basket_id: basket.id, product_topping_id: product_topping.id)}
 
   describe "予約日時入力 (GET #new_reservation)" do
     context 'ログインユーザーの場合' do
