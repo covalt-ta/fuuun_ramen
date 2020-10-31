@@ -1,17 +1,25 @@
-<nav class="gnav" class="fixed">
+<nav class="gnav fixed">
   <div class="gnav-left">
     <ul class="gnav-list">
       <%= link_to "/" , class: "text-center gnav-logo" do%>
         <%= image_tag 'sample-logo.png', size: '35x35', alt: "fuuun_ramenのロゴ"%>
-        <div class="gnav-logo">Fuuun Ramen</div>
+        <div class="gnav-logo-text">Fuuun Ramen</div>
       <% end %>
       <li class="gnav-item"><i class="fas fa-utensils"></i><%= link_to "注文する", products_path, class: "gnav-link" %></li>
       <li class="gnav-item"><i class="fas fa-check"></i><%= link_to "最新情報", "/#information-section", class: "gnav-link" %></li>
       <li class="gnav-item"><i class="fas fa-envelope"></i><%= link_to "お問い合わせ", "/#contact-section", class: "gnav-link" %></li>
     </ul>
   </div>
+  <input id="gnav-menu" type="checkbox" class="gnav-menu-input">
+  <label for="gnav-menu" class="open">
+    <span class="hamburger-1"></span>
+    <span class="hamburger-2"></span>
+    <span class="hamburger-3"></span>
+  </label>
+  <label for="gnav-menu" class="back"></label>
   <div class="gnav-right">
     <ul class="gnav-list">
+      <label for="gnav-menu" class="close">×</label>
       <% if admin_signed_in? %>
         <% if unchecked_notices.any? %>
           <span class="new-notice">

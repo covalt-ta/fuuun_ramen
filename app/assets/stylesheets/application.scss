@@ -26,7 +26,6 @@
 /*--------------------------------
  レイアウト
 ---------------------------------*/
-
 .inner {
   max-width: 1380px;
   margin: 0 auto;
@@ -100,7 +99,6 @@
 /*--------------------------------
  グローバルナビ
 ---------------------------------*/
-
 .gnav {
   display: flex;
   justify-content: space-between;
@@ -109,6 +107,7 @@
   left: 0;
   z-index: 100;
   width: 100%;
+  height: 60px;
   background-color: #fff;
   -webkit-box-shadow: 0 3px 3px -3px rgba(0, 0, 0, .2);
   -moz-box-shadow: 0 3px 3px -3px rgba(0, 0, 0, .2);
@@ -120,8 +119,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  margin:0;
+  height: 100%;
+  margin: 0;
   padding:0 15px;
   font-size:100%;
   vertical-align: baseline;
@@ -137,7 +136,6 @@
 
 .gnav-logo:hover {
   text-decoration: none;
-
 }
 
 .gnav-item {
@@ -178,19 +176,25 @@
   width: 100%;
 }
 
-
 .new-notice {
   background-color: rgba(245, 202, 10, 0.3);
   padding: 1px;
   border-radius: 5px;
 }
 
+.open, .close {
+  display: none;
+}
+
+.gnav-menu-input {
+  position: relative;
+  right: -100vw;
+}
 
 .fas {
   color:#333;
   padding-right: 3px;
 }
-
 
 /* iOS対策 */
 .ios .gnav-link:after,
@@ -239,7 +243,6 @@
   }
 }
 
-
 .alert {
   background-color: rgb(247, 214, 243);
   padding: 0.75rem 1.25rem;
@@ -268,14 +271,11 @@
   font-size: 14px;
   color: rgb(150, 10, 22);
   text-align: center;
-
 }
-
 
 /*--------------------------------
  ユーザー、プロダクトのメニュータブ
 ---------------------------------*/
-
 .tab-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -304,18 +304,22 @@
   border-radius: 5px 5px 0 0;
   flex: 1;
 }
+
 .tab-label:not(:last-of-type) {
   margin-right: 5px;
 }
+
 .tab-content {
   width: 100%;
   height: 0;
   overflow: hidden;
   opacity: 0;
 }
+
 .tab-switch:checked+.tab-label {
   background-color: rgb(134, 197, 153);
 }
+
 .tab-switch:checked+.tab-label+.tab-content {
   height: auto;
   overflow: auto;
@@ -324,6 +328,101 @@
   transition: .5s opacity;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
+
 .tab-switch {
   display: none;
+}
+
+/* タブレット表示時 */
+@media (max-width: 1000px)  {
+  .gnav-logo {
+    padding-right: 20px;
+    padding-bottom: 5px;
+  }
+  .gnav-logo-text {
+    display: none;
+  }
+  .gnav-left {
+    flex: 2;
+
+    .gnav-item {
+      padding: 0 20px;
+      font-size: 16px;
+    }
+    .gnav-link {
+      padding-left: 5px;
+    }
+
+  }
+  .open, .close {
+    display: block;
+  }
+
+  .open {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    display: flex;
+    flex-direction: column;
+
+    span {
+      position: relative;
+      left: 10px;
+      top: -5px;
+      display: block;
+      height: 15px;
+      width: 35px;
+    }
+
+    .hamburger-1 {
+      border-bottom: solid 2px rgb(134, 197, 153);
+    }
+    .hamburger-2 {
+      border-bottom: solid 2px rgb(134, 197, 153);
+    }
+    .hamburger-3 {
+      border-bottom: solid 2px rgb(134, 197, 153);
+    }
+  }
+
+  .gnav-right {
+    position: absolute;
+    right: -100vw;
+    transition: all 0.2s;
+  }
+  .gnav-menu-input:checked ~ .gnav-right {
+    right: 0;
+    top: 0;
+    .gnav-list {
+      color: white;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      height: 100%;
+      background-color:rgb(134, 197, 153);
+      padding: 20px 5px;
+    }
+    .gnav-link {
+      color: white;
+    }
+  }
+
+  .gnav-menu-input:checked ~ .back {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 300vw;
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* スマホ表示時 */
+@media (max-width: 530px) {
+  .gnav-left {
+    .gnav-item {
+      padding: 0 10px;
+      font-size: 12px;
+    }
+  }
 }

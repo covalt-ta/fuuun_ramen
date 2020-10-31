@@ -4,7 +4,6 @@
 .user-new-headtitle {
   text-align: center;
 }
-
 .user-new-contents {
   background-color: #f7f7f7;
   box-shadow: 0 2px 6px #c1ced7;
@@ -110,6 +109,7 @@
   color: rgb(134, 197, 153);
   background-color: #fff;
 }
+
 
 /*--------------------------------
  _account.html.erb
@@ -480,4 +480,14 @@ basket/show.html.erb
   top: 150px;
   color: rgba(134, 197, 153, 0.7);
   content: "\f138";
+}
+
+/* タブレット表示時 */
+@media (max-width: 1000px)  {
+
+}
+
+/* スマホ表示時 */
+@media (max-width: 500px) {
+
 }
