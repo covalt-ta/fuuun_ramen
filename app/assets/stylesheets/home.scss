@@ -146,9 +146,12 @@
 }
 
 .about-image {
-  // border-radius: 50%;
   margin-bottom: 5px;
   box-shadow: 0 0 25px 0 #d9d9d9;
+}
+
+.about-image-500 {
+  display: none;
 }
 
 .about-body {
@@ -215,6 +218,7 @@
 
 .shop-info-wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
@@ -311,14 +315,6 @@
   body {
     font-size: 13px;
     line-height: 1.7;
-  }
-
-  .pc-only {
-    display: none;
-  }
-
-  .sp-only {
-    display: block;
   }
 
   .hover-action {
@@ -422,10 +418,6 @@
   }
 
   /* About */
-  .about-item {
-    display: block;
-  }
-
   .about-image-wrapper {
     width: 100px;
     max-width: 100%;
@@ -499,9 +491,58 @@
 /* タブレット表示時 */
 @media (max-width: 1000px)  {
 
+  .about-item {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .about-body {
+    width: 550px;
+    margin: 0 auto;
+
+    h3 {
+      width: 75%;
+      margin: 0 auto 5px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      border-bottom: solid 1px rgb(134, 197, 153);
+    }
+  }
+
+  .about-image-wrapper {
+    display: none;
+  }
+
+  .about-image-500 {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+
+  }
+
 }
 
 /* スマホ表示時 */
 @media (max-width: 500px) {
+  .about-body {
+    width: 100%;
+    margin: 0 auto;
 
+    h3 {
+      width: 75%;
+      margin: 0 auto 5px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: bold;
+      border-bottom: solid 1px rgb(134, 197, 153);
+    }
+  }
+  .about-image-500 {
+    width: 400px;
+    text-align: center;
+    img{
+      object-fit: cover;
+    }
+  }
 }
