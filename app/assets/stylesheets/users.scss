@@ -379,6 +379,36 @@ basket/show.html.erb
   text-decoration: none;
 }
 
+.delete-basket-btn {
+  width: 100%;
+  padding: 10px;
+  background: rgb(170, 172, 170);
+  border: 1px solid rgb(170, 172, 170);
+  border-radius: 5px;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.delete-basket-btn:hover {
+  color: rgb(170, 172, 170);
+  background-color:  #fff;
+  text-decoration: none;
+}
+
+.basket-total-price {
+  display: block;
+  white-space: nowrap;
+  text-align: right;
+  margin: 0 0 0 auto;
+  padding: 10px;
+  color: gray;
+  line-height: 20px;
+  font-size: 14px;
+
+}
+
 .charge-btn {
   width: 50%;
   margin: 5px 0 0 auto;
@@ -431,13 +461,16 @@ basket/show.html.erb
   position: relative;
 }
 
+.recomend-wrapper {
+  background-color: rgba(134, 197, 153, 0.1);
+  border-radius: 0.5rem;
+  height: 100%;
+}
 
 .recommend-product-wrapper {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  background-color: rgba(134, 197, 153, 0.1);
-  border-radius: 0.5rem;
 }
 
 .recommend-product-image-wrapper {
@@ -485,9 +518,72 @@ basket/show.html.erb
 /* タブレット表示時 */
 @media (max-width: 1000px)  {
 
+  // baskets/show.html
+  .charge-btn {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    .menu-link {
+      margin: 0 auto;
+      display: inline-block;
+      width: 45%;
+      text-align: center;
+    }
+    .charge-green-btn {
+      font-size: 18px;
+      letter-spacing: 10px;
+      display: inline-block;
+      width: 45%;
+      text-align: center;
+      line-height: 20px;
+    }
+  }
 }
 
 /* スマホ表示時 */
 @media (max-width: 500px) {
 
+  // baskets/show.html
+  th {
+    font-size: 12px;
+  }
+
+  .menu-btn-wrapper {
+    .menu-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      line-height: 20px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  .product {
+    font-size: 12px;
+    .delete-basket-btn {
+      white-space: nowrap;
+      text-align: center;
+      line-height: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      font-size: 10px;
+      overflow: hidden;
+    }
+  }
+
+  .charge-btn {
+    width: 100%;
+    .menu-link {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .charge-green-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      line-height: 20px;
+    }
+  }
 }
