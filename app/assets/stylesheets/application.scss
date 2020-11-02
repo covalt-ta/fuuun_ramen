@@ -36,7 +36,6 @@
   min-height: 100vw;
 }
 
-
 // breadcrumbsが入らない箇所にはwrapperを設定
 .breadcrumbs {
   padding-top: 40px;
@@ -340,6 +339,20 @@
 
 /* タブレット表示時 */
 @media (max-width: 1000px)  {
+
+  // パンくずリスト
+  .breadcrumbs {
+    font-size: 16px;
+    padding: 40px 0 0;
+    margin-bottom: 10px;
+    margin-left: 8px;
+
+    a, a:hover {
+      font-size: 16px;
+    }
+  }
+
+  //ヘッダーメニュー ハンバーガーメニュー
   .gnav-logo {
     padding-right: 20px;
     padding-bottom: 5px;
@@ -400,16 +413,26 @@
   .gnav-menu-input:checked ~ .gnav-right {
     right: 0;
     top: 0;
+    width: 70%;
+    height: 300vw;
     .gnav-list {
       color: white;
       flex-direction: column;
+      justify-content: flex-start;
       flex-wrap: nowrap;
+      width: 100%;
       height: 100%;
       background-color:rgb(134, 197, 153);
       padding: 20px 5px;
     }
+    .close {
+      margin-bottom: 20px;
+    }
     .gnav-link {
       color: white;
+      font-size: 20px;
+      letter-spacing: 5px;
+      line-height: 40px;
     }
   }
 
@@ -423,20 +446,6 @@
 }
 
 
-@media (max-width: 1000px) {
-
-  // パンくずリスト
-  .breadcrumbs {
-    font-size: 16px;
-    padding: 40px 0 0;
-    margin-bottom: 10px;
-    margin-left: 8px;
-
-    a, a:hover {
-      font-size: 16px;
-    }
-  }
-}
 
 /* スマホ表示時 */
 @media (max-width: 530px) {
