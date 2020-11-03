@@ -1,6 +1,6 @@
 <div class="product-list">
   <% resources.each do |resource| %>
-    <div class="card border-0 product-card" style="width: 18rem;">
+    <div class="card border-0 product-card">
       <%= link_to product_path(resource), class: "card-link" do %>
         <div class="card-img-top">
           <%= image_tag resource.image, class: "card-link hover-action" if resource.image.attached? %>
@@ -15,9 +15,7 @@
           </div>
         </div>
       <% end %>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= link_to "トッピングを選ばないで買い物かごに入れる", product_add_to_baskets_path(resource) , method: :post, class: "basket-in-btn" %></li>
-      </ul>
+      <span class="basket-in-btn-block"><%= link_to "トッピングを選ばないで買い物かごに入れる", product_add_to_baskets_path(resource) , method: :post, class: "basket-in-btn" %></span>
     </div>
   <% end %>
 </div>

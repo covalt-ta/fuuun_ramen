@@ -1,6 +1,6 @@
 <% breadcrumb :user_basket, current_user %>
 <div class="inner">
-  <span class="menu-btn-wrapper"><%= link_to 'メニューに戻る', products_path , class: "menu-btn"%></span>
+  <span class="menu-btn-wrapper"><%= link_to '<< メニューに戻る', products_path , class: "menu-btn"%></span>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -22,7 +22,7 @@
           <td><%= "#{product_topping.price.to_s(:delimited)}円" %></td>
           <td>
             <%= link_to product_topping_delete_in_baskets_path(product_topping), method: :post, data: {confirm: '削除してもいいですか？'} do %>
-              <span class="btn btn-outline-secondary">削除する</span>
+              <span class="delete-basket-btn">削除</span>
             <% end %>
           </td>
         </tr>
@@ -32,19 +32,18 @@
   <% if @product_toppings.empty? %>
     <div class="text-center lead">お買い物カゴに商品はありません</div>
   <% else %>
-    <div class="float-right badge badge-secondary ">
+    <div class="basket-total-price">
       <span><%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%></span>
     </div>
-    <br>
     <div class="charge-btn">
-      <%= link_to 'メニューに戻る', products_path , class: "menu-link"%>
+      <%= link_to '<< メニューに戻る', products_path , class: "menu-link"%>
       <%= link_to "購入画面に進む", new_reservation_charges_path, class: "charge-green-btn"%>
     </div>
   <% end %>
   <div class="recommend">
     <h3>おすすめ商品</h3>
     <div class="previews">
-      <div class="slider">
+      <div class="slider recomend-wrapper">
         <% @recommend_product.each do |product| %>
           <div class="recommend-product-wrapper">
             <div class="recommend-product-image-wrapper">

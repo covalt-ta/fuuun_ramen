@@ -2,7 +2,7 @@
   <div class="not-contents">
     <p>ご住所の登録はありません</p>
     <p>配送商品をご購入する場合にはご住所のご登録が必要となります。<p>
-    <%= link_to "住所を登録する", new_address_path, class: 'card-form-btn'%>
+    <span class='address-btn-wrapper'><%= link_to "住所を登録する", new_address_path, class: 'address-btn'%></span>
   </div>
 <% else %>
   <div class="user-account-contents">
@@ -38,9 +38,9 @@
           <%= f.label :電話番号（必須）, class: 'lavel'%>
           <%= f.text_field :phone_number, class:"user-input-default", placeholder:"例）09012345678",maxlength:"11"%>
         </div>
-        <div class='address-btn'>
-          <%= link_to "削除", address_path(current_user), method: :delete, class: "address-delete-btn" if current_user.address %>
-          <%= f.submit "更新する", class: "address-form-btn"%>
+        <div class='address-update-btn-wrapper'>
+          <%= link_to "削除", address_path(current_user), method: :delete, class: "address-delete-btn", data: {confirm: '削除してもいいですか？'} if current_user.address %>
+          <%= f.submit "更新する", class: "address-update-btn"%>
         </div>
       </div>
     <% end %>

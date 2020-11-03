@@ -4,7 +4,7 @@
     <title>FuuunRamen</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,6 +17,7 @@
     <%= render "shared/header" %>
     <%= render "shared/flash_messages" %>
     <div class="breadcrumbs"><%= breadcrumbs separator: " &rsaquo; " %></div>
-    <%= yield %>
+    <div class="min-height"><%= yield %></div>
+    <%= render "shared/footer" %>
   </body>
 </html>
