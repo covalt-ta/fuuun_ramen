@@ -1,35 +1,33 @@
 <% breadcrumb :user_new_card, current_user %>
-<div class="wrapper">
-  <div class="inner">
-    <div class="user-new-contents">
-      <%= form_with url: cards_path, id: 'charge-form', class: 'card-form', local: true do |f| %>
-        <div class='user-new-form'>
+<div class="inner">
+  <div class="address-new-contents">
+    <%= form_with url: cards_path, id: 'charge-form', class: 'card-form', local: true do |f| %>
+      <div class='address-new-form'>
 
-          <div class="user-form-group">
-            <%= f.label :number, "カード番号" , class: "lavel"%>
-            <%= f.text_field :number, class: "number user-input-default", placeholder: "カード番号（半角数字）", maxlength: "16" %>
-          </div>
+        <div class="address-form-group">
+          <%= f.label :number, "カード番号" , class: "lavel"%>
+          <%= f.text_field :number, class: "number address-input-default", placeholder: "カード番号（半角数字）", maxlength: "16" %>
+        </div>
 
-          <div class="user-form-group">
-            <%= f.label :cvc, "CVC", class: "lavel" %>
-            <%= f.text_field :cvc, class: "cvc user-input-default", placeholder: "カード背面にある3桁or4桁の番号", maxlength: "4" %>
-          </div>
+        <div class="address-form-group">
+          <%= f.label :cvc, "CVC", class: "lavel" %>
+          <%= f.text_field :cvc, class: "cvc address-input-default", placeholder: "カード背面にある3桁or4桁の番号", maxlength: "4" %>
+        </div>
 
-          <div class="user-form-group">
-            <p class="lavel">【有効期限】</p>
-            <div class='user-birth-wrap'>
-              <%= f.select :exp_month, 1..12, {include_blank: "---"}, class: "exp_month" %>
-              <p>月</p>
-              <%= f.select :exp_year, 20..30, {include_blank: "---"}, class: "exp_year" %>
-              <p>年</p>
-            </div>
-          </div>
-
-          <div class='register-btn'>
-            <%= f.submit "登録する" ,class:"register-green-btn" %>
+        <div class="address-form-group">
+          <p class="lavel">【有効期限】</p>
+          <div class='user-birth-wrap'>
+            <%= f.select :exp_month, 1..12, {include_blank: "---"}, class: "exp_month" %>
+            <p>月</p>
+            <%= f.select :exp_year, 20..30, {include_blank: "---"}, class: "exp_year" %>
+            <p>年</p>
           </div>
         </div>
-      <% end %>
-    </div>
+
+        <div class='register-btn'>
+          <%= f.submit "登録する" ,class:"register-green-btn" %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

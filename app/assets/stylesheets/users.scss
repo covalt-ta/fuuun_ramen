@@ -146,8 +146,14 @@
   align-items: center;
 }
 
+.address-update-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.address-form-btn {
+
+.address-update-btn {
   width: 45%;
   background: rgb(134, 197, 153);
   border: 1px solid rgb(134, 197, 153);
@@ -159,12 +165,13 @@
   margin-left: 20px;
 }
 
-.address-form-btn:hover {
+.address-update-btn:hover {
   color: rgb(134, 197, 153);
   background-color: #fff;
 }
 
 .address-delete-btn {
+  display: inline-block;
   color: gray;
 }
 
@@ -280,18 +287,17 @@ _card.html.erb
 ---------------------------------*/
 
 .card-contents {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  align-items: center;
 }
 
 .card-content {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  // flex-direction: column;
-  // text-align: center;
 }
 
 .card-data {
@@ -352,6 +358,64 @@ _card.html.erb
   background-color: #fff;
   text-decoration: none;
 }
+
+/*--------------------------------
+addresses/_form.html
+---------------------------------*/
+.address-btn-wrapper {
+  display: block;
+  margin: 20px 0;
+}
+.address-btn {
+  width: 20%;
+  padding: 5px;
+  background-color: rgb(134, 197, 153);
+  border-radius: 5px;
+  color: #fff;
+  line-height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.address-btn:hover {
+  color: rgb(134, 197, 153);
+  background-color: #fff;
+  border: 1px solid rgb(134, 197, 153);
+  text-decoration: none;
+}
+
+.address-new-contents {
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 20px 10px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.address-new-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.address-form-group {
+  width: 80%;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.address-input-default {
+  height: 50px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 
 /*--------------------------------
 basket/show.html.erb
@@ -515,8 +579,41 @@ basket/show.html.erb
   content: "\f138";
 }
 
+/*--------------------------------
+レスポンシブ
+---------------------------------*/
 /* タブレット表示時 */
 @media (max-width: 1000px)  {
+  // users/show.html account.html
+  .user-account-contents {
+    width: 90%;
+  }
+  .user-birth-wrap {
+    flex-wrap: nowrap;
+  }
+
+　// address/_form.html
+  .not-contents {
+    font-size: 14px;
+  }
+  .address-btn-wrapper {
+    .address-btn {
+      display: block;
+      width: 30%;
+      padding: 10px;
+      line-height: 20px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  // address/new.html
+  .address-new-contents {
+    width: 80%;
+    .address-form-group {
+      width: 100%;
+    }
+  }
 
   // baskets/show.html
   .charge-btn {
@@ -542,6 +639,47 @@ basket/show.html.erb
 
 /* スマホ表示時 */
 @media (max-width: 500px) {
+  // users/show.html account.html
+  .user-form-group {
+    width: 100%;
+    .user-input-default, .user-input-name, select {
+      font-size: 14px;
+    }
+  }
+  .user-birth-wrap {
+    flex-wrap: nowrap;
+  }
+  .register-btn {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  // addresses/_form.html
+  .address-btn-wrapper {
+    .address-btn {
+      width: 100%;
+    }
+  }
+  .address-update-btn-wrapper {
+    flex-direction: column;
+    .address-update-btn {
+      width: 100%;
+      margin-left: 0px;
+      margin-top: 10px;
+    }
+  }
+
+  // address/new.html
+  .address-new-contents {
+    width: 100%;
+  }
+
+  // cards/_card.html
+  .card-form-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+  }
 
   // baskets/show.html
   th {

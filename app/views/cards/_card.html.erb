@@ -1,5 +1,5 @@
 <% if card %>
-  <div class="user-new-form">
+  <div class="address-new-form">
     <div class="card-contents">
       <div class="card-content">
         <p class="lavel">【カード番号】</p>
@@ -9,7 +9,7 @@
         <p class="lavel">【有効期限】</p>
         <p class="card-data"><%= card[:exp_month] %>/<%= card[:exp_year] %></p>
       </div>
-      <%= link_to "登録削除", card_path(current_user), method: :delete, class: 'card-delete-btn'%>
+      <%= link_to "登録削除", card_path(current_user), method: :delete, class: 'card-delete-btn', data: {confirm: '削除してもいいですか？'} %>
     </div>
   </div>
 <% else %>
