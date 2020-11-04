@@ -54,9 +54,9 @@
     <div class="section-body about">
       <div class="about-item">
         <div class="about-image-wrapper">
-          <%= image_tag "expert.jpg", size: '500x500', class: "about-image"%>
-          <%= image_tag "noodles.jpg", size: '500x500', class: "about-image"%>
-          <%= image_tag "soup.jpg", size: '500x500', class: "about-image"%>
+          <%= image_tag "expert.jpg", class: "about-image"%>
+          <%= image_tag "noodles.jpg", class: "about-image"%>
+          <%= image_tag "soup.jpg", class: "about-image"%>
         </div>
         <div class="about-body">
           <div class="about-image-500"><%= image_tag "expert.jpg", size: '500x500' %></div>
@@ -98,7 +98,6 @@
         魂込めて営業中！
       </p>
     </div>
-
     <div class="section-body">
       <div class="information-list">
         <% @informations.each do |information| %>
