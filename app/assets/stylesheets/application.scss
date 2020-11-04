@@ -416,6 +416,15 @@
     position: absolute;
     right: -100vw;
     transition: all 0.2s;
+    .close{
+      color:rgba(0, 0, 0, 0);
+    }
+    .gnav-link {
+      color:rgba(0, 0, 0, 0);
+    }
+    svg {
+      color:rgba(0, 0, 0, 0);
+    }
   }
   .gnav-menu-input:checked ~ .gnav-right {
     right: 0;
@@ -456,6 +465,9 @@
 
 /* スマホ表示時 */
 @media (max-width: 530px) {
+  .inner {
+  padding: 0 8px;
+  }
 
   // パンくずリスト
   .breadcrumbs {
