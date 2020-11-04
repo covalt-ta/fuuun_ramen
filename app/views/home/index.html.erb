@@ -1,173 +1,170 @@
 <!-- .header -->
 <% breadcrumb :root %>
-<header class="header">
+<header class="header innner">
   <h1 class="logo">
     <div class="logo-title">Fuuun Ramen</div>
     <div class="logo-subtitle">モバイルオーダー受付中</div>
   </h1>
 </header>
 <!-- /.header -->
-<main class="content">
-  <!-- .Products-section -->
-  <section class="products-section section" id="products-section">
-    <div class="inner">
-      <div class="section-heading">
-        <h2 class="heading-primary">メニュー</h2>
+<!-- .Products-section -->
+<section class="section">
+  <div class="inner">
+    <div class="section-heading">
+      <h2 class="heading-primary">メニュー</h2>
+    </div>
+    <div class="section-lead">
+      <p>ネットからのご注文では店頭価格より10％OFFとお得です<br>ご注文には事前に会員登録が必要となります。</p>
+    </div>
+    <div class="section-body">
+      <div class="products-list js-my-gallery">
+        <% @ranking_products.each do |product| %>
+          <figure class="products-item">
+            <%= link_to product_path(product) do %>
+              <div data-size="960x720" class="products-image-wrapper products-link hover-action">
+                <%= image_tag product.image.variant(resize:'960x720'), class: "products-image" if product.image.attached? %>
+              </div>
+            <% end %>
+            <figcaption class="products-body">
+              <div class="products-title"><%= product.name %></div>
+              <div class="products-text"><%= product.text %></div>
+              <div class="products-text"><%= product.display_price %></div>
+            </figcaption>
+          </figure>
+        <% end %>
       </div>
-      <div class="section-lead">
-        <p>ネットからのご注文では店頭価格より10％OFFとお得です<br>ご注文には事前に会員登録が必要となります。</p>
+      <div class="home-products-link">
+        <%= link_to "モバイルオーダーで注文する", products_path, class: "home-products-link-btn" %>
       </div>
-      <div class="section-body">
-        <div class="products-list js-my-gallery">
-          <% @ranking_products.each do |product| %>
-            <figure class="products-item">
-              <%= link_to product_path(product) do %>
-                <div data-size="960x720" class="products-image-wrapper products-link hover-action">
-                  <%= image_tag product.image.variant(resize:'960x720'), class: "products-image" if product.image.attached? %>
-                </div>
+    </div>
+  </div>
+</section>
+
+<!-- .about-section -->
+<section class="section">
+  <div class="inner">
+    <div class="section-heading">
+      <h2 class="heading-primary">コンセプト</h2>
+    </div>
+    <div class="section-lead">
+      <p>
+        本物だけを届ける
+      </p>
+    </div>
+    <div class="section-body about">
+      <div class="about-item">
+        <div class="about-image-wrapper">
+          <%= image_tag "expert.jpg", size: '500x500', class: "about-image"%>
+          <%= image_tag "noodles.jpg", size: '500x500', class: "about-image"%>
+          <%= image_tag "soup.jpg", size: '500x500', class: "about-image"%>
+        </div>
+        <div class="about-body">
+          <div class="about-image-500"><%= image_tag "expert.jpg", size: '500x500' %></div>
+          <h3>ブームの火付け役・食材追求のパイオニア</h3>
+          <p>
+            中華蕎麦とみ田／手打式超多加水面ののくら／麺庵ちとせなど、1970年代に日本中を熱狂させたラーメンブームは麺から始まった。<br><br>
+            風雲ラーメン・初代店主の風間青雲は食材追求するパイオニアとして、本物の商品を届けるべく日本中を走り続けてきた。</p>
+          <br>
+          <br>
+          <div class="about-image-500"><%= image_tag "noodles.jpg", size: '500x500' %></div>
+          <h3>飽くなき食材追求の伝統</h3>
+          <p>
+            初代店主から食材追求の伝統受け継いた2代目店主・大河原敏郎は風雲ラーメンのリブランドを行い、Fuuun Ramenを立ち上げた。<br><br>
+            麺とスープ、食材の追求をさらなる次元に引き上げるために。
+          </p>
+          <br>
+          <br>
+          <div class="about-image-500"><%= image_tag "soup.jpg", size: '500x500' %></div>
+          <h3>市場に流通しない生産農家さんとの直接契約</h3>
+          <p>
+            「納得のいかないものは出さない」そんな職人マインドを持つ生産者の協力を日本中を駆け回り集めてきました。<br><br>
+            市場には流通しない圧倒的な品質の食材を使用した日本で一番こだわったといえる一杯を是非ご賞味ください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /.about-section -->
+
+<!-- .information-section -->
+<section class="section">
+  <div class="inner">
+    <div class="section-heading">
+      <h2 class="heading-primary">最新情報</h2>
+    </div>
+    <div class="section-lead">
+      <p>
+        魂込めて営業中！
+      </p>
+    </div>
+
+    <div class="section-body">
+      <div class="information-list">
+        <% @informations.each do |information| %>
+          <div class="information-item">
+            <div class="information-image-wrapper information-link hover-action">
+              <% if information.image.attached? %>
+                <%= image_tag information.image, class: "information-image" %>
+              <% else %>
+                <%= image_tag "sample-logo.png", class: "information-image" %>
               <% end %>
-              <figcaption class="products-body">
-                <div class="products-title"><%= product.name %></div>
-                <div class="products-text"><%= product.text %></div>
-                <div class="products-text"><%= product.display_price %></div>
-              </figcaption>
-            </figure>
-          <% end %>
-        </div>
-        <div class="home-products-link">
-          <%= link_to "モバイルオーダーで注文する", products_path, class: "home-products-link-btn" %>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- .about-section -->
-  <section class="about-section section" id="about-section">
-    <div class="inner">
-      <div class="section-heading">
-        <h2 class="heading-primary">コンセプト</h2>
-      </div>
-      <div class="section-lead">
-        <p>
-          本物だけを届ける
-        </p>
-      </div>
-      <div class="section-body about">
-        <div class="about-item">
-          <div class="about-image-wrapper">
-            <%= image_tag "expert.jpg", size: '500x500', class: "about-image"%>
-            <%= image_tag "noodles.jpg", size: '500x500', class: "about-image"%>
-            <%= image_tag "soup.jpg", size: '500x500', class: "about-image"%>
-          </div>
-          <div class="about-body">
-            <div class="about-image-500"><%= image_tag "expert.jpg", size: '500x500' %></div>
-            <h3>ブームの火付け役・食材追求のパイオニア</h3>
-            <p>
-              中華蕎麦とみ田／手打式超多加水面ののくら／麺庵ちとせなど、1970年代に日本中を熱狂させたラーメンブームは麺から始まった。<br><br>
-              風雲ラーメン・初代店主の風間青雲は食材追求するパイオニアとして、本物の商品を届けるべく日本中を走り続けてきた。</p>
-            <br>
-            <br>
-            <div class="about-image-500"><%= image_tag "noodles.jpg", size: '500x500' %></div>
-            <h3>飽くなき食材追求の伝統</h3>
-            <p>
-              初代店主から食材追求の伝統受け継いた2代目店主・大河原敏郎は風雲ラーメンのリブランドを行い、Fuuun Ramenを立ち上げた。<br><br>
-              麺とスープ、食材の追求をさらなる次元に引き上げるために。
-            </p>
-            <br>
-            <br>
-            <div class="about-image-500"><%= image_tag "soup.jpg", size: '500x500' %></div>
-            <h3>市場に流通しない生産農家さんとの直接契約</h3>
-            <p>
-              「納得のいかないものは出さない」そんな職人マインドを持つ生産者の協力を日本中を駆け回り集めてきました。<br><br>
-              市場には流通しない圧倒的な品質の食材を使用した日本で一番こだわったといえる一杯を是非ご賞味ください。
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- /.about-section -->
-
-  <!-- .information-section -->
-  <section class="information-section section" id="information-section">
-    <div class="inner">
-      <div class="section-heading">
-        <h2 class="heading-primary">最新情報</h2>
-      </div>
-      <div class="section-lead">
-        <p>
-          魂込めて営業中！
-        </p>
-      </div>
-
-      <div class="section-body">
-        <div class="information-list">
-          <% @informations.each do |information| %>
-            <div class="information-item">
-              <div class="information-image-wrapper information-link hover-action">
-                <% if information.image.attached? %>
-                  <%= image_tag information.image, class: "information-image" %>
-                <% else %>
-                  <%= image_tag "sample-logo.png", class: "information-image" %>
-                <% end %>
-              </div>
-              <div class="information-body">
-                  <h3 class="information-title"><%= information.title%></h3>
-                  <%= information.updated_at.to_s(:datetime_jp)%>
-                  <p><%= information.text %></p>
-              </div>
             </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- /.information-section -->
-
-  <!-- .contact-section -->
-  <section class="contact-section section" id="contact-section">
-    <div class="inner">
-      <div class="section-heading">
-        <h2 class="heading-primary">お問い合わせ</h2>
-      </div>
-      <div class="shop-info-wrapper">
-        <div class="shop-image-wrapper">
-          <%= image_tag "shop_image.jpg", class: "shop-image" %>
-        </div>
-        <div class="shop-info">
-          <ul class="shop-data">
-            <li>【住　　所】<%= @shop.address if @shop %></li>
-            <li>【営業時間】<%= "#{@shop.open_time} ~ #{@shop.close_time}" if @shop %></li>
-            <li>【電話番号】<%= @shop.phone_number if @shop %> </li>
-          </ul>
-          <div class="contact">
-            <%= form_with model: @contact, url: contact_path, local: true do |f| %>
-              <div class="contact-form-group">
-                <%= f.label :お名前（必須）, class: 'lavel' %>
-                <%= f.text_field :name, class:"contact-input-default", placeholder:"例) 鈴木一郎" %>
-              </div>
-              <div class="contact-form-group">
-                <%= f.label :メールアドレス（必須）, class: 'lavel' %>
-                <%= f.email_field :email, class:"contact-input-default", placeholder:"PC・携帯どちらでも可" %>
-              </div>
-              <div class="contact-form-group">
-                <%= f.label :電話番号, class: 'lavel' %>
-                <%= f.text_field :phone_number, class:"contact-input-default", placeholder:"例) 09012345678 ハイフンは不要です" %>
-              </div>
-              <div class="contact-form-group">
-                <%= f.label :お問い合わせ内容（必須）, class: 'lavel' %>
-                <%= f.text_area :text, class:"contact-input-area", placeholder:"お問い合わせ内容をご記載ください" %>
-              </div>
-              <div class='register-btn'>
-                <%= f.submit "送信する" ,class:"register-green-btn" %>
-                <p class="contact-submit-text">お問い合わせありがとうございます。</p>
-              </div>
-            <% end%>
+            <div class="information-body">
+                <h3 class="information-title"><%= information.title%></h3>
+                <%= information.updated_at.to_s(:datetime_jp)%>
+                <p><%= information.text %></p>
+            </div>
           </div>
-        <div>
+        <% end %>
       </div>
     </div>
-  </section>
-  <!-- /.contact-section -->
-</main>
+  </div>
+</section>
+<!-- /.information-section -->
+
+<!-- .contact-section -->
+<section class="section">
+  <div class="inner">
+    <div class="section-heading">
+      <h2 class="heading-primary">お問い合わせ</h2>
+    </div>
+    <div class="shop-info-wrapper">
+      <div class="shop-image-wrapper">
+        <%= image_tag "shop_image.jpg", class: "shop-image" %>
+      </div>
+      <div class="shop-info">
+        <ul class="shop-data">
+          <li>【住　　所】<%= @shop.address if @shop %></li>
+          <li>【営業時間】<%= "#{@shop.open_time} ~ #{@shop.close_time}" if @shop %></li>
+          <li>【電話番号】<%= @shop.phone_number if @shop %> </li>
+        </ul>
+        <div class="contact">
+          <%= form_with model: @contact, url: contact_path, local: true do |f| %>
+            <div class="contact-form-group">
+              <%= f.label :お名前（必須）, class: 'lavel' %>
+              <%= f.text_field :name, class:"contact-input-default", placeholder:"例) 鈴木一郎" %>
+            </div>
+            <div class="contact-form-group">
+              <%= f.label :メールアドレス（必須）, class: 'lavel' %>
+              <%= f.email_field :email, class:"contact-input-default", placeholder:"PC・携帯どちらでも可" %>
+            </div>
+            <div class="contact-form-group">
+              <%= f.label :電話番号, class: 'lavel' %>
+              <%= f.text_field :phone_number, class:"contact-input-default", placeholder:"例) 09012345678 ハイフンは不要です" %>
+            </div>
+            <div class="contact-form-group">
+              <%= f.label :お問い合わせ内容（必須）, class: 'lavel' %>
+              <%= f.text_area :text, class:"contact-input-area", placeholder:"お問い合わせ内容をご記載ください" %>
+            </div>
+            <div class='register-btn'>
+              <%= f.submit "送信する" ,class:"register-green-btn" %>
+              <p class="contact-submit-text">お問い合わせありがとうございます。</p>
+            </div>
+          <% end%>
+        </div>
+      <div>
+    </div>
+  </div>
+</section>
+<!-- /.contact-section -->

@@ -62,7 +62,7 @@
 }
 
 .products-image-wrapper {
-  width: 400px;
+  max-width: 400px;
   height: 300px;
 }
 
@@ -130,10 +130,6 @@
 /*--------------------------------
  About
 ---------------------------------*/
-.about-section .inner {
-  max-width: 1000px;
-}
-
 .about-item {
   display: flex;
   flex-wrap: wrap;
@@ -165,8 +161,6 @@
 /*--------------------------------
  Information
 ---------------------------------*/
-.information-section .inner {
-}
 
 .information-list {
   display: flex;
@@ -180,8 +174,8 @@
 }
 
 .information-image-wrapper {
-  margin-right: 20px;
-  width: 400px;
+  // margin-right: 20px;
+  max-width: 400px;
   height: 300px;
 }
 
@@ -218,27 +212,26 @@
 
 .shop-info-wrapper {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
 .shop-image-wrapper {
-  min-width: 500px;
-  min-height: 500px;
+  width: 100%;
+  height: 300px;
   flex: 1;
 }
 
 .shop-image {
   width: 100%;
   height: 100%;
-  padding: 2px;
   object-fit: cover;
 }
 
 .shop-info {
   width: 100%;
-  flex: 1;
-  padding: 40px 20px 0;
+  padding: 20px 20px 0;
   display: flex;
   flex-direction: column;
 }
@@ -366,121 +359,24 @@
     font-size: 14px;
   }
 
-  /* グローバルナビ */
-  .gnav {
-    padding: 15px 0;
+  /* Products-section */
+  .products-item {
+    flex: 0 0 100%;
   }
 
-  .gnav-item {
-    font-size: 13px;
-    padding: 2px 15px;
-  }
-
-  .gnav-link {
-    padding: 0;
-  }
-
-  .gnav-link:hover {
-    opacity: 1;
-  }
-
-  .gnav-link:after {
-    display: none;
-  }
-
-  /* Works */
-  .works-body {
-    text-align: left;
-  }
-
-  .works-title {
-    font-size: 10px;
-  }
-
-  .works-list {
-    justify-content: space-between;
-  }
-
-  .works-item {
-    flex: 0 0 48%;
-    margin-right: 0;
-    margin-bottom: 30px;
-  }
-
-  /* Feature */
-  .feature-item {
-    display: block;
-  }
-
-  .feature-image-wrapper {
-    max-width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
 
   /* About */
-  .about-image-wrapper {
-    width: 100px;
-    max-width: 100%;
-    margin: 0 auto 20px;
-  }
-
-  /* Skill */
-  .skill-list {
-    display: block;
-    margin-bottom: 0;
-  }
-
-  .skill-item {
-    max-width: 100%;
-    margin-bottom: 35px;
-  }
-
-  .skill-item:last-child {
-    margin-bottom: 0;
-  }
-
-  .skill-image-wrapper {
-    flex: 0 0 75px;
-    margin-right: 15px;
-  }
-
-  .rate {
-    font-size: 15px;
-    height: 15px;
-  }
-
-  .rate:before,
-  .rate:after {
-    line-height: 15px;
-    height: 15px;
-  }
-
-  .rate1:after {
-    width: 15px;
-  }
-
-  .rate2:after {
-    width: 35px;
-  }
-
-  .rate3:after {
-    width: 55px;
-  }
-
-  .rate4:after {
-    width: 75px;
-  }
-
-  .rate5:after {
-    width: 95px;
-  }
+  // .about-image-wrapper {
+  //   width: 100px;
+  //   max-width: 100%;
+  //   // margin: 0 auto 20px;
+  // }
 
   /* Contact */
-  .contact-item {
-    width: 40px;
-    margin: 0 10px;
-  }
+  // .contact-item {
+  //   width: 40px;
+  //   margin: 0 10px;
+  // }
 
   /* フッター */
   .footer .inner {
@@ -491,7 +387,6 @@
 
 /* タブレット表示時 */
 @media (max-width: 1000px)  {
-
   .about-item {
     flex-direction: column;
     flex-wrap: wrap;
@@ -510,7 +405,6 @@
       border-bottom: solid 1px rgb(134, 197, 153);
     }
   }
-
   .about-image-wrapper {
     display: none;
   }
@@ -519,9 +413,7 @@
     display: block;
     text-align: center;
     margin: 10px auto;
-
   }
-
 }
 
 /* スマホ表示時 */
@@ -540,10 +432,15 @@
     }
   }
   .about-image-500 {
-    width: 400px;
+    // width: 400px;
     text-align: center;
     img{
       object-fit: cover;
     }
+  }
+
+  // contact-section
+  .shop-data {
+    font-size: 12px;
   }
 }

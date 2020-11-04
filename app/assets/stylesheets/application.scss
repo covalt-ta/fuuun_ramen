@@ -339,7 +339,9 @@
 
 /* タブレット表示時 */
 @media (max-width: 1000px)  {
-
+  .content {
+    width: 100%;
+  }
   // パンくずリスト
   .breadcrumbs {
     font-size: 16px;
@@ -397,13 +399,16 @@
     }
 
     .hamburger-1 {
-      border-bottom: solid 1px rgb(134, 197, 153);
+      border-bottom: solid 5px rgb(134, 197, 153);
+      border-radius: 2px;
     }
     .hamburger-2 {
-      border-bottom: solid 1px rgb(134, 197, 153);
+      border-bottom: solid 5px rgb(134, 197, 153);
+      border-radius: 2px;
     }
     .hamburger-3 {
-      border-bottom: solid 1px rgb(134, 197, 153);
+      border-bottom: solid 5px rgb(134, 197, 153);
+      border-radius: 2px;
     }
   }
 
@@ -464,11 +469,15 @@
     }
   }
 
-
   .gnav-left {
-    .gnav-item {
-      padding: 0 10px;
-      font-size: 12px;
+    .gnav-list {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      .gnav-item {
+        white-space: nowrap;
+        padding: 0 3px;
+        font-size: 12px;
+      }
     }
   }
 }
