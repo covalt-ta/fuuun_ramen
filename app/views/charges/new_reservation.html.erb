@@ -1,43 +1,41 @@
 <% breadcrumb :user_new_reservation, current_user %>
-<div class="wrapper">
-  <div class="inner">
-    <h3 class="user-new-headtitle">ご来店日時の選択</h3>
-    <div class="reservation-new-contents">
-      <%= form_with model: @reservation, url: create_reservation_charges_path, local: true, class: 'reservation-form' do |f| %>
-        <div class="user-new-form">
-          <div class="user-form-group">
-            <%= f.label :ご来店の日付を選択, class: 'lavel' %>
-            <%= f.date_field :day, class: 'date-select' %>
-          </div>
-          <div class="user-form-group">
-            <%= f.label :ご来店のお時間を選択, class: 'lavel' %>
-            <%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class: "select-box"}) %>
-          </div>
-          <div class="user-form-group">
-            <%= f.label :お持ち帰りorご来店人数を選択, class: 'lavel' %>
-            <%= f.collection_select(:count_person_id, CountPerson.all, :id, :name, {}, {class: "select-box"})%>
-          </div>
-          <div class='register-btn'>
-            <%= f.submit '購入確認へ進む', class: "register-green-btn" %>
-          </div>
+<div class="inner">
+  <h3 class="user-new-headtitle">ご来店日時の選択</h3>
+  <div class="reservation-new-contents">
+    <%= form_with model: @reservation, url: create_reservation_charges_path, local: true, class: 'reservation-form' do |f| %>
+      <div class="user-new-form">
+        <div class="user-form-group">
+          <%= f.label :ご来店の日付を選択, class: 'lavel' %>
+          <%= f.date_field :day, class: 'date-select' %>
         </div>
-      <% end %>
-      <% if @shop.holiday || @holidays.empty? == false %>
-        <div class="precautions">
-          <p class="precautions-title">ご予約日程についてのご案内<p>
-          <ul class="precautions-holidays">
-            <li><%= "※毎週＜#{@shop.regular_holiday}＞は定休日の為、ご予約できません" if @shop.holiday %></li>
-            <% if @holidays.empty? == false %>
-              <li>※休日の為、下記日程はご予約できません</li>
-              <div class="precautions-holidays-flex">
-                <% @holidays.each do |holiday| %>
-                  <span><%= "<#{holiday.day}>" %></span>
-                <% end %>
-              </div>
-            <% end %>
-          </ul>
+        <div class="user-form-group">
+          <%= f.label :ご来店のお時間を選択, class: 'lavel' %>
+          <%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class: "select-box"}) %>
         </div>
-      <% end %>
-    </div>
+        <div class="user-form-group">
+          <%= f.label :お持ち帰りorご来店人数を選択, class: 'lavel' %>
+          <%= f.collection_select(:count_person_id, CountPerson.all, :id, :name, {}, {class: "select-box"})%>
+        </div>
+        <div class='register-btn'>
+          <%= f.submit '購入確認へ進む', class: "register-green-btn" %>
+        </div>
+      </div>
+    <% end %>
+    <% if @shop.holiday || @holidays.empty? == false %>
+      <div class="precautions">
+        <p class="precautions-title">ご予約日程についてのご案内<p>
+        <ul class="precautions-holidays">
+          <li><%= "※毎週＜#{@shop.regular_holiday}＞は定休日の為、ご予約できません" if @shop.holiday %></li>
+          <% if @holidays.empty? == false %>
+            <li>※休日の為、下記日程はご予約できません</li>
+            <div class="precautions-holidays-flex">
+              <% @holidays.each do |holiday| %>
+                <span><%= "<#{holiday.day}>" %></span>
+              <% end %>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </div>

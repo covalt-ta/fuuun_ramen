@@ -281,6 +281,53 @@ new_reservation.html
   margin: 0 auto;
 }
 
+/*--------------------------------
+charges/new.html
+---------------------------------*/
+.charge-product-wrapper {
+  margin-bottom: 50px;
+}
+
+.last-charge-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 50%;
+  margin: 5px 0 0 auto;
+  text-align: right;
+}
+
+.last-charge-green-btn {
+  width: 50%;
+  padding: 10px;
+  background: rgb(134, 197, 153);
+  border: 1px solid rgb(134, 197, 153);
+  border-radius: 5px;
+  color: #fff;
+  line-height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.last-charge-green-btn:hover {
+  color: rgb(134, 197, 153);
+  background-color: #fff;
+  text-decoration: none;
+}
+
+.reservation-back {
+  margin-right: 30px;
+  color: gray;
+  text-align: center;
+}
+
+.reservation-back:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+
+
 
 /*--------------------------------
 _card.html.erb
@@ -442,7 +489,9 @@ basket/show.html.erb
   background-color: rgb(134, 197, 153);
   text-decoration: none;
 }
-
+.basket-price {
+  white-space: nowrap;
+}
 .delete-basket-btn {
   width: 100%;
   padding: 10px;
@@ -453,6 +502,7 @@ basket/show.html.erb
   line-height: 48px;
   font-size: 14px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .delete-basket-btn:hover {
@@ -470,7 +520,6 @@ basket/show.html.erb
   color: gray;
   line-height: 20px;
   font-size: 14px;
-
 }
 
 .charge-btn {
@@ -498,8 +547,6 @@ basket/show.html.erb
 }
 
 .menu-link {
-  margin-top: 20px;
-  margin-right: 20px;
   color: gray;
   text-align: center;
 }
@@ -696,7 +743,9 @@ basket/show.html.erb
       text-align: center;
     }
   }
-
+  .basket-price {
+    font-size: 10px;
+  }
   .product {
     font-size: 12px;
     .delete-basket-btn {
@@ -710,12 +759,18 @@ basket/show.html.erb
     }
   }
 
+  .basket-total-price {
+    text-align: center;
+  }
+
   .charge-btn {
     width: 100%;
     .menu-link {
       display: block;
       width: 100%;
       margin-bottom: 15px;
+      font-size: 14px;
+      margin-top: 20px;
     }
     .charge-green-btn {
       display: block;
@@ -723,5 +778,48 @@ basket/show.html.erb
       text-align: center;
       line-height: 20px;
     }
+  }
+  // charges/new_reservation.html
+  .reservation-new-contents {
+    width: 100%;
+    .precautions {
+      margin: 20px auto;
+    }
+    .precautions-holidays-flex {
+      font-size: 10px;
+      width: 100%;
+      span {
+        width: 33%;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  // charges/new.html
+  .last-charge-btn {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    width: 100%;
+    // margin: 5px 0 0 auto;
+    // text-align: right;
+  }
+
+  .last-charge-green-btn {
+    width: 100%;
+    // padding: 10px;
+    // background: rgb(134, 197, 153);
+    // border: 1px solid rgb(134, 197, 153);
+    // border-radius: 5px;
+    // color: #fff;
+    // line-height: 30px;
+    // font-size: 14px;
+    // cursor: pointer;
+  }
+
+  .reservation-back {
+    margin: 10px 0;
+    white-space: nowrap;
+    font-size: 12px;
   }
 }

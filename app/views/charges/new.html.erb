@@ -1,6 +1,6 @@
 <% breadcrumb :user_new_charge, current_user %>
 <div class="inner">
-  <div class="wrapper">
+  <div class="charge-product-wrapper">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -19,38 +19,35 @@
         <% end %>
       </tbody>
     </table>
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">ご予約日</th>
-          <th scope="col">ご来店時刻</th>
-          <th scope="col">ご利用人数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="product">
-          <td><%= @day %></td>
-          <td><%= @time_zone %></td>
-          <td><%= @count_person %></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="float-right">
-      <%= form_with url: charges_path, local: true do |f| %>
-        <% @product_toppings.each do |product_topping| %>
-          <%= f.hidden_field "product_topping_ids[]", value: product_topping.id %>
-        <% end %>
-        <div class="float-right badge badge-secondary ">
-          <%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%>
-        </div>
-        <br>
-        <div>
-          <%= f.submit '購入する', class: "btn btn-lg btn-outline-secondary" %>
-        </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ご予約日</th>
+        <th scope="col">ご来店時刻</th>
+        <th scope="col">ご利用人数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="product">
+        <td><%= @day %></td>
+        <td><%= @time_zone %></td>
+        <td><%= @count_person %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <%= form_with url: charges_path, local: true do |f| %>
+      <% @product_toppings.each do |product_topping| %>
+        <%= f.hidden_field "product_topping_ids[]", value: product_topping.id %>
       <% end %>
-    </div>
-
+      <div class="basket-total-price">
+        <span><%= "お支払い合計金額 : #{@total_price.to_s(:delimited)}円"%></span>
+      </div>
+      <div class="last-charge-btn">
+        <%= link_to '<< 戻る', :back, class: "reservation-back"%>
+        <%= f.submit "購入する", class: "last-charge-green-btn"%>
+      </div>
+    <% end %>
   </div>
 </div>
