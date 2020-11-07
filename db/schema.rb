@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_022905) do
+ActiveRecord::Schema.define(version: 2020_11_07_131258) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -120,6 +120,18 @@ ActiveRecord::Schema.define(version: 2020_09_07_022905) do
     t.index ["admin_id"], name: "index_information_on_admin_id"
   end
 
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "room_id", null: false
+    t.bigint "user_id"
+    t.bigint "admin_id"
+    t.text "message", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_messages_on_admin_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "notices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "action", default: "", null: false
     t.boolean "checked", default: false
@@ -200,6 +212,13 @@ ActiveRecord::Schema.define(version: 2020_09_07_022905) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "reservation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reservation_id"], name: "index_rooms_on_reservation_id"
+  end
+
   create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -256,6 +275,9 @@ ActiveRecord::Schema.define(version: 2020_09_07_022905) do
   add_foreign_key "comments", "users"
   add_foreign_key "holidays", "shops"
   add_foreign_key "information", "admins"
+  add_foreign_key "messages", "admins"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "notices", "admins"
   add_foreign_key "notices", "reservations"
   add_foreign_key "order_record_products", "order_records"
@@ -268,6 +290,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_022905) do
   add_foreign_key "product_topping_relations", "toppings"
   add_foreign_key "product_toppings", "products"
   add_foreign_key "products", "admins"
+  add_foreign_key "rooms", "reservations"
   add_foreign_key "shops", "admins"
   add_foreign_key "toppings", "admins"
 end
