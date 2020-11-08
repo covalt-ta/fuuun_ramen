@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   resources :users, only: %i(show update)
   resources :cards, only: %i(new create destroy)
   resources :addresses, only: %i(new create update destroy)
+  resources :rooms, only: %i(index show)
+  resource :message, only: :create
   resource :basket, only: :show
   resource :contact, only: :create
   resources :charges, only: %i(new create) do
@@ -47,5 +49,7 @@ Rails.application.routes.draw do
     resources :notices, only: :index
     resources :shops, only: %i(new show create update)
     resources :holidays, only: %i(create destroy)
+    resources :rooms, only: %i(index show)
+    resource :message, only: :create
   end
 end
