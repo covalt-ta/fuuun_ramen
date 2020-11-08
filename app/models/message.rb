@@ -23,4 +23,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Message < ApplicationRecord
+  belongs_to :user, optional: true
+  belongs_to :admin, optional: true
+  belongs_to :room
+
+  validates :message, presence: true
 end
