@@ -1,1 +1,65 @@
-<div class="inner wrapper">Userチャットルームの一覧</div>
+<% breadcrumb :user_rooms, current_user %>
+<div class="inner">
+  <div class="tab-wrap">
+    <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">予約一覧</label>
+    <div class="tab-content">
+      <div class="panel chat-tab">
+        <table class="table">
+          <thead>
+            <tr class="chat-thead">
+              <th></th>
+              <th scope="col">ご来店予約日時</th>
+              <th scope="col">ご利用人数</th>
+              <th scope="col">お支払い料金</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @reservations.each do |reservation| %>
+              <tr class="chat-content">
+                <td class="chat-product-image">
+                  <button type="button" data-toggle="modal" onfocus="this.blur();" data-target="#exampleModalCenter<%= reservation.id %>">
+                    <%= image_tag reservation.product_toppings.first.product.image %>
+                  </button>
+                </td>
+                <td><%= "#{reservation.day} / #{reservation.get_time_zone}"%></td>
+                <td><%= reservation.get_count_person %></td>
+                <td><%= "#{reservation.total_price.to_s(:delimited)}円" %></td>
+                <td>
+                  <%= link_to room_path(reservation) do %>
+                    <i class="fas fa-comments"></i>
+                  <% end %>
+                </td>
+              </tr>
+
+              <div class="modal fade" id="exampleModalCenter<%= reservation.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalCenterTitle">商品詳細</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <% reservation.order_record_products.each do |order_record_product| %>
+                        <div>
+                          <%= order_record_product.product_topping.product.name %>
+                          <%= order_record_product.product_topping.topping_names%>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
