@@ -28,11 +28,13 @@
         <% else %>
           <li class="gnav-item"><i class="fas fa-bell"></i><%= link_to "通知", admins_notices_path, class: "gnav-link" %></li>
         <% end %>
+        <li class="gnav-item"><i class="fas fa-comments"></i><%= link_to "DM", admins_rooms_path, class: "gnav-link" %></li>
         <li class="gnav-item"><i class="fas fa-columns"></i><%= link_to "ダッシュボード", admins_root_path, class: "gnav-link" %></li>
         <li class="gnav-item"><i class="fas fa-sign-out-alt"></i><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "gnav-link" %></li>
       <% elsif user_signed_in? %>
-        <li class="gnav-item"><i class="fas fa-user"></i><%= link_to "マイページ", user_path(current_user), class: "gnav-link" %></li>
         <li class="gnav-item"><i class="fas fa-shopping-cart"></i><%= link_to "買い物カゴ", basket_path(current_user), class: "gnav-link" %></li>
+        <li class="gnav-item"><i class="fas fa-comments"></i><%= link_to "DM", rooms_path, class: "gnav-link" %></li>
+        <li class="gnav-item"><i class="fas fa-user"></i><%= link_to "マイページ", user_path(current_user), class: "gnav-link" %></li>
         <li class="gnav-item"><i class="fas fa-sign-out-alt"></i><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "gnav-link" %></li>
       <% else %>
         <li class="gnav-item"><%= link_to "簡単ログイン", home_test_sign_in_path, class: "gnav-link" %></li>
