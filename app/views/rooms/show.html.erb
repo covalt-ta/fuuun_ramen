@@ -1,1 +1,63 @@
-<div class="inner wrapper">Userチャットルームの一覧</div>
+<% breadcrumb :user_message_room, current_user %>
+<div class="inner">
+  <div class="chat-show-contents">
+    <div class="order-menu">
+      <table>
+        <tbody>
+          <tr>
+            <th>予約日付</th>
+            <td colspan="2"><%= "#{@reservation.day} / #{@reservation.get_time_zone}"%></td>
+          </tr>
+          <tr>
+            <th>利用人数</th>
+            <td colspan="2"><%= @reservation.get_count_person %></td>
+          </tr>
+          <tr>
+            <th>合計料金</th>
+            <td colspan="2"><%= "#{@reservation.total_price.to_s(:delimited)}円" %></td>
+          </tr>
+          <tr>
+            <th>商品</th>
+          </tr>
+          <% @products.each do |product| %>
+            <tr>
+              <th rowspan="2"><%= image_tag product.product.image %></th>
+              <td><%= product.product.name %></td>
+            </tr>
+            <tr>
+              <td class="topping"><%= product.topping_names%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="chat-message">
+      <% if @messages.blank? %>
+        <p class="no-message">メッセージはありません</p>
+      <% else%>
+        <div class="chat-block">
+          <% @messages.each do |message| %>
+            <div class="message">
+              <% if message.user %>
+                <div class="user-message"><span><%= message.message %></span></div>
+              <% else %>
+                <div class="admin-message">
+                  <%= image_tag 'sample-logo.png', class: "icon", alt: "fuuun_ramenのロゴ"%>
+                  <span><%= message.message %></span>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="submit-block">
+        <%= form_with model: @message, url: message_path, class:"submit", local: true do |f| %>
+          <span class="rooms-back"><%= link_to "＜ 戻る", rooms_path %></span>
+          <%= f.text_field :message, class:"message-form" %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.submit "送信", class:"submit-btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
