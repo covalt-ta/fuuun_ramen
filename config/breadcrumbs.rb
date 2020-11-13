@@ -53,12 +53,12 @@ crumb :user_new_charge do |user|
 end
 
 crumb :user_rooms do |user|
-  link "チャット一覧", rooms_path
+  link "メッセージルーム一覧", rooms_path
   parent :user_mypage, user
 end
 
 crumb :user_message_room do |user|
-  link "チャット詳細"
+  link "メッセージルーム"
   parent :user_rooms, user
 end
 
