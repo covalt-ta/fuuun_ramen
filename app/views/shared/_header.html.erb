@@ -1,9 +1,9 @@
 <nav class="gnav fixed">
   <div class="gnav-left">
     <ul class="gnav-list">
-      <%= link_to "/" , class: "text-center gnav-logo" do%>
-        <%= image_tag 'sample-logo.png', size: '35x35', alt: "fuuun_ramenのロゴ"%>
-        <div class="gnav-logo-text">Fuuun Ramen</div>
+      <%= link_to "/" , class: "gnav-logo" do%>
+        <%= image_tag 'sample-logo.png', alt: "fuuun_ramenのロゴ"%>
+        <p class="gnav-logo-text">Fuuun Ramen</p>
       <% end %>
       <li class="gnav-item"><i class="fas fa-utensils"></i><%= link_to "注文する", products_path, class: "gnav-link" %></li>
       <li class="gnav-item"><i class="fas fa-check"></i><%= link_to "最新情報", "/#information-section", class: "gnav-link" %></li>
@@ -19,7 +19,7 @@
   <label for="gnav-menu" class="back"></label>
   <div class="gnav-right">
     <ul class="gnav-list">
-      <label for="gnav-menu" class="close">×</label>
+      <label for="gnav-menu" class="close-btn">×</label>
       <% if admin_signed_in? %>
         <% if unchecked_notices.any? %>
           <span class="new-notice">
