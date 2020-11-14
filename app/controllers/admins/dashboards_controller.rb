@@ -3,9 +3,10 @@ class Admins::DashboardsController < Admins::ApplicationController
   require "csv"
 
   def index
-    # 当月の予約を取得
+    # 当月の予約を取得 whereメソッドは複数のデータを指定できる
     month_reservations = Reservation.includes(:product_toppings).where(day: Time.current.all_month)
     # 来客数合計を算出する
+    # ReservationsDataは、引数で渡す予約（複数）に対して、客数、紐づく商品などを取得するconcernディレクトリに定義したモジュール
     @count_person = ReservationsData.count_person(month_reservations)
     # 今月のTake Out数を算出する
     @count_takeout = month_reservations.where(count_person_id: 1).count
@@ -27,7 +28,7 @@ class Admins::DashboardsController < Admins::ApplicationController
     @today = Date.current
     @reservations = Reservation.includes(:user, order_record_products: :product_topping).where(day: @today).order(day: :ASC, time_zone_id: :ASC)
 
-    # CSV出力
+    # CSV出力のレスポンスを受けた際の処理
     respond_to do |format|
       format.html
       format.csv do |csv|
@@ -40,7 +41,7 @@ class Admins::DashboardsController < Admins::ApplicationController
     @p = Reservation.includes(:product_toppings, :user).ransack(params[:q])
     @results = @p.result.order(day: :ASC)
 
-    # CSV出力
+    # CSV出力のレスポンスを受けた際の処理
     respond_to do |format|
       format.html
       format.csv do |csv|
@@ -65,7 +66,7 @@ class Admins::DashboardsController < Admins::ApplicationController
     @topping_ranking = Topping.where(id: topping_ids).order("field(id, #{topping_ids.join(',')})")
 
 
-    # CSV出力
+    # CSV出力のレスポンスを受けた際の処理
     respond_to do |format|
       format.html
       format.csv do |csv|
@@ -75,17 +76,19 @@ class Admins::DashboardsController < Admins::ApplicationController
   end
 
   private
+  # 予約検索メソッド
   def search_reservation
     @p = Reservation.includes(:product_toppings).ransack(params[:q])
     # 検索対象期間
     @target_period = "#{params[:q][:day_gteq]}-#{params[:q][:day_lteq]}" if params[:q]
 
-    # 検索対象期間を範囲オブジェクトで取得
+    # 検索対象期間を範囲オブジェクトで取得 検索されてない状態の初期値では@target_period_rageが定義されない（ビューで検索結果を表示させない）
     if params[:q] && params[:q][:day_gteq].blank? != true && params[:q][:day_lteq].blank? != true
       @target_period_range = params[:q][:day_gteq].to_date..params[:q][:day_lteq].to_date
     end
   end
 
+  # indexアクションのCSV出力メソッドで呼び出されるメソッド
   def send_sales_csv(target_period_start, target_period_end, reservations, target_period)
     target_period_range = target_period_start.to_date..target_period_end.to_date
     filename = "sales_#{target_period}.csv"
@@ -104,6 +107,7 @@ class Admins::DashboardsController < Admins::ApplicationController
     send_data(csv_data, filename: filename)
   end
 
+  # searchアクションのCSV出力メソッドで呼び出されるメソッド
   def send_reservation_csv(reservations, target_period)
     filename = "reservation_#{target_period}.csv"
     csv_data = CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |csv|
@@ -123,6 +127,7 @@ class Admins::DashboardsController < Admins::ApplicationController
     send_data(csv_data, filename: filename)
   end
 
+  # rankingアクションのCSV出力メソッドで呼び出されるメソッド
   def send_ranking_csv(product_ranking, product_count, topping_ranking, topping_count, target_period)
     filename = "ranking_#{target_period}.csv"
 
@@ -134,6 +139,7 @@ class Admins::DashboardsController < Admins::ApplicationController
         csv << values
       end
 
+      # CSVデータで表示される商品ランキングとトッピングランキングの間に空行を挿入する
       blank = %w( )
       csv << blank
 

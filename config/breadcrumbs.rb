@@ -52,6 +52,16 @@ crumb :user_new_charge do |user|
   parent :user_new_reservation, user
 end
 
+crumb :user_rooms do |user|
+  link "メッセージルーム一覧", rooms_path
+  parent :user_mypage, user
+end
+
+crumb :user_message_room do |user|
+  link "メッセージルーム"
+  parent :user_rooms, user
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end

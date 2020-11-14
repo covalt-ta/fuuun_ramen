@@ -20,6 +20,7 @@
 class Reservation < ApplicationRecord
   belongs_to :user, optional: true
   has_one :notice, dependent: :destroy
+  has_one :room, dependent: :destroy
   has_many :order_record_products
   has_many :product_toppings, through: :order_record_products
 

@@ -1,0 +1,36 @@
+<div class="dashboard-wrapper">
+  <%= render partial: 'admins/dashboards/side_bar' %>
+  <div class="admin-tab-wrap">
+    <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">メッセージルーム一覧</label>
+    <div class="tab-content">
+      <div class="panel chat-tab">
+        <table class="table">
+          <thead>
+            <tr class="chat-thead">
+              <th scope="col">お客様氏名</th>
+              <th scope="col">ご来店予約日時</th>
+              <th scope="col">ご利用人数</th>
+              <th scope="col">お支払い料金</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @reservations.each do |reservation| %>
+              <tr class="chat-content">
+                <td><%= "#{reservation.user.last_name} #{reservation.user.first_name}様" %></td>
+                <td><%= "#{reservation.day} / #{reservation.get_time_zone}"%></td>
+                <td><%= reservation.get_count_person %></td>
+                <td><%= "#{reservation.total_price.to_s(:delimited)}円" %></td>
+                <td>
+                  <%= link_to admins_room_path(reservation) do %>
+                    <i class="fas fa-comments"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

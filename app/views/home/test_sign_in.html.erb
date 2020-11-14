@@ -1,25 +1,49 @@
 <%# かんたんログインボタン %>
-<div class="wrapper">
-  <div class="inner">
-    <div class="test-signin-wrapper">
-      <%= form_with model: @user, url: user_session_path, class: 'test-signin', local: true do |f| %>
-        <div class="field">
-          <%= f.hidden_field :email, value: "test@test.jp" %>
-          <%= f.hidden_field :password, value: "abcd1234" %>
-        </div>
-        <div class="actions-left">
-          <%= f.submit "かんたんログイン(ユーザー)", class: "test-user-signin-btn" %>
-        </div>
-      <% end %>
-      <%= form_with model: @admin, url: admin_session_path, class: 'test-signin', local: true do |f| %>
-        <div class="field">
-          <%= f.hidden_field :email, value: "kota@gmail.com" %>
-          <%= f.hidden_field :password, value: "taku1234" %>
-        </div>
-        <div class="actions-rigth">
-          <%= f.submit "かんたんログイン（管理者）", class: "test-admin-signin-btn" %>
-        </div>
-      <% end %>
-    </div>
+<div class="inner">
+  <div class="test-signin-wrapper">
+    <%= form_with model: @user, url: user_session_path, class: 'test-signin', local: true do |f| %>
+      <ul>
+        <h3>＜ユーザー機能＞</h3>
+        <li>ユーザー登録</li>
+        <li>住所、クレジットカード登録</li>
+        <li>商品の買物カゴ保存</li>
+        <li>商品の購入</li>
+        <li>来店予約（来店日時の選択）</li>
+        <li>お問い合わせ(ログイン不要)</li>
+        <li>商品に「食べた!」</li>
+        <li>商品にコメント投稿</li>
+        <li>購入後の店舗とのダイレクトメッセージ</li>
+        <li>レスポンシブ対応</li>
+      </ul>
+      <div class="field">
+        <%= f.hidden_field :email, value: "test@test.jp" %>
+        <%= f.hidden_field :password, value: "abcd1234" %>
+      </div>
+      <div class="actions-left">
+        <%= f.submit "ユーザーログインする", class: "test-user-signin-btn" %>
+      </div>
+
+    <% end %>
+    <%= form_with model: @admin, url: admin_session_path, class: 'test-signin', local: true do |f| %>
+      <ul>
+        <h3>＜店舗機能＞</h3>
+        <li>店舗情報の登録（定休日、休日の設定）</li>
+        <li>商品追加・編集(メイン商品、トッピング商品、販売停止)</li>
+        <li>最新情報の投稿・削除</li>
+        <li>お問い合わせメールの受信</li>
+        <li>予約の通知</li>
+        <li>各種データの検索（日別売上一覧、予約検索、商品ランキング）</li>
+        <li>各種データのCSV出力</li>
+        <li>購入済お客様とのダイレクトメッセージ</li>
+        <li>※※※レスポンシブ非対応※※※</li>
+      </ul>
+      <div class="field">
+        <%= f.hidden_field :email, value: "kota@gmail.com" %>
+        <%= f.hidden_field :password, value: "taku1234" %>
+      </div>
+      <div class="actions-rigth">
+        <%= f.submit "店舗ログインする", class: "test-admin-signin-btn" %>
+      </div>
+    <% end %>
   </div>
 </div>

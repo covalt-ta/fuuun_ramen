@@ -187,16 +187,32 @@
 .test-signin-wrapper {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  max-width: 400px;
+  margin: 0 auto;
+  // background-color: red;
 }
 
 .test-signin {
   width: 100%;
   margin: 20px auto;
   padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  ul{
+    margin-top: 10px;
+    padding: 5px;
+    h3{
+      text-align: center;
+    }
+    li {
+      list-style-type: disc;
+    }
+  }
 }
 
 .test-user-signin-btn {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   background: rgb(134, 197, 153);
   border: 1px solid rgb(134, 197, 153);
@@ -213,7 +229,7 @@
 }
 
 .test-admin-signin-btn {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   background: rgba(102, 107, 106, 0.8);
   border: 1px solid rgba(102, 107, 106, 0.8);
@@ -627,6 +643,238 @@ basket/show.html.erb
 }
 
 /*--------------------------------
+rooms/index.html
+---------------------------------*/
+.chat-tab {
+  padding: 0 60px;
+}
+
+.chat-thead {
+  th {
+    text-align: center;
+  }
+}
+
+.chat-content {
+  .chat-product-image {
+
+    button {
+      width: 150px;
+      height: 50px;
+      border: none;
+      padding: 0;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 3px;
+      object-fit: cover;
+      -webkit-transition: .3s;
+      transition: .3s;
+    }
+    img:hover {
+      filter: grayscale(30%) blur(0.8px);
+    }
+  }
+
+  td{
+    text-align: center;
+    .fa-comments{
+      color: white;
+      padding: 5px;
+      font-size: 45px;
+      background-color: rgb(134, 197, 153);
+      border: solid 1px rgb(134, 197, 153);
+      border-radius: 3px;
+      -webkit-transition: .3s;
+      transition: .3s;
+    }
+    .fa-comments:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+/*--------------------------------
+rooms/show.html
+---------------------------------*/
+.order-menu{
+  border-bottom: solid 1px rgb(134, 197, 153);
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+  img {
+    padding: 5px;
+    width: 100px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+th{
+  width: 20%;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.topping{
+  font-size: 12px;
+}
+
+.chat-message{
+  margin-top: 0px;
+
+  .no-message {
+    text-align: center;
+  }
+
+  .chat-block {
+    margin-bottom: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 5px;
+    width: 100%;
+    max-height: 300px;
+    overflow: auto;
+    background-color: #fff;
+
+    .message {
+      margin: 5px;
+
+      .user-message {
+        display: flex;
+        justify-content: flex-end;
+        padding: 3px;
+        color: white;
+        margin-left: auto;
+        margin-right: 0;
+
+        .time {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          color: gray;
+          font-size: 8px;
+          align-items: end;
+        }
+
+        .text {
+          font-size: 12px;
+          display: inline-block;
+          max-width: 70%;
+          background-color: rgb(134, 197, 153);
+          padding: 5px 7px;
+          color: white;
+          border-radius: 20px;
+        }
+      }
+      .admin-message {
+        display: flex;
+        justify-content: flex-start;
+        padding: 3px;
+        color: white;
+
+        .icon{
+          width: 30px;
+          height: 30px;
+          margin-top: -5px;
+        }
+
+        .time {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          color: gray;
+          font-size: 8px;
+          align-items: end;
+        }
+
+        .text {
+          font-size: 12px;
+          display: inline-block;
+          min-width: 1%;
+          max-width: 70%;
+          background-color: gray;
+          padding: 5px 7px;
+          color: white;
+          border-radius: 20px;
+        }
+
+      }
+    }
+  }
+
+  .orver-three {
+    text-align: center;
+    font-size: 12px;
+  }
+  .admins-rooms-back {
+    display: block;
+    text-align: center;
+    a {
+      font-size: 16px;
+      color: gray;
+    }
+    a:hover{
+      text-decoration: none;
+      color: gray;
+    }
+  }
+
+  .submit-block {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+
+    .submit {
+      display: flex;
+      height: 50px;
+
+      .rooms-back {
+        display: block;
+        width: 15%;
+        a {
+          line-height: 50px;
+          font-size: 12px;
+          color: gray;
+        }
+        a:hover{
+          text-decoration: none;
+          color: gray;
+        }
+      }
+      .message-form {
+        width: 70%;
+        margin-right: 10px;
+        padding: 5px;
+      }
+      .submit-btn{
+        width: 15%;
+        background: rgb(134, 197, 153);
+        border: 1px solid rgb(134, 197, 153);
+        border-radius: 5px;
+        color: #fff;
+        line-height: 30px;
+        font-size: 14px;
+      }
+      .submit-btn:hover {
+        color: rgb(134, 197, 153);
+        background-color: #fff;
+      }
+
+    }
+  }
+}
+
+
+
+
+/*--------------------------------
 レスポンシブ
 ---------------------------------*/
 /* タブレット表示時 */
@@ -799,27 +1047,89 @@ basket/show.html.erb
   .last-charge-btn {
     display: flex;
     flex-direction: column;
-    // align-items: center;
     width: 100%;
-    // margin: 5px 0 0 auto;
-    // text-align: right;
   }
 
   .last-charge-green-btn {
     width: 100%;
-    // padding: 10px;
-    // background: rgb(134, 197, 153);
-    // border: 1px solid rgb(134, 197, 153);
-    // border-radius: 5px;
-    // color: #fff;
-    // line-height: 30px;
-    // font-size: 14px;
-    // cursor: pointer;
   }
 
   .reservation-back {
     margin: 10px 0;
     white-space: nowrap;
     font-size: 12px;
+  }
+
+  // rooms/index.html
+  .chat-tab {
+    padding: 0;
+
+    table {
+      width: 100%;
+      th, td {
+        display: block;
+        width: 100%;
+      }
+
+      .chat-thead {
+        display: none;
+      }
+
+      .chat-content{
+        border: solid 1px rgb(134, 197, 153);
+        display: block;
+        margin-bottom: 10px;
+        td{
+          border-top: none;
+        }
+        td:last-child{
+          background-color: rgb(134, 197, 153);
+        }
+        .fa-comments{
+          width: 90%;
+        }
+        .chat-product-image {
+          button {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  // rooms/show.html
+  .order-menu {
+    td{
+      text-align: center;
+      border-bottom: solid 1px rgb(134, 197, 153);
+    }
+    .image-content{
+      img{
+        width: 100%;
+      }
+      td {
+        border: none;
+      }
+    }
+  }
+  .chat-message{
+    .submit-block{
+      .submit{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .message-form {
+          width: 100%;
+          margin: 0;
+        }
+        .submit-btn {
+          display: block;
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+    }
   }
 }

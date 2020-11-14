@@ -5,6 +5,7 @@
   <li><%= link_to '新規登録', new_admins_product_path, class: "side-bar-link" %></li>
   <li><%= link_to '登録一覧', admins_products_path, class: "side-bar-link" %></li>
   <li><%= link_to '直近予約', admins_reservations_path, class: "side-bar-link" %></li>
+  <li><%= link_to 'メッセージ', admins_rooms_path, class: "side-bar-link" %></li>
   <% unless Shop.exists? %>
     <li><%= link_to "店舗登録", new_admins_shop_path, class: "side-bar-link" %></li>
   <% else %>

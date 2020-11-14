@@ -27,5 +27,6 @@ class Admin < ApplicationRecord
   has_many :product_toppings, through: :products
   has_many :informations, dependent: :destroy
   has_many :notices, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_one :shop, dependent: :restrict_with_error
 end
