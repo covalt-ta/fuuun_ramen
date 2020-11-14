@@ -9,6 +9,8 @@ class Admins::RoomsController < Admins::ApplicationController
     @message = Message.new
     @messages = Message.where(room_id: @room.id)
 
+    @reservation = @room.reservation
+    @products = @reservation.product_toppings
     # 来店日を3日以上過ぎている予約判定の為、変数定義
     @close_reservation = @room.reservation if @room.reservation.day < Date.today - 2
   end

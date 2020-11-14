@@ -5,13 +5,15 @@ class RoomsController < ApplicationController
 
   def index
     # 今日から2日前以降の予約を取得
-    @reservations = current_user.reservations.where('day >= ?', @two_days_ago).order(day: "DESC")
+    @reservations = current_user.reservations.where('day >= ?', @two_days_ago).order(day: "ASC").includes(product_toppings: :product)
   end
 
   def show
     move_to_index_for_expired
     @message = Message.new
     @messages = Message.where(room_id: @room.id)
+    @reservation = @room.reservation
+    @products = @reservation.product_toppings
   end
 
   private
@@ -21,7 +23,9 @@ class RoomsController < ApplicationController
 
   def set_room_or_move
     # ログインユーザーの予約に紐づくルームへのアクセスでない場合、リダイレクト
-    redirect_to rooms_path, alert: 'メッセージルームに入れませんでした' if Reservation.find(params[:id]).user_id != current_user.id
+    unless Reservation.exists?(params[:id]) || Reservation.find(params[:id]).user_id != current_user.id
+      redirect_to rooms_path, alert: 'メッセージルームに入れませんでした'
+    end
 
     #予約に紐づくルームを@roomに定義
     @room = Room.find_by(reservation_id: params[:id])
